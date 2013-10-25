@@ -22,7 +22,7 @@ public class Robert {
 
 	
 	
-	public double TaxameterLaeuft(int _dauer,double _aufschlag){
+	public double TaxameterLaeuft(double _dauer,double _aufschlag){
 		
 		double gebuehr = (_dauer * 400) + _aufschlag;
 		return gebuehr;
