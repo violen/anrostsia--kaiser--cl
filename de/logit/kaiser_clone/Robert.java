@@ -7,6 +7,7 @@ public class Robert {
 	 */
 	
 	private String rostansia;
+	
 
 	/**
 	 * @param _rostansia
@@ -23,5 +24,10 @@ public class Robert {
 		rostansia = _rostansia;
 	}
 	
-	
+	public double TaxameterLaeuft(int _dauer,double _aufschlag){
+		
+		double gebuehr = (_dauer * 400) + _aufschlag;
+		return gebuehr;
+		
+	}
 }
