@@ -20,9 +20,7 @@ public class Robert {
 		return rostansia;
 	}
 
-	public void setRostansia(String _rostansia) {
-		rostansia = _rostansia;
-	}
+	
 	
 	public double TaxameterLaeuft(int _dauer,double _aufschlag){
 		
