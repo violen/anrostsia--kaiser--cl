@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.logit.kaiser_clone;
+package de.logit.kaiser_clone.GitTest;
 
 /**
  * @author nepo aka. André Hauser

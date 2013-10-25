@@ -1,4 +1,4 @@
-package de.logit.kaiser_clone;
+package de.logit.kaiser_clone.GitTest;
 
 public class Robert {
 	/**
