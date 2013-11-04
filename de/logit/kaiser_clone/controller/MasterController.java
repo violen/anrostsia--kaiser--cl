@@ -1,5 +1,7 @@
 /**
- * 
+ * Dieses Wirtschaftsspiel ist bestand einer Prüfungsarbeit 
+ * Beteiligt an diesem Projekt sind / waren:
+ * André Hauser, Stephan Landsiedel, Robert Burdorf und Siamak Hamidi.
  */
 package de.logit.kaiser_clone.controller;
 
@@ -13,7 +15,13 @@ public class MasterController {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		/*
+		 * Grundvorraussetzungen um mit Usereingaben umzugehen.
+		 */
+		int anzahl = 0;
+		EingabeController eingabeController = new EingabeController();
+		String eingabe = "";
+		
 
 	}
 
