@@ -10,6 +10,8 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
+import de.logit.kaiser_clone.view.HauptmenueView;
+
 /**
  * @author nepo aka. André Hauser
  *
@@ -35,6 +37,9 @@ public class MasterController {
 		int anzahl = 0;
 		EingabeController eingabeController = new EingabeController();
 		String eingabe = "";
+		
+		//Beispielausgabe Markt:
+		HauptmenueView.zeigeMarkt();
 
 	}
 
