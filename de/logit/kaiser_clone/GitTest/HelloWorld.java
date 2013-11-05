@@ -29,21 +29,11 @@ public class HelloWorld {
 		/*
 		 * Windows CMD erwartet Zeichen im DOS-Zeichensatz "CP850"
 		 */
-//	    try {
-//			System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out),true,"CP850"));
-//		} catch (UnsupportedEncodingException e) {
-//		}
-		System.out.println("Hauptmenü:: Hi ich bin André");
-		for(Map.Entry<String, String> entry : System.getenv().entrySet()){
-			System.out.println(entry.getKey() + " " + entry.getValue());
-		}
-		
-		try {
-			System.getProperties().list(new PrintStream(new FileOutputStream(FileDescriptor.out),true, "UTF-8"));
+	    try {
+			System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out),true,"CP850"));
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		System.out.println("Hauptmenü:: Hi ich bin André");
 	}
 
 }
