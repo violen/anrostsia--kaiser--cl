@@ -18,6 +18,7 @@ public class AusgabeHandler {
 	public void gibStringAnKonsole(String _string){
 		if(this.pw != null){
 			pw.print(_string);
+			pw.flush();
 		} else {
 			System.out.print(_string);
 		}
