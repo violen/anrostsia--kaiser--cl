@@ -6,11 +6,13 @@
 package de.logit.kaiser_clone.controller;
 
 import java.io.FileDescriptor;
+
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 import de.logit.kaiser_clone.view.HauptmenueView;
+import de.logit.kaiser_clone.view.StartmenueView;
 
 /**
  * @author nepo aka. André Hauser
@@ -37,9 +39,13 @@ public class MasterController {
 		int anzahl = 0;
 		EingabeController eingabeController = new EingabeController();
 		String eingabe = "";
-		
+		AusgabeHandler ausgabeHandler = new AusgabeHandler();
 		//Beispielausgabe Markt:
-		HauptmenueView.zeigeMarkt();
+
+		ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue());
+		ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
+		ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue());
+		ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
 
 	}
 
