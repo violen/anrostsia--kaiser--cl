@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 
 import de.logit.kaiser_clone.model.Spiel;
 import de.logit.kaiser_clone.model.Spieler;
+import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.StartmenueView;
 
@@ -37,37 +38,8 @@ public class MasterController {
 	private StartMenueController startmenueController;
 	private AusgabeHandler ausgabeHandler;
 	
-	
-	public void printStream()
-	{
-	//@Stephan --> laut Lukas wird die Main als separates Programm "Hauptprogramm" aus dem Paket "main" gestartet und 
-		//erzeugt nur den MasterController und ruft die Methode "spielStarten" auf.
+	public MasterController(){
 		
-		//public static void main(String[] args) {
-		/*
-		 * Zeichenausgabe Umlaute etc. für Windows CMD
-		 */
-		if(System.getProperty("file.encoding").equalsIgnoreCase("Cp1252")){
-			try {
-				System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out),true,"Cp850"));
-			} 
-			catch (UnsupportedEncodingException e) {
-			}
-		}
-		/*
-		 * Grundvorraussetzungen um mit Usereingaben umzugehen.
-		 */
-		int anzahl = 0;
-		EingabeController eingabeController = new EingabeController();
-		String eingabe = "";
-		AusgabeHandler ausgabeHandler = new AusgabeHandler();
-		//Beispielausgabe Markt:
-
-		ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue());
-		ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
-		ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue());
-		ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
-
 	}
 	
 	public void spielStarten()
