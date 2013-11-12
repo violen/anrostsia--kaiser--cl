@@ -1,4 +1,4 @@
-package de.logit.kaiser_clone.controller;
+package de.logit.kaiser_clone.view;
 
 import java.io.PrintWriter;
 /**
