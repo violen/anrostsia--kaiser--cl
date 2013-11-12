@@ -9,4 +9,10 @@ package de.logit.kaiser_clone.view;
  */
 public class StatistikView {
 
+	public static String getStatistik()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -8,7 +8,7 @@ package de.logit.kaiser_clone.model;
  *
  */
 public class Markt {
-	
+	 
 	private final int BESTAND = 20000;
 	private final int ERHOEHUNG = 500;
 	
