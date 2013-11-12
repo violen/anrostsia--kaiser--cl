@@ -9,6 +9,6 @@ package de.logit.kaiser_clone.model;
  */
 public enum Titel 
 {
-	BAUER,RITTER,BARON,GRAF,FÜRST,HERZOG,KÖNIG;
+	BAUER,RITTER,BARON,GRAF,FÃœRST,HERZOG,KÃ–NIG;
 
 }
