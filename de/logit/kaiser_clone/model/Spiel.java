@@ -25,7 +25,7 @@ public class Spiel
 	{
 		for(int i = 0; i<4; i++)
 		{
-			fuegeSpielerHinzu(new Spieler(this));
+			fuegeSpielerHinzu(new Spieler(this,""+i));
 			spieler.get(i).erzeugeStartfelder();
 		}
 		

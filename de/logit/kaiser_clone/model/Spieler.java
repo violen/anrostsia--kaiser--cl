@@ -28,12 +28,14 @@ public class Spieler
 	//Startwert der Moral ist 70 Prozent --> max 100%
 	private int moral=70;
 	private String nachricht;
+	
+	private String name;
 
 	
-	public Spieler(Spiel _spiel)
+	public Spieler(Spiel _spiel,String _name)
 	{
 		spiel = _spiel;
-		
+		name = _name;
 	}
 	
 	public void erzeugeStartfelder()
@@ -311,6 +313,11 @@ public class Spieler
 	public void setNachricht(String _nachricht)
 	{
 		this.nachricht = _nachricht;
+	}
+
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
