@@ -4,6 +4,7 @@ import com.sun.org.apache.xalan.internal.xsltc.runtime.Parameter;
 
 import de.logit.kaiser_clone.model.Spiel;
 import de.logit.kaiser_clone.model.Spielrunde;
+import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.StartmenueView;
@@ -82,7 +83,7 @@ public class SpielController
 					masterController.getStatistikcontroller().holenStatistik();
 					
 					ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistik());
-					//holenStatistik muss noch nach getStatistik übergeben werden.
+					//holenStatistik muss noch nach getStatistik Ã¼bergeben werden.
 				}
 				else if (parameter == "7")
 				{
