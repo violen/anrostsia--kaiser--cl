@@ -88,19 +88,29 @@ public class Markt
 					_aktiverSpieler.fuegeGebaeudeHinzu(new Kornspeicher());
 					_aktiverSpieler.setGold(_aktiverSpieler.getGold() - kornspeicherEK);
 				}
-				else if ()
+				else if (_aktiverSpieler.getGold() < kornspeicherEK)
 				{
-					//Baustelle - zu wenig Gold
+					parameters[0]=8;//Gold reicht nicht aus
+					parameters[1]=i;//Anzahl gekaufte kornspeicher
+					return parameters;
 				}
 				
 			}
-			//Keine freien Felder
+			else if(_aktiverSpieler.getFreieFelder() < 1)
+			{
+				parameters[0]=9;//kein freies Feld mehr
+				parameters[1]=i;//Anzahl gekaufte kornspeicher
+				return parameters;
+			}
+			
 		}
-		//Erfolg
+		parameters[0]=7;//Transaktion Erfolgreich
+		parameters[1]=i;//Anzahl gekaufte kornspeicher
+		return parameters;
 		
 		
 		
-		return null;
+
 		
 	}
 }
