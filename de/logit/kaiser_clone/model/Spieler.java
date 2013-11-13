@@ -27,6 +27,7 @@ public class Spieler
 	private int muehlen;
 	//Startwert der Moral ist 70 Prozent --> max 100%
 	private int moral=70;
+	private String nachricht;
 
 	
 	public Spieler(Spiel _spiel)
@@ -295,5 +296,22 @@ public class Spieler
 	{
 		return this.spiel;
 	}
+
+	/**
+	 * @return the nachricht
+	 */
+	public String getNachricht()
+	{
+		return this.nachricht;
+	}
+
+	/**
+	 * @param _nachricht the nachricht to set
+	 */
+	public void setNachricht(String _nachricht)
+	{
+		this.nachricht = _nachricht;
+	}
+	
 	
 }

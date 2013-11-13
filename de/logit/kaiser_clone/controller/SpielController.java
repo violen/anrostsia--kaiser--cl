@@ -36,7 +36,7 @@ public class SpielController
 		for(int i = 0; i < 4; i++)
 		{
 			game.getSpielrunde().berechneWerte();
-			masterController.getStatistikcontroller().statistikBerechnen();
+			masterController.getStatistikcontroller().berechneStatistik();
 			while(true)
 			{
 				
@@ -47,43 +47,41 @@ public class SpielController
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
 					parameter = eingabeController.getEingabe();
-					masterController.getMarktcontroller().auswertenEingabeMarkt();
-					
+					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
+										
 				}
 				else if(parameter == "2")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue());
 					parameter = eingabeController.getEingabe();
-					masterController.getSabotageController().auswertenEingabeSabotage();
+					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
 					
 				}
 				else if(parameter == "3")
 				{
 					ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
 					parameter = eingabeController.getEingabe();
-					masterController.getStartmenueController().auswertenEingabeStartmenue();
+					masterController.getStartmenueController().auswertenEingabeStartmenue(parameter);
 					
 				}
 				else if(parameter == "4")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue());
 					parameter = eingabeController.getEingabe();
-					masterController.getProduzierenController().auswertenEingabeProduzieren();
+					masterController.getProduzierenController().auswertenEingabeProduzieren(parameter);
 					
 				}
 				else if(parameter == "5")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue());
 					parameter = eingabeController.getEingabe();
-					masterController.getPolitikController().auswertenEingabePolitik();
+					masterController.getPolitikController().auswertenEingabePolitik(parameter);
 					
 				}
 				else if(parameter == "6")
 				{
-					masterController.getStatistikcontroller().holenStatistik();
+					masterController.getStatistikcontroller().berechneStatistik();
 					
-					ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistik());
-					//holenStatistik muss noch nach getStatistik übergeben werden.
 				}
 				else if (parameter == "7")
 				{

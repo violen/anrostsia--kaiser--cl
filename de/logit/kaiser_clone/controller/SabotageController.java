@@ -9,7 +9,7 @@ package de.logit.kaiser_clone.controller;
  */
 public class SabotageController {
 
-	public void auswertenEingabeSabotage()
+	public void auswertenEingabeSabotage(String _parameter)
 	{
 		// TODO Auto-generated method stub
 		
