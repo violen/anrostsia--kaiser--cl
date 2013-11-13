@@ -23,6 +23,9 @@ public class Markt
 	private int kornfeldEK = 30;
 	private int muehleEK = 120;
 	private int soldatEK = 40;
+	private int kornEK = 1;
+	private int duengerEK = 1;
+	private int mehlEK = 2;
 
 	private Markt()
 	{
@@ -136,13 +139,56 @@ public class Markt
 	}
 
 	public int[] kaufeKorn(int _anzahlHolen, Spieler _aktiverSpieler) {
-		// TODO Auto-generated method stub
-		return null;
+		int[] parameters = new int[2];
+		
+		if (bestandKorn >= _anzahlHolen)
+		{
+		
+			if (_aktiverSpieler.getGold() >= _anzahlHolen*kornEK)
+			{
+				_aktiverSpieler.setKorn(_aktiverSpieler.getKorn()+_anzahlHolen);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*kornEK));
+				parameters[0]=1;// Transaktion durchgefuehrt
+				
+			}
+			else if(_aktiverSpieler.getGold() < _anzahlHolen*kornEK)
+			{
+				parameters[0]=2;//Zu wenig Gold
+			}
+			
+		}
+		else if(bestandKorn < _anzahlHolen)
+		{
+			parameters[0]=3;//Menge nicht verfuegbar
+		}
+		return parameters;
+		
 	}
 
 	public int[] kaufeMehl(int _anzahlHolen, Spieler _aktiverSpieler) {
-		// TODO Auto-generated method stub
-		return null;
+		int[] parameters = new int[2];
+		
+		if (bestandMehl >= _anzahlHolen)
+		{
+		
+			if (_aktiverSpieler.getGold() >= _anzahlHolen*mehlEK)
+			{
+				_aktiverSpieler.setMehl(_aktiverSpieler.getMehl()+_anzahlHolen);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*mehlEK));
+				parameters[0]=1;
+				
+			}
+			else if(_aktiverSpieler.getGold() < _anzahlHolen*mehlEK)
+			{
+				parameters[0]=2;
+			}
+			
+		}
+		else if (bestandMehl < _anzahlHolen)
+		{
+			parameters[0]=3;
+		}
+		return parameters;
 	}
 
 	public int[] kaufeKornfeld(int _anzahlHolen, Spieler _aktiverSpieler) {
@@ -214,7 +260,49 @@ public class Markt
 	}
 
 	public int[] kaufeDuenger(int _anzahlHolen, Spieler _aktiverSpieler) {
-		// TODO Auto-generated method stub
-		return null;
+		int[] parameters = new int[2];
+		
+		if (_aktiverSpieler.getGold() >= _anzahlHolen*duengerEK)
+		{
+			_aktiverSpieler.setDuenger(_aktiverSpieler.getDuenger()+_anzahlHolen);
+			_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*duengerEK));
+			parameters[0]=1;
+			
+		}
+		else if(_aktiverSpieler.getGold() < _anzahlHolen*duengerEK)
+		{
+			parameters[0]=2;
+		}
+		return parameters;
+	}
+
+	public int verkaufeKorn(int _anzahlHolen, Spieler _aktiverSpieler) {
+
+		if(_aktiverSpieler.getKorn() >= _anzahlHolen)
+		{
+			_aktiverSpieler.setKorn(_aktiverSpieler.getKorn()- _anzahlHolen);
+			bestandKorn += _anzahlHolen;
+			return 1;
+		}
+		else if(_aktiverSpieler.getKorn() < _anzahlHolen)
+		{
+			return 2;
+		}
+		else return 3;
+		
+	}
+
+	public int verkaufeMehl(int _anzahlHolen, Spieler _aktiverSpieler) {
+		if(_aktiverSpieler.getMehl() >= _anzahlHolen)
+		{
+			_aktiverSpieler.setMehl(_aktiverSpieler.getMehl()- _anzahlHolen);
+			bestandMehl += _anzahlHolen;
+			return 1;
+		}
+		else if(_aktiverSpieler.getMehl() < _anzahlHolen)
+		{
+			return 2;
+		}
+		else return 3;
 	}
 }

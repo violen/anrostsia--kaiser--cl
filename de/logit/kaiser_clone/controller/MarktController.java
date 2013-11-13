@@ -38,9 +38,38 @@ public class MarktController
 		
 	}
 
-	private void auswertenVerkaufoptionen(String _param_2)
+	private void auswertenVerkaufoptionen(String _param_1)
 	{
-		// TODO Auto-generated method stub
+		if (_param_1 == "1")
+		{
+			analysiereVerkauf(markt.verkaufeKorn(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		else if (_param_1 == "2")
+		{
+			analysiereVerkauf(markt.verkaufeMehl(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+	}
+
+	private void analysiereVerkauf(int _fehlercode) {
+		
+		String nachricht = "";
+
+		if (_fehlercode == 1)
+		{
+			nachricht = FehlerView.getTransaktionErfolgreich();
+		}
+		else if (_fehlercode == 2)
+		{
+			nachricht = FehlerView.getMengeNichtVerfügbar();
+		}
+		else if (_fehlercode == 3)
+		{
+			nachricht = FehlerView.getKeineGueltigeEingabe();
+		}
+		
 		
 	}
 
@@ -115,7 +144,64 @@ public class MarktController
 		//Fehlercodes
 		String nachricht ="";
 		
-		if(_fehlercode[0] == 10)
+		if(_fehlercode[0] == 1)
+		{
+			nachricht = FehlerView.getTransaktionErfolgreich();
+			
+			nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
+			
+		}
+		
+		else if(_fehlercode[0] == 2)
+		{
+			nachricht = FehlerView.getGoldReichtNichtAus();
+			
+		}
+		
+		else if(_fehlercode[0] == 3)
+		{
+			nachricht = FehlerView.getMengeNichtVerfügbar();
+			
+		}
+		
+		else if(_fehlercode[0] == 4)
+		{
+			nachricht = FehlerView.getUnkorrekteEingabe();
+			
+		}
+		
+		else if(_fehlercode[0] == 5)
+		{
+			nachricht = FehlerView.getTitelNichtverfuegbar();
+			
+		}
+		
+		else if(_fehlercode[0] == 6)
+		{
+			nachricht = FehlerView.getKeinFreiesFeldVorhanden();
+			
+		}
+		
+		else if(_fehlercode[0] == 7)
+		{
+			nachricht = FehlerView.getTransaktionErfolgreich();
+			nachricht += MarktView.getMarktKaufVonGebaeude(_fehlercode[1]);
+			
+		}
+		
+		else if(_fehlercode[0] == 8)
+		{
+			nachricht = FehlerView.getGoldReichtNichtAus();
+			nachricht += MarktView.getMarktKaufVonGebaeude(_fehlercode[1]);
+		}
+		
+		else if(_fehlercode[0] == 9)
+		{
+			nachricht = FehlerView.getKeinFreiesFeldVorhanden();
+			nachricht += MarktView.getMarktKaufVonGebaeude(_fehlercode[1]);
+		}
+		
+		else if(_fehlercode[0] == 10)
 		{
 			nachricht = FehlerView.getGoldReichtNichtAus();
 			
