@@ -20,6 +20,9 @@ public class Markt
 
 	private int feldEK = 50;
 	private int kornspeicherEK = 100;
+	private int kornfeldEK = 30;
+	private int muehleEK = 120;
+	private int soldatEK = 40;
 
 	private Markt()
 	{
@@ -112,5 +115,106 @@ public class Markt
 		
 
 		
+	}
+
+	public int[] kaufeSoldaten(int _anzahlHolen, Spieler _aktiverSpieler) {
+		
+		int[] parameters = new int[2];
+		
+		if (_aktiverSpieler.getGold() >= _anzahlHolen*soldatEK)
+		{
+			_aktiverSpieler.setSoldaten(_aktiverSpieler.getSoldaten()+_anzahlHolen);
+			_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*soldatEK));
+			parameters[0]=1;
+			
+		}
+		else if(_aktiverSpieler.getGold() < _anzahlHolen*soldatEK)
+		{
+			parameters[0]=2;
+		}
+		return parameters;
+	}
+
+	public int[] kaufeKorn(int _anzahlHolen, Spieler _aktiverSpieler) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int[] kaufeMehl(int _anzahlHolen, Spieler _aktiverSpieler) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int[] kaufeKornfeld(int _anzahlHolen, Spieler _aktiverSpieler) {
+		int[] parameters = new int[2];
+		int i = 0;
+		
+		for(i = 0; i< _anzahlHolen; i++)
+		{
+			if(_aktiverSpieler.getFreieFelder() > 0 ) 
+			{
+				if(_aktiverSpieler.getGold() >= kornfeldEK)	
+				{
+					_aktiverSpieler.fuegeGebaeudeHinzu(new Kornfeld());
+					_aktiverSpieler.setGold(_aktiverSpieler.getGold() - kornfeldEK);
+				}
+				else if (_aktiverSpieler.getGold() < kornfeldEK)
+				{
+					parameters[0]=8;//Gold reicht nicht aus
+					parameters[1]=i;//Anzahl gekaufte kornfelder
+					return parameters;
+				}
+				
+			}
+			else if(_aktiverSpieler.getFreieFelder() < 1)
+			{
+				parameters[0]=9;//kein freies Feld mehr
+				parameters[1]=i;//Anzahl gekaufte kornfelder
+				return parameters;
+			}
+			
+		}
+		parameters[0]=7;//Transaktion Erfolgreich
+		parameters[1]=i;//Anzahl gekaufte kornfelder
+		return parameters;
+	}
+
+	public int[] kaufeMuehle(int _anzahlHolen, Spieler _aktiverSpieler) {
+		int[] parameters = new int[2];
+		int i = 0;
+		
+		for(i = 0; i< _anzahlHolen; i++)
+		{
+			if(_aktiverSpieler.getFreieFelder() > 0 ) 
+			{
+				if(_aktiverSpieler.getGold() >= muehleEK)	
+				{
+					_aktiverSpieler.fuegeGebaeudeHinzu(new Muehle());
+					_aktiverSpieler.setGold(_aktiverSpieler.getGold() - muehleEK);
+				}
+				else if (_aktiverSpieler.getGold() < muehleEK)
+				{
+					parameters[0]=8;//Gold reicht nicht aus
+					parameters[1]=i;//Anzahl gekaufte muehlen
+					return parameters;
+				}
+				
+			}
+			else if(_aktiverSpieler.getFreieFelder() < 1)
+			{
+				parameters[0]=9;//kein freies Feld mehr
+				parameters[1]=i;//Anzahl gekaufte muehlen
+				return parameters;
+			}
+			
+		}
+		parameters[0]=7;//Transaktion Erfolgreich
+		parameters[1]=i;//Anzahl gekaufte muehlen
+		return parameters;
+	}
+
+	public int[] kaufeDuenger(int _anzahlHolen, Spieler _aktiverSpieler) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -35,6 +35,7 @@ public class MarktController
 			auswertenVerkaufoptionen(param_2);
 		}
 		
+		
 	}
 
 	private void auswertenVerkaufoptionen(String _param_2)
@@ -66,6 +67,42 @@ public class MarktController
 		else if(_param_1 == "3")
 		{
 			analysiereKauf(markt.kaufeKornspeicher(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+		else if(_param_1 == "4")
+		{
+			analysiereKauf(markt.kaufeSoldaten(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+		else if(_param_1 == "5")
+		{
+			analysiereKauf(markt.kaufeKorn(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+		else if(_param_1 == "6")
+		{
+			analysiereKauf(markt.kaufeMehl(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+		else if(_param_1 == "7")
+		{
+			analysiereKauf(markt.kaufeKornfeld(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+		else if(_param_1 == "8")
+		{
+			analysiereKauf(markt.kaufeMuehle(masterController.getSpielController().anzahlHolen(), 
+					masterController.getAktiverSpieler()));
+		}
+		
+		else if(_param_1 == "9")
+		{
+			analysiereKauf(markt.kaufeDuenger(masterController.getSpielController().anzahlHolen(), 
 					masterController.getAktiverSpieler()));
 		}
 		
