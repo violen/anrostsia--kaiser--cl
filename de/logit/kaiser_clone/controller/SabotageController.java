@@ -33,7 +33,7 @@ public class SabotageController {
 
 	public void auswertenEingabeSabotage(String _parameter)
 	{
-		// hier wird die liste der spieler außer dema ktiven spieler ausgegeben
+		// hier wird die liste der spieler außer dema ktiven spieler ausgegeben.
 		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegnerWaehlen(masterController.getAktiverSpieler())));
 		
 		String _parameter2 = masterController.getEingabecontroller().getEingabe();
