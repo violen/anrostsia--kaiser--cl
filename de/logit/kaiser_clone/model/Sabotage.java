@@ -21,4 +21,9 @@ public class Sabotage
 		return 500;
 	}
 
+	public int getSoldatenMinimum() {
+		
+		return 1;
+	}
+
 }

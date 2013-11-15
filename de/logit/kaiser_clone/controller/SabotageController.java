@@ -68,6 +68,8 @@ public class SabotageController {
 		if (masterController.getAktiverSpieler().getGold() >= sabotage.getUnruheKosten())
 		{
 			//TODO
+			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
+			sabotage.unruhe();
 		}
 		
 	}
