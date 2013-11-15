@@ -1,13 +1,19 @@
-/**
- * 
- */
 package de.logit.kaiser_clone.model;
 
-/**
- * @author nepo aka. André Hauser
- *
- */
-public class Startmenue 
+public class Startmenue
 {
 
+	public Startmenue()
+	{
+	}
+
+	public Spiel neueSpielStarten()
+	{
+		Spiel spiel = new Spiel();
+		return spiel;
+	}
+
+	public void beendeSpiel()
+	{
+	}
 }
