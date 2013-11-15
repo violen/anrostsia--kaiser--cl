@@ -34,13 +34,15 @@ public class SabotageController {
 	public void auswertenEingabeSabotage(String _parameter)
 	{
 		// hier wird die liste der spieler außer dema ktiven spieler ausgegeben.
-		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegnerWaehlen(masterController.getAktiverSpieler())));
+		LinkedList<Spieler> gegner = gegnerWaehlen(masterController.getAktiverSpieler());
 		
-		String _parameter2 = masterController.getEingabecontroller().getEingabe();
+		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegner));
+		
+		int _parameter2 = Integer.parseInt(masterController.getEingabecontroller().getEingabe());
 		
 		if (_parameter == "1")
 		{
-			auswertenUnruheOptionen();
+			auswertenUnruheOptionen(gegner.get(_parameter2));
 		}
 		
 		if (_parameter == "2")
@@ -62,17 +64,28 @@ public class SabotageController {
 
 
 
-	private void auswertenUnruheOptionen() {
+	private int auswertenUnruheOptionen(Spieler _gegner) {
 
 
 		if (masterController.getAktiverSpieler().getGold() >= sabotage.getUnruheKosten())
 		{
 			//TODO
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
-			sabotage.unruhe();
+			{
+				sabotage.unruhe(_gegner);
+				
+				return 1;
+			}
+			
+			return 2;
+			
 		}
 		
+		return 3;
+		
 	}
+	
+	
 
 
 

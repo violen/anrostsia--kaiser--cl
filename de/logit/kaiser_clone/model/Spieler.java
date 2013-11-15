@@ -319,6 +319,13 @@ public class Spieler
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int getSchutzFaktor() {
+		
+		int s = (int) (felder.size() / soldaten);
+		
+		return s;
+	}
 	
 	
 }
