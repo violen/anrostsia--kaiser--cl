@@ -155,14 +155,14 @@ public class Sabotage
 	public int pluendern(Spieler _gegner)
 	
 	{
-		int erfolg =0;
+		
 		int schutz = _gegner.getSchutzFaktor();
 		
 		int power = ((int) (Math.random()+(1+1000)))-eingesetzteSoldaten;
 		
 		int gut = (int) Math.random()+(1+2);
 		
-		if (schutz < power)
+		if (schutz > power)
 		{
 			return 12;
 		}
@@ -184,6 +184,24 @@ public class Sabotage
 			}
 		}
 		
+		
+	}
+
+	public int vergiften(Spieler _gegner) 
+	{
+		int schutz = _gegner.getSchutzFaktor();
+		
+		int power = ((int) (Math.random()+(1+1000)))-eingesetzteSoldaten;
+		
+		
+		if (schutz > power)
+		{
+			return 13;
+					
+		}
+		neuesKorn = (int) _gegner.getKorn()-(_gegner.getKorn()/100*50);
+		_gegner.setKorn(neuesKorn);
+		return 14;
 		
 	}
 

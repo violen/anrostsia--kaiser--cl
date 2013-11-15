@@ -66,7 +66,9 @@ public class SabotageController {
 		
 		if (_parameter == "4")
 		{
+			int _parameter3 = auswertenVergiftenOptionen(gegner.get(_parameter2));
 			
+			analysiereSabotage(_parameter3);
 		}
 		
 	}
@@ -186,6 +188,16 @@ public class SabotageController {
 			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
 			
 		}
+		else if (_parameter3 == 13)
+		{
+			
+		}
+		else if (_parameter3 == 13)
+		{
+			
+		}
+		
+		
 		
 	}
 
@@ -233,14 +245,14 @@ public class SabotageController {
 
 	private int auswertenPluendernOptionen(Spieler _gegner) {
 		
-		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getZerstoerenKosten())
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getPluendernKosten())
 		{
 			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
 			{
 				int erfolg =sabotage.pluendern(_gegner);
 				
-				return erfolg;// 5,6,7 bei erfolg 8 bei misserfolg
+				return erfolg;// 10,11 bei erfolg 12 bei misserfolg
 			}
 			
 			return 3;
@@ -250,6 +262,25 @@ public class SabotageController {
 		return 4;
 	}
 	
+	private int auswertenVergiftenOptionen(Spieler _gegner) 
+	{
+		
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getVergiftenKosten())
+		{
+			
+			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
+			{
+				int erfolg =sabotage.vergiften(_gegner);
+				
+				return erfolg;// 10,11 bei erfolg 12 bei misserfolg
+			}
+			
+			return 3;
+			
+		}
+		
+		return 4;
+	}
 
 
 
