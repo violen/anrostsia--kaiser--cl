@@ -25,4 +25,14 @@ public class SabotageView {
 		return liste;
 	}
 
+	public static String getUnruheSchuehrenErfolgreich() {
+		
+		return "Unruhe Schuehren erfolgreich \n";
+	}
+
+	public static String getEsWurdeUnruheGeschuehrt(String _name) {
+		
+		return "Es wurde Unruhe geschuehrt von Spieler " + _name + " ! \n";
+	}
+
 }

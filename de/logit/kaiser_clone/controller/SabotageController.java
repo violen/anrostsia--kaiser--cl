@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 import de.logit.kaiser_clone.model.Sabotage;
 import de.logit.kaiser_clone.model.Spieler;
+import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.SabotageView;
 
@@ -42,7 +43,9 @@ public class SabotageController {
 		
 		if (_parameter == "1")
 		{
-			auswertenUnruheOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenUnruheOptionen(gegner.get(_parameter2));
+			
+			analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "2")
@@ -58,6 +61,23 @@ public class SabotageController {
 		if (_parameter == "4")
 		{
 			
+		}
+		
+	}
+
+
+
+	private void analysiereSabotage(int _parameter3) {
+		
+		AusgabeHandler ausgabeHandler = masterController.getAusgabeHandler();
+		
+		String nachrichtAnGegner = "";
+
+		
+		if(_parameter3 == 1)
+		{
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getUnruheSchuehrenErfolgreich());
+			nachrichtAnGegner = SabotageView.getEsWurdeUnruheGeschuehrt(masterController.getAktiverSpieler().getName());
 		}
 		
 	}

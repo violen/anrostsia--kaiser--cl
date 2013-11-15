@@ -35,7 +35,7 @@ public class Sabotage
 		
 		if ( schutz < power)
 		{
-			_gegner.setMehl(0);
+			_gegner.setMoral(0);
 			
 			erfolg = 1;
 		}
