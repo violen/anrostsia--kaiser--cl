@@ -35,4 +35,14 @@ public class SabotageView {
 		return "Es wurde Unruhe geschuehrt von Spieler " + _name + " ! \n";
 	}
 
+	public static String getUnsereUnruhestifterWurdenGefangenGenommen() {
+		
+		return "Unsere Unruhestifter Wurden gefangengenommen \n";
+	}
+
+	public static String getWirHabenUnruhestifterGefangenGenommen(String _name) {
+		
+		return "Wir haben die Unruhestifter von Spieler " + _name + " gefangengenommen ! \n";
+	}
+
 }

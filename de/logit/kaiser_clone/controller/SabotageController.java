@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import de.logit.kaiser_clone.model.Sabotage;
 import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.view.AusgabeHandler;
+import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.SabotageView;
 
@@ -43,6 +44,7 @@ public class SabotageController {
 		
 		if (_parameter == "1")
 		{
+			
 			int _parameter3 = auswertenUnruheOptionen(gegner.get(_parameter2));
 			
 			analysiereSabotage(_parameter3);
@@ -76,8 +78,25 @@ public class SabotageController {
 		
 		if(_parameter3 == 1)
 		{
+			// Unruhe erfolgreich
 			ausgabeHandler.gibStringAnKonsole(SabotageView.getUnruheSchuehrenErfolgreich());
 			nachrichtAnGegner = SabotageView.getEsWurdeUnruheGeschuehrt(masterController.getAktiverSpieler().getName());
+		}
+		else if(_parameter3 == 2)
+		{
+			// Unruhe nicht erfolgreich
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getUnsereUnruhestifterWurdenGefangenGenommen());
+			nachrichtAnGegner = SabotageView.getWirHabenUnruhestifterGefangenGenommen(masterController.getAktiverSpieler().getName());
+		}
+		else if (_parameter3 == 4)
+		{
+			//Gold reicht nicht aus
+			ausgabeHandler.gibStringAnKonsole(FehlerView.getGoldReichtNichtAus());
+		}
+		else if (_parameter3 == 3)
+		{
+			// Soldaten reichen nicht aus
+			ausgabeHandler.gibStringAnKonsole(FehlerView.getSoldatenReichenNichtAus());
 		}
 		
 	}
@@ -89,19 +108,19 @@ public class SabotageController {
 
 		if (masterController.getAktiverSpieler().getGold() >= sabotage.getUnruheKosten())
 		{
-			//TODO
+			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
 			{
-				sabotage.unruhe(_gegner);
+				int erfolg =sabotage.unruhe(_gegner);
 				
-				return 1;
+				return erfolg;// 1 bei erfolg 2 bei misserfolg
 			}
 			
-			return 2;
+			return 3;
 			
 		}
 		
-		return 3;
+		return 4;
 		
 	}
 	

@@ -44,4 +44,9 @@ public class FehlerView
 		
 		return "Das war keine gültige Eingabe. \n";
 	}
+
+	public static String getSoldatenReichenNichtAus() {
+	
+		return "Soldaten reichen nicht aus. \n";
+	}
 }
