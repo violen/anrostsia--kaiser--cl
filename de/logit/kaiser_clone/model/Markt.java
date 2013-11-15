@@ -48,9 +48,51 @@ public class Markt
 		this.bestandMehl += ERHOEHUNG;
 	}
 
-	public String kaufeTitel(Titel _titel)
+	public String kaufeTitel(Spieler _aktiverSpieler)
 	{
-		// TODO
+		Titel aktuellerTitel = _aktiverSpieler.getTitel();
+		Titel titel = null;
+		
+		switch (aktuellerTitel) {
+		case BAUER:
+			
+			titel = Titel.RITTER;
+			if(_aktiverSpieler.getGold() > 3000 && _aktiverSpieler.getFelder().size() >= 12){
+				_aktiverSpieler.setTitel(titel);
+			}
+			
+			break;
+			
+		case RITTER:
+			titel = Titel.BARON;
+			_aktiverSpieler.setTitel(titel);
+			
+			break;
+			
+		case BARON:
+			titel = Titel.GRAF;
+			_aktiverSpieler.setTitel(titel);
+			
+			break;
+			
+		case FÜRST:
+			titel = Titel.HERZOG;
+			_aktiverSpieler.setTitel(titel);
+			break;
+			
+		case HERZOG:
+			titel = Titel.KÖNIG;
+			_aktiverSpieler.setTitel(titel);
+			break;
+			
+		case GRAF:
+			titel = Titel.FÜRST;
+			_aktiverSpieler.setTitel(titel);
+			break;
+			
+		default:
+			break;
+		}
 		return null;
 	}
 

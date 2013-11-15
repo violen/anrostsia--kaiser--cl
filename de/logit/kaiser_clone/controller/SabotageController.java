@@ -42,30 +42,40 @@ public class SabotageController {
 		
 		int _parameter2 = Integer.parseInt(masterController.getEingabecontroller().getEingabe());
 		
+		Spieler derSabotierte = gegner.get(_parameter2);
+		
+		String nachrichtAnGegner ="";
+		
 		if (_parameter == "1")
 		{
 			
-			int _parameter3 = auswertenUnruheOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenUnruheOptionen(derSabotierte);
 			
-			analysiereSabotage(_parameter3);
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "2")
 		{
-			int _parameter3 = auswertenZerstoerenOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenZerstoerenOptionen(derSabotierte);
 			
-			analysiereSabotage(_parameter3);
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "3")
 		{
+			int _parameter3 = auswertenPluendernOptionen(derSabotierte);
 			
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "4")
 		{
+			int _parameter3 = auswertenVergiftenOptionen(derSabotierte);
 			
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
+		
+		derSabotierte.setNachricht(derSabotierte.getNachricht() + nachrichtAnGegner);
 		
 	}
 
@@ -87,7 +97,7 @@ public class SabotageController {
 	
 
 
-	private void analysiereSabotage(int _parameter3) {
+	private String analysiereSabotage(int _parameter3) {
 		
 		AusgabeHandler ausgabeHandler = masterController.getAusgabeHandler();
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
@@ -110,16 +120,90 @@ public class SabotageController {
 			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getUnruheKosten());
 			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
 		}
-		else if (_parameter3 == 4)
-		{
-			//Gold reicht nicht aus
-			ausgabeHandler.gibStringAnKonsole(FehlerView.getGoldReichtNichtAus());
-		}
 		else if (_parameter3 == 3)
 		{
 			// Soldaten reichen nicht aus
 			ausgabeHandler.gibStringAnKonsole(FehlerView.getSoldatenReichenNichtAus());
 		}
+		else if (_parameter3 == 4)
+		{
+			//Gold reicht nicht aus
+			ausgabeHandler.gibStringAnKonsole(FehlerView.getGoldReichtNichtAus());
+		}
+		
+		else if (_parameter3 == 5)
+		{
+			//Kornspeicher zerstoert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornspeicherZerstoert());
+			nachrichtAnGegner = SabotageView.getEsWurdeEinKornspeicherZerstoert(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getZerstoerenKosten());
+		}
+		
+		else if (_parameter3 == 6)
+		{
+			//Kornfeld zerstoert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornfeldZerstoert());
+			nachrichtAnGegner = SabotageView.getEsWurdeEinKornfeldZerstoert(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getZerstoerenKosten());
+		}
+		
+		else if (_parameter3 == 7)
+		{
+			//Muehle zerstoert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getMuehleZerstoert());
+			nachrichtAnGegner = SabotageView.getEsWurdeEineMuehleZerstoert(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getZerstoerenKosten());
+		}
+		
+		else if (_parameter3 == 8)
+		{
+			//Zerstoeren fehlgeschlagen
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getZerstoerenFehlgeschlagen());
+			nachrichtAnGegner = SabotageView.getWirHabenEineZerstoererCrewGefangenGenommen(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getZerstoerenKosten());
+			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
+		}
+		
+		else if (_parameter3 == 9)
+		{
+			//Gegner hat keine Gebaeude
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getGegnerHatKeineGebaeude());
+		}
+		else if (_parameter3 == 10)
+		{
+			//Gold gepluendert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getGoldGepluendert(sabotage.getNeuesGold()));
+			nachrichtAnGegner = SabotageView.getEsWurdeGoldGepluendert(aktiverSpieler.getName(),sabotage.getNeuesGold());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()+sabotage.getNeuesGold());
+			
+		}
+		else if (_parameter3 == 11)
+		{
+			//Korn gepluendert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornGepluendert(sabotage.getNeuesKorn()));
+			nachrichtAnGegner = SabotageView.getEsWurdeKornGepluendert(aktiverSpieler.getName(),sabotage.getNeuesKorn());
+			aktiverSpieler.setKorn(aktiverSpieler.getKorn()+sabotage.getNeuesKorn());
+			
+		}
+		else if (_parameter3 == 12)
+		{
+			//Pluendern fehlheschlagen
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getPluendernFehlgeschlagen());
+			nachrichtAnGegner = SabotageView.getWirHabenEinePluendererCrewGefangenGenommen(masterController.getAktiverSpieler().getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getPluendernKosten());
+			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
+			
+		}
+		else if (_parameter3 == 13)
+		{
+			
+		}
+		else if (_parameter3 == 13)
+		{
+			
+		}
+		
+		return nachrichtAnGegner;
 		
 	}
 
@@ -155,7 +239,7 @@ public class SabotageController {
 			{
 				int erfolg =sabotage.zerstoeren(_gegner);
 				
-				return erfolg;// 5 bei erfolg 6 bei misserfolg
+				return erfolg;// 5,6,7 bei erfolg 8 bei misserfolg
 			}
 			
 			return 3;
@@ -165,8 +249,44 @@ public class SabotageController {
 		return 4;
 	}
 
+	private int auswertenPluendernOptionen(Spieler _gegner) {
+		
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getPluendernKosten())
+		{
+			
+			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
+			{
+				int erfolg =sabotage.pluendern(_gegner);
+				
+				return erfolg;// 10,11 bei erfolg 12 bei misserfolg
+			}
+			
+			return 3;
+			
+		}
+		
+		return 4;
+	}
 	
-	
+	private int auswertenVergiftenOptionen(Spieler _gegner) 
+	{
+		
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getVergiftenKosten())
+		{
+			
+			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
+			{
+				int erfolg =sabotage.vergiften(_gegner);
+				
+				return erfolg;// 14 bei erfolg 13 bei misserfolg
+			}
+			
+			return 3;
+			
+		}
+		
+		return 4;
+	}
 
 
 

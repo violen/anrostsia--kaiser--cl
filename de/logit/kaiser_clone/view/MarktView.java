@@ -6,63 +6,67 @@ public class MarktView
 	public static String getMarktKaufOptionen()
 	{
 		
-		return "1=Titel  2=Feld 3=Kornspeicher 4=Soldaten 5=Korn 6=Mehl 7=Kornfeld 8=Muehle 9=Duenger";
+		return "Was möchtest du kaufen?" + "\n" +
+				"  " + "1: Titel" + "\t" + "2: Land" + "\t" + "3: Kornspeicher" + "\n" +
+				"  " + "4: Soldaten" + "\t" + "5: Korn" + "\t" + "6: Mehl" +"\n" + 
+				"  " + "7: Kornfeld" + "\t" + "8: Mühle" + "\t" + "9: Dünger" + "\n";
 	}
 	
 	public static String getMarktKaufVonKorn()
 	{
-		return "Sie moechten Korn kaufen. bitte geben sie die Menge ein:";
+		return "Wieviel Korn soll es sein?" + "\n";
 	}
 	
 	public static String getMarktKaufVonMehl()
 	{
-		return "1";
+		return "Wieviel Mehl soll es sein?"+"\n";
 	}
 	
 	public static String getMarktKaufVonSoldaten()
 	{
-		return "1";
+		return "Wieviele Einheiten sollen es sein?"+ "\n";
 	}
 	
 	public static String getMarktKaufVonDuenger()
 	{
-		return "1";
+		return "Wieviel Mist wird benötigt?"+"\n";
 	}
 	
 	public static String getMarktKaufVonFeld()
 	{
-		return "1";
+		return "Wieviele Ländereien werden eingenommen?"+"\n";
 	}
 	
 	public static String getMarktKaufVonTitel()
 	{
-		return "1";
+		return "Du möchtest also aufsteigen?" + "\n";
 	}
 	
 	public static String getMarktVerkaufVonMehl()
 	{
-		return "1";
+		return "Wieviel Mehl soll verkauft werden?" + "\n";
 	}
 	
 	public static String getMarktVerkaufVonKorn()
 	{
-		return "1";
+		return "Wieviel Korn soll verkauft werden?" + "\n";
 	}
 	
 	public static String getMarktKaufVonGebaeude(int _anzahl)
 	{
-		return "1";
+		return "Wieviele sollen errichtet werden?" + "\n";
 	}
 	
 	public static String getTitelKaufErfolgreich(String _string)
 	{
-		return "1";
+		return "Du erhälst den Titel: " + _string + "\n";
 	}
 
 	public static String getMarktVerkaufOptionen()
 	{
 		
-		return "1 = Korn  2 = Mehl";
+		return "Was möchtest du verkaufen?" + "\n" +
+				"  " + "1: Korn" + "\t" + "2: Mehl" + "\n";
 	}
 
 	public static String getTitelAuswahl()
@@ -73,7 +77,7 @@ public class MarktView
 
 	public static String getMarktKaufVonFeld(int _i)
 	{
-		return "Es wurden " + _i + " Felder gekauft";
+		return "Es wurden " + _i + " Felder eingenommen." + "\n";
 		
 	}
 

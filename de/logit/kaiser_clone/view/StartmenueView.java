@@ -20,7 +20,7 @@ public class StartmenueView
 	
 	public static String getSpielBeenden()
 	{
-		return "Das Spiel wurde beendet!";
+		return "Das Spiel wurde beendet!" +"\n";
 	}
 	
 
