@@ -26,4 +26,27 @@ public class Sabotage
 		return 1;
 	}
 
+	public int unruhe(Spieler _gegner) {
+
+		int erfolg =0;
+		int schutz = _gegner.getSchutzFaktor();
+		
+		int power = (int) (Math.random()+(1+1000));
+		
+		if ( schutz < power)
+		{
+			_gegner.setMehl(0);
+			
+			erfolg = 1;
+		}
+		
+		else if (schutz >= power)
+		{
+			erfolg = 2;
+		}
+		
+		return erfolg;
+		
+	}
+
 }
