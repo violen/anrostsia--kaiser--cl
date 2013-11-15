@@ -52,7 +52,9 @@ public class SabotageController {
 		
 		if (_parameter == "2")
 		{
-			//TODO
+			int _parameter3 = auswertenZerstoerenOptionen(gegner.get(_parameter2));
+			
+			analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "3")
@@ -69,11 +71,28 @@ public class SabotageController {
 
 
 
+	public int soldatenEinsetzen()
+	{
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
+		if (aktiverSpieler.getSoldaten() < 10)
+		{
+			return 1;
+		}
+		else 
+		{
+			return (int) aktiverSpieler.getSoldaten()/10;
+		}
+		
+	}
+	
+
+
 	private void analysiereSabotage(int _parameter3) {
 		
 		AusgabeHandler ausgabeHandler = masterController.getAusgabeHandler();
-		
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		String nachrichtAnGegner = "";
+		sabotage.setEingesetzteSoldaten(soldatenEinsetzen());
 
 		
 		if(_parameter3 == 1)
@@ -81,12 +100,15 @@ public class SabotageController {
 			// Unruhe erfolgreich
 			ausgabeHandler.gibStringAnKonsole(SabotageView.getUnruheSchuehrenErfolgreich());
 			nachrichtAnGegner = SabotageView.getEsWurdeUnruheGeschuehrt(masterController.getAktiverSpieler().getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getUnruheKosten());
 		}
 		else if(_parameter3 == 2)
 		{
 			// Unruhe nicht erfolgreich
 			ausgabeHandler.gibStringAnKonsole(SabotageView.getUnsereUnruhestifterWurdenGefangenGenommen());
 			nachrichtAnGegner = SabotageView.getWirHabenUnruhestifterGefangenGenommen(masterController.getAktiverSpieler().getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getUnruheKosten());
+			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
 		}
 		else if (_parameter3 == 4)
 		{
@@ -106,7 +128,7 @@ public class SabotageController {
 	private int auswertenUnruheOptionen(Spieler _gegner) {
 
 
-		if (masterController.getAktiverSpieler().getGold() >= sabotage.getUnruheKosten())
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getUnruheKosten())
 		{
 			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
@@ -123,6 +145,26 @@ public class SabotageController {
 		return 4;
 		
 	}
+	
+	private int auswertenZerstoerenOptionen(Spieler _gegner) {
+		
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getZerstoerenKosten())
+		{
+			
+			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
+			{
+				int erfolg =sabotage.zerstoeren(_gegner);
+				
+				return erfolg;// 5 bei erfolg 6 bei misserfolg
+			}
+			
+			return 3;
+			
+		}
+		
+		return 4;
+	}
+
 	
 	
 
