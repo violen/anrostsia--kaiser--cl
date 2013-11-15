@@ -110,15 +110,54 @@ public class SabotageController {
 			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getUnruheKosten());
 			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
 		}
+		else if (_parameter3 == 3)
+		{
+			// Soldaten reichen nicht aus
+			ausgabeHandler.gibStringAnKonsole(FehlerView.getSoldatenReichenNichtAus());
+		}
 		else if (_parameter3 == 4)
 		{
 			//Gold reicht nicht aus
 			ausgabeHandler.gibStringAnKonsole(FehlerView.getGoldReichtNichtAus());
 		}
-		else if (_parameter3 == 3)
+		
+		else if (_parameter3 == 5)
 		{
-			// Soldaten reichen nicht aus
-			ausgabeHandler.gibStringAnKonsole(FehlerView.getSoldatenReichenNichtAus());
+			//Kornspeicher zerstoert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornspeicherZerstoert());
+			nachrichtAnGegner = SabotageView.getEsWurdeEinKornspeicherZerstoert(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getZerstoerenKosten());
+		}
+		
+		else if (_parameter3 == 6)
+		{
+			//Kornfeld zerstoert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornfeldZerstoert());
+			nachrichtAnGegner = SabotageView.getEsWurdeEinKornfeldZerstoert(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getZerstoerenKosten());
+		}
+		
+		else if (_parameter3 == 7)
+		{
+			//Muehle zerstoert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getMuehleZerstoert());
+			nachrichtAnGegner = SabotageView.getEsWurdeEineMuehleZerstoert(aktiverSpieler.getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-sabotage.getZerstoerenKosten());
+		}
+		
+		else if (_parameter3 == 8)
+		{
+			//Zerstoeren fehlgeschlagen
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getZerstoerenFehlgeschlagen());
+			nachrichtAnGegner = SabotageView.getWirHabenEineZerstoererCrewGefangenGenommen(masterController.getAktiverSpieler().getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getZerstoerenKosten());
+			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
+		}
+		
+		else if (_parameter3 == 9)
+		{
+			//Gegner hat keine Gebaeude
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getGegnerHatKeineGebaeude());
 		}
 		
 	}
@@ -155,7 +194,7 @@ public class SabotageController {
 			{
 				int erfolg =sabotage.zerstoeren(_gegner);
 				
-				return erfolg;// 5 bei erfolg 6 bei misserfolg
+				return erfolg;// 5,6,7 bei erfolg 8 bei misserfolg
 			}
 			
 			return 3;
