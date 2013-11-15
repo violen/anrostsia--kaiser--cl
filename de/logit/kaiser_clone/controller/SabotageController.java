@@ -42,34 +42,40 @@ public class SabotageController {
 		
 		int _parameter2 = Integer.parseInt(masterController.getEingabecontroller().getEingabe());
 		
+		Spieler derSabotierte = gegner.get(_parameter2);
+		
+		String nachrichtAnGegner ="";
+		
 		if (_parameter == "1")
 		{
 			
-			int _parameter3 = auswertenUnruheOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenUnruheOptionen(derSabotierte);
 			
-			analysiereSabotage(_parameter3);
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "2")
 		{
-			int _parameter3 = auswertenZerstoerenOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenZerstoerenOptionen(derSabotierte);
 			
-			analysiereSabotage(_parameter3);
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "3")
 		{
-			int _parameter3 = auswertenPluendernOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenPluendernOptionen(derSabotierte);
 			
-			analysiereSabotage(_parameter3);
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "4")
 		{
-			int _parameter3 = auswertenVergiftenOptionen(gegner.get(_parameter2));
+			int _parameter3 = auswertenVergiftenOptionen(derSabotierte);
 			
-			analysiereSabotage(_parameter3);
+			nachrichtAnGegner = analysiereSabotage(_parameter3);
 		}
+		
+		derSabotierte.setNachricht(derSabotierte.getNachricht() + nachrichtAnGegner);
 		
 	}
 
@@ -91,7 +97,7 @@ public class SabotageController {
 	
 
 
-	private void analysiereSabotage(int _parameter3) {
+	private String analysiereSabotage(int _parameter3) {
 		
 		AusgabeHandler ausgabeHandler = masterController.getAusgabeHandler();
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
@@ -197,7 +203,7 @@ public class SabotageController {
 			
 		}
 		
-		
+		return nachrichtAnGegner;
 		
 	}
 
@@ -272,7 +278,7 @@ public class SabotageController {
 			{
 				int erfolg =sabotage.vergiften(_gegner);
 				
-				return erfolg;// 10,11 bei erfolg 12 bei misserfolg
+				return erfolg;// 14 bei erfolg 13 bei misserfolg
 			}
 			
 			return 3;
