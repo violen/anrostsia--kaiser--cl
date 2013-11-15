@@ -59,7 +59,9 @@ public class SabotageController {
 		
 		if (_parameter == "3")
 		{
+			int _parameter3 = auswertenPluendernOptionen(gegner.get(_parameter2));
 			
+			analysiereSabotage(_parameter3);
 		}
 		
 		if (_parameter == "4")
@@ -149,7 +151,7 @@ public class SabotageController {
 		{
 			//Zerstoeren fehlgeschlagen
 			ausgabeHandler.gibStringAnKonsole(SabotageView.getZerstoerenFehlgeschlagen());
-			nachrichtAnGegner = SabotageView.getWirHabenEineZerstoererCrewGefangenGenommen(masterController.getAktiverSpieler().getName());
+			nachrichtAnGegner = SabotageView.getWirHabenEineZerstoererCrewGefangenGenommen(aktiverSpieler.getName());
 			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getZerstoerenKosten());
 			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
 		}
@@ -158,6 +160,31 @@ public class SabotageController {
 		{
 			//Gegner hat keine Gebaeude
 			ausgabeHandler.gibStringAnKonsole(SabotageView.getGegnerHatKeineGebaeude());
+		}
+		else if (_parameter3 == 10)
+		{
+			//Gold gepluendert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getGoldGepluendert(sabotage.getNeuesGold()));
+			nachrichtAnGegner = SabotageView.getEsWurdeGoldGepluendert(aktiverSpieler.getName(),sabotage.getNeuesGold());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()+sabotage.getNeuesGold());
+			
+		}
+		else if (_parameter3 == 11)
+		{
+			//Korn gepluendert
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornGepluendert(sabotage.getNeuesKorn()));
+			nachrichtAnGegner = SabotageView.getEsWurdeKornGepluendert(aktiverSpieler.getName(),sabotage.getNeuesKorn());
+			aktiverSpieler.setKorn(aktiverSpieler.getKorn()+sabotage.getNeuesKorn());
+			
+		}
+		else if (_parameter3 == 12)
+		{
+			//Pluendern fehlheschlagen
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getPluendernFehlgeschlagen());
+			nachrichtAnGegner = SabotageView.getWirHabenEinePluendererCrewGefangenGenommen(masterController.getAktiverSpieler().getName());
+			aktiverSpieler.setGold(aktiverSpieler.getGold()-2*sabotage.getPluendernKosten());
+			aktiverSpieler.setSoldaten(aktiverSpieler.getSoldaten()-sabotage.getEingesetzteSoldaten());
+			
 		}
 		
 	}
@@ -204,7 +231,24 @@ public class SabotageController {
 		return 4;
 	}
 
-	
+	private int auswertenPluendernOptionen(Spieler _gegner) {
+		
+		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getZerstoerenKosten())
+		{
+			
+			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
+			{
+				int erfolg =sabotage.pluendern(_gegner);
+				
+				return erfolg;// 5,6,7 bei erfolg 8 bei misserfolg
+			}
+			
+			return 3;
+			
+		}
+		
+		return 4;
+	}
 	
 
 
