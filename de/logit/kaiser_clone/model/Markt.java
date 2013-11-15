@@ -48,7 +48,7 @@ public class Markt
 		this.bestandMehl += ERHOEHUNG;
 	}
 
-	public String kaufeTitel(Spieler _aktiverSpieler)
+	public boolean kaufeTitel(Spieler _aktiverSpieler)
 	{
 		Titel aktuellerTitel = _aktiverSpieler.getTitel();
 		Titel titel = null;
@@ -57,43 +57,63 @@ public class Markt
 		case BAUER:
 			
 			titel = Titel.RITTER;
-			if(_aktiverSpieler.getGold() > 3000 && _aktiverSpieler.getFelder().size() >= 12){
+			if(_aktiverSpieler.getGold() >= 3000 && _aktiverSpieler.getFelder().size() >= 12){
 				_aktiverSpieler.setTitel(titel);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold() - 3000);
 			}
 			
 			break;
 			
 		case RITTER:
+			
 			titel = Titel.BARON;
-			_aktiverSpieler.setTitel(titel);
+			if(_aktiverSpieler.getGold() >= 4500 && _aktiverSpieler.getFelder().size() >= 18){
+				_aktiverSpieler.setTitel(titel);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold() - 4500);
+			}
 			
 			break;
 			
 		case BARON:
 			titel = Titel.GRAF;
-			_aktiverSpieler.setTitel(titel);
+			if(_aktiverSpieler.getGold() >= 7500 && _aktiverSpieler.getFelder().size() >= 32){
+				_aktiverSpieler.setTitel(titel);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold() - 7500);
+			}
 			
 			break;
 			
 		case FÜRST:
 			titel = Titel.HERZOG;
-			_aktiverSpieler.setTitel(titel);
+			if(_aktiverSpieler.getGold() >= 12500 && _aktiverSpieler.getFelder().size() >= 60){
+				_aktiverSpieler.setTitel(titel);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold() - 12500);
+			}
 			break;
 			
 		case HERZOG:
 			titel = Titel.KÖNIG;
-			_aktiverSpieler.setTitel(titel);
+			if(_aktiverSpieler.getGold() >= 20500 && _aktiverSpieler.getFelder().size() >= 90){
+				_aktiverSpieler.setTitel(titel);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold() - 20500);
+			}
 			break;
 			
 		case GRAF:
 			titel = Titel.FÜRST;
-			_aktiverSpieler.setTitel(titel);
+			if(_aktiverSpieler.getGold() >= 9000 && _aktiverSpieler.getFelder().size() >= 45){
+				_aktiverSpieler.setTitel(titel);
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold() - 9000);
+			}
 			break;
 			
 		default:
 			break;
 		}
-		return null;
+		if(_aktiverSpieler.getTitel().equals(titel)){
+			return true;
+		}
+		return false;
 	}
 
 	public int[] kaufeFeld(int _anzahlHolen, Spieler aktiverSpieler)
