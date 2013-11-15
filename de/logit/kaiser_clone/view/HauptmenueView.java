@@ -39,9 +39,8 @@ public class HauptmenueView
 	
 	public static String getProduzierenMenue(){
 		return "Du befindest dich in der Mühle. " +
-				"Hier kannst du Mehl zur versorgung";
+				"Hier kannst du Mehl zur Versorgung mahlen." + "\n";
 		
-		// TODO ;D
 	}
 	
 
