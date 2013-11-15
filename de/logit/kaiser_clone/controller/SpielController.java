@@ -1,7 +1,5 @@
 package de.logit.kaiser_clone.controller;
 
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Parameter;
-
 import de.logit.kaiser_clone.model.Spiel;
 import de.logit.kaiser_clone.model.Spielrunde;
 import de.logit.kaiser_clone.view.AusgabeHandler;
