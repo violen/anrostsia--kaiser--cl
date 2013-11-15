@@ -17,31 +17,31 @@ public class FehlerView
 
 	public static String getTransaktionErfolgreich() {
 		
-		return "Transaktion erfolgreich";
+		return "Transaktion erfolgreich.\n";
 	}
 
 	public static String getMengeNichtVerfügbar() {
 		
-		return "Menge nicht verfügbar";
+		return "Menge nicht verfügbar.\n";
 	}
 
 	public static String getUnkorrekteEingabe() {
 		
-		return "Das war keine korrekte Eingabe";
+		return "Das war keine korrekte Eingabe.\n";
 	}
 
 	public static String getTitelNichtverfuegbar() {
 		
-		return "Titel nicht verfügbar";
+		return "Titel nicht verfügbar.\n";
 	}
 
 	public static String getKeinFreiesFeldVorhanden() {
 		
-		return "Kein freies Feld vorhanden";
+		return "Kein freies Feld vorhanden.\n";
 	}
 
 	public static String getKeineGueltigeEingabe() {
 		
-		return "Das war keine gültige Eingabe";
+		return "Das war keine gültige Eingabe. \n";
 	}
 }

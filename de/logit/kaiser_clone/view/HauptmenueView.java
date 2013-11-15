@@ -7,9 +7,11 @@ package de.logit.kaiser_clone.view;
  * @author nepo aka. André Hauser
  *
  */
-public class HauptmenueView {
+public class HauptmenueView 
+{
 	
-	public static String getHauptmenue(){
+	public static String getHauptmenue()
+	{
 		return "Du befindest dich im Hauptmenü. Du kannst nun Folgendes tun... "+"\n" +
 				"  "+"1: Zum Marktplatz"+"\t"+"2: Sabotiere jemanden"+"\t"+"3: Das Spielmenü zeigen"+"\n"+
 				"  "+"4: Zur Mühle"+"\t\t"+"5: Politik"+"\t\t"+"6: Spielstatistik anzeigen"+"\n"+

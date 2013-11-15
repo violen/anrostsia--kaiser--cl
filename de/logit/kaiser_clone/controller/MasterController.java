@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import de.logit.kaiser_clone.model.Spiel;
 import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.view.AusgabeHandler;
+import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.StartmenueView;
 
@@ -23,7 +24,8 @@ import de.logit.kaiser_clone.view.StartmenueView;
  */
 
 
-public class MasterController {
+public class MasterController 
+{
 
 	private Spieler aktiverSpieler;
 	private Spiel spiel;
@@ -38,13 +40,36 @@ public class MasterController {
 	private StartMenueController startmenueController;
 	private AusgabeHandler ausgabeHandler;
 	
-	public MasterController(){
+	public MasterController()
+	{
+		this.ausgabeHandler = new AusgabeHandler();
+		this.eingabecontroller = new EingabeController();
 		
 	}
 	
 	public void spielStarten()
 	{
-		spielController.gameLoop();
+		String eingabe = "";
+		
+		do {
+			ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
+			eingabe = eingabecontroller.getEingabe();
+			if(eingabe.equalsIgnoreCase("1"))
+			{			
+			spielController.gameLoop();
+			}
+			else if(eingabe.equalsIgnoreCase("2"))// Spiel beenden.
+			{
+				ausgabeHandler.gibStringAnKonsole(StartmenueView.getSpielBeenden());
+				System.exit(0);
+			}
+			//Fehlermeldung
+				ausgabeHandler.gibStringAnKonsole(FehlerView.getKeineGueltigeEingabe());
+				
+		}
+		while((eingabe != "1") || (eingabe !="2"));
+		
+		
 	}
 	
 	
