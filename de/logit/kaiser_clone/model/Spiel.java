@@ -6,6 +6,8 @@ package de.logit.kaiser_clone.model;
 import java.util.LinkedList;
 
 import de.logit.kaiser_clone.controller.SpielController;
+import de.logit.kaiser_clone.network.ChatClient;
+import de.logit.kaiser_clone.network.ChatServer;
 
 /**
  * @author nepo aka. André Hauser
@@ -23,11 +25,6 @@ public class Spiel
 	
 	public Spiel()
 	{
-		for(int i = 0; i<4; i++)
-		{
-			fuegeSpielerHinzu(new Spieler(this,""+i));
-			spieler.get(i).erzeugeStartfelder();
-		}
 		
 	}
 	
@@ -72,6 +69,11 @@ public class Spiel
 		return this.spieler;
 	}
 	
+	public void erzeugeLandkarten(){
+		for(Spieler spieler : this.spieler){
+			spieler.erzeugeStartfelder();
+		}
+	}
 	
 
 }
