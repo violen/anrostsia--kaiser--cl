@@ -5,6 +5,8 @@ package de.logit.kaiser_clone.model;
 
 import java.util.LinkedList;
 
+import de.logit.kaiser_clone.network.ChatClient;
+
 /**
  * @author nepo aka. André Hauser
  *
@@ -12,6 +14,11 @@ import java.util.LinkedList;
 
 public class Spieler 
 {
+	/*
+	 * Client des Spielers
+	 */
+	private ChatClient chatClient;
+	
 	private Titel titel = Titel.BAUER;
 	private int korn=1000;
 	private int mehl=1000;
@@ -35,7 +42,22 @@ public class Spieler
 	public Spieler(Spiel _spiel,String _name)
 	{
 		spiel = _spiel;
-		name = _name;
+		setName(_name);
+	}
+	
+	public Spieler(Spiel _spiel, String _name, ChatClient _chatClient){
+		this.spiel = _spiel;
+		this.setName(_name);
+		this.chatClient = _chatClient;
+	}
+	
+	public Spieler(String _name, ChatClient _chatClient){
+		this.setName(_name);
+		this.chatClient = _chatClient;
+	}
+	
+	public Spieler(){
+		
 	}
 	
 	public void erzeugeStartfelder()
@@ -325,6 +347,10 @@ public class Spieler
 		int s = (int) (felder.size() / soldaten);
 		
 		return s;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
