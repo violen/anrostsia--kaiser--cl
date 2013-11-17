@@ -7,7 +7,7 @@ public class Startmenue
 	{
 	}
 
-	public Spiel neueSpielStarten()
+	public static Spiel neueSpielStarten()
 	{
 		Spiel spiel = new Spiel();
 		return spiel;
