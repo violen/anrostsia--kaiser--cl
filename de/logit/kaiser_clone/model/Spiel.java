@@ -18,10 +18,7 @@ public class Spiel
 	private LinkedList<Spieler> spieler = new LinkedList<Spieler>();
 	private Startmenue startmenue;
 	private Hauptmenue hauptmenue;
-	private Spielrunde spielrunde;
-	private ChatServer chatServer;
-	private ChatClient chatClient;
-	
+	private Spielrunde spielrunde;	
 	
 	public Spiel()
 	{
@@ -42,7 +39,8 @@ public class Spiel
 	
 	public void anlegenMenues()
 	{
-		
+		this.setStartmenue(new Startmenue());
+		this.setHauptmenue(new Hauptmenue());
 	}
 
 	/**
@@ -73,6 +71,22 @@ public class Spiel
 		for(Spieler spieler : this.spieler){
 			spieler.erzeugeStartfelder();
 		}
+	}
+
+	public Startmenue getStartmenue() {
+		return startmenue;
+	}
+
+	public void setStartmenue(Startmenue startmenue) {
+		this.startmenue = startmenue;
+	}
+
+	public Hauptmenue getHauptmenue() {
+		return hauptmenue;
+	}
+
+	public void setHauptmenue(Hauptmenue hauptmenue) {
+		this.hauptmenue = hauptmenue;
 	}
 	
 
