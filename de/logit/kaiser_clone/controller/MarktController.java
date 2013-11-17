@@ -19,6 +19,10 @@ public class MarktController
 		this.markt = Markt.getInstance();
 	}
 	
+	public MarktController(MasterController _masterController) {
+		this.masterController = _masterController;
+	}
+
 	public void auswertenEingabeMarkt(String _param)
 	{
 		if(_param =="1")

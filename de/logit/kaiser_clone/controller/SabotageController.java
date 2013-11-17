@@ -33,6 +33,12 @@ public class SabotageController {
 
 
 
+	public SabotageController(MasterController _masterController) {
+		this.masterController = _masterController;
+	}
+
+
+
 	public void auswertenEingabeSabotage(String _parameter)
 	{
 		// hier wird die liste der spieler außer dema ktiven spieler ausgegeben.

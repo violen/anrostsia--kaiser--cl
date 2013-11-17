@@ -27,6 +27,10 @@ public class SpielController
 		
 	}
 	
+	public SpielController(MasterController _masterController) {
+		this.masterController = _masterController;
+	}
+
 	public void gameLoop()
 	{
 		masterController.setAktiverSpieler(game.neueRunde());
@@ -39,40 +43,40 @@ public class SpielController
 			{
 				
 				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue());
-				String parameter = eingabeController.getEingabe();
+				String parameter = EingabeController.getEingabe();
 				
 				if(parameter == "1")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
-					parameter = eingabeController.getEingabe();
+					parameter = EingabeController.getEingabe();
 					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
 										
 				}
 				else if(parameter == "2")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue());
-					parameter = eingabeController.getEingabe();
+					parameter = EingabeController.getEingabe();
 					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
 					
 				}
 				else if(parameter == "3")
 				{
 					ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
-					parameter = eingabeController.getEingabe();
+					parameter = EingabeController.getEingabe();
 					masterController.getStartmenueController().auswertenEingabeStartmenue(parameter);
 					
 				}
 				else if(parameter == "4")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue());
-					parameter = eingabeController.getEingabe();
+					parameter = EingabeController.getEingabe();
 					masterController.getProduzierenController().auswertenEingabeProduzieren(parameter);
 					
 				}
 				else if(parameter == "5")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue());
-					parameter = eingabeController.getEingabe();
+					parameter = EingabeController.getEingabe();
 					masterController.getPolitikController().auswertenEingabePolitik(parameter);
 					
 				}
@@ -119,7 +123,7 @@ public class SpielController
 			
 			try
 			{
-				anzahl = Integer.parseInt(eingabeController.getEingabe());
+				anzahl = Integer.parseInt(EingabeController.getEingabe());
 				//return anzahl;
 				break;
 				
