@@ -24,14 +24,14 @@ public class MarktController
 		if(_param =="1")
 		{
 			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktKaufOptionen());
-			String param_1 = eingabeController.getEingabe();
+			String param_1 = EingabeController.getEingabe();
 			auswertenKaufoptionen(param_1);
 						
 		}
 		else if (_param == "2")
 		{	
 			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktVerkaufOptionen());
-			String param_2 = eingabeController.getEingabe();
+			String param_2 = EingabeController.getEingabe();
 			auswertenVerkaufoptionen(param_2);
 		}
 		
@@ -78,9 +78,9 @@ public class MarktController
 		if(_param_1 == "1")
 		{
 			ausgabeHandler.gibStringAnKonsole(MarktView.getTitelAuswahl());
-			String param_2 = eingabeController.getEingabe();
+			String param_2 = EingabeController.getEingabe();
 			Titel titel = waehlenTitel(param_2);
-			markt.kaufeTitel(titel);
+			markt.kaufeTitel(masterController.getAktiverSpieler());
 			//Baustelle
 			//IntegerArray zum Aufnehmen der Fehlercodes
 			int[] fehlercode=new int[2];
