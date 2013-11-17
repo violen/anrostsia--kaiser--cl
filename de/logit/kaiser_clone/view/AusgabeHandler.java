@@ -12,7 +12,7 @@ import de.logit.kaiser_clone.model.Spieler;
  */
 public class AusgabeHandler {
 	private PrintWriter pw;
-	private Spieler spieler;
+	private Spieler spielerAmServer;
 	private HashMap<Spieler, PrintWriter> outputStream = new HashMap<>();
 	
 	public AusgabeHandler(){
@@ -35,12 +35,29 @@ public class AusgabeHandler {
 	}
 	
 	public void gibStringAnKonsole(String _string, Spieler _spieler){
+		if(!spielerAmServer.equals(_spieler)){
+			this.outputStream.get(_spieler).println("out");
+		}
 		this.outputStream.get(_spieler).print(_string);
 		this.outputStream.get(_spieler).flush();
 	}
 	
 	public void linkSpielerMitOutputStream(Spieler _spieler, PrintWriter _printWriter){
 		this.outputStream.put(_spieler, _printWriter);
+	}
+	
+	public void erfordereRichtung(String _richtung, Spieler _spieler){
+		if(!spielerAmServer.equals(_spieler)){
+			this.outputStream.get(_spieler).println(_richtung);
+		}
+	}
+
+	public Spieler getSpielerAmServer() {
+		return spielerAmServer;
+	}
+
+	public void setSpielerAmServer(Spieler spielerAmServer) {
+		this.spielerAmServer = spielerAmServer;
 	}
 
 }
