@@ -23,5 +23,24 @@ public class AusgabeView
 				+ "  " + "1: Bestätigen" + "\t" +"2: Abbrechen" + "\n";
 	}
 	
+	public static String waehleServerIP(){
+		return "Gib bitte den Host eines Mehrspieler spiels ein."+"\n";
+	}
+	
+	public static String wievieleSpieler(){
+		return "Wieviele Spieler nehmen teil?" + "\n";
+	}
+	
+	public static String verbindeMitServer(){
+		return "Du bist nun mit dem Server verbunden." +"\n";
+	}
+	
+	public static String warteAufSpieler(){
+		return "Bitte habe etwas Geduld es wird auf Mitspieler gewartet." + "\n";
+	}
+	
+	public static String gibEinenNamenEin(){
+		return "Bitte geb einen namen ein." + "\n";
+	}
 
 }
