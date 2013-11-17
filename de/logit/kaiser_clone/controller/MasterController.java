@@ -5,13 +5,8 @@
  */
 package de.logit.kaiser_clone.controller;
 
-import java.io.FileDescriptor;
-
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -21,7 +16,6 @@ import de.logit.kaiser_clone.network.ChatServer;
 import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.FehlerView;
-import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.StartmenueView;
 
 /**
@@ -50,6 +44,7 @@ public class MasterController
 	{
 		this.ausgabeHandler = new AusgabeHandler();
 		this.eingabecontroller = new EingabeController();
+		eingabecontroller.setAusgabeHandler(ausgabeHandler);
 		
 	}
 	
@@ -61,13 +56,13 @@ public class MasterController
 		String eingabe = "";
 		do {
 			ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
-			eingabe = eingabecontroller.getEingabe();
+			eingabe = EingabeController.getEingabe();
 			if(eingabe.equalsIgnoreCase("1"))
 			{			
 				ausgabeHandler.gibStringAnKonsole(AusgabeView.wievieleSpieler());
 				int anzahlSpieler = 0;
 				do {
-					eingabe = eingabecontroller.getEingabe();
+					eingabe = EingabeController.getEingabe();
 					try {
 						anzahlSpieler = Integer.parseInt(eingabe);
 					} catch (NumberFormatException e) {
@@ -82,6 +77,7 @@ public class MasterController
 						PrintWriter out = new PrintWriter(System.out,true);
 						this.eingabecontroller.linkSpielerMitInputStream(spieler, in);
 						this.ausgabeHandler.linkSpielerMitOutputStream(spieler, out);
+						this.ausgabeHandler.setSpielerAmServer(spieler);
 					} else {
 						ausgabeHandler.gibStringAnKonsole(AusgabeView.warteAufSpieler(), this.spiel.getSpieler().getFirst());
 						try {
@@ -93,8 +89,7 @@ public class MasterController
 							ausgabeHandler.gibStringAnKonsole(AusgabeView.verbindeMitServer(), this.spiel.getSpieler().get(i));
 						} catch (IOException e) {
 							e.printStackTrace();
-						}
-						
+						} 						
 					}
 					ausgabeHandler.gibStringAnKonsole(AusgabeView.gibEinenNamenEin(),this.spiel.getSpieler().get(i));
 					this.spiel.getSpieler().get(i).setName(eingabecontroller.getEingabe(this.spiel.getSpieler().get(i)));
