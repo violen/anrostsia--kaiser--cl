@@ -50,7 +50,7 @@ public class SpielController
 				
 				if(parameter.equalsIgnoreCase("1"))
 				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue(),masterController.getAktiverSpieler());
 					parameter = EingabeController.getEingabe();
 					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
 										
