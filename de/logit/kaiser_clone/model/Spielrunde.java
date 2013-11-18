@@ -117,14 +117,14 @@ public class Spielrunde
 			
 			else if  (menge == 2 ) //Ereigniss ist mauesePlage - verringert Kornbestand
 			{
-				menge = ((int) aktiverspieler.getKorn() /2);//Der Speiler verliert 50% seines Kornbestandes
+				menge = ((int) aktiverspieler.getKorn() /2);//Der Spieler verliert 50% seines Kornbestandes
 				aktiverspieler.setKorn(menge);
 				return SpielRundenView.getsMaeusePlage(menge);
 			}
 			
 			else if (menge == 3 )//Ereigniss ist Pest - verringert Bevölkerung
 			{
-				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 50% seines Kornbestandes
+				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 25% seine Bevölkerung
 				aktiverspieler.setKorn(menge);
 				return SpielRundenView.getPest(menge);
 			}

@@ -7,7 +7,7 @@ public class SpielRundenView
 
 	public static String getGuteErnte(int _menge)
 	{
-		return "Glückwunsch ! Sie hatten eine gute Ernte und haben zusätzlich " + _menge + " Einheiten Korn geerntet. \n" ;
+		return "Glückwunsch ! Sie hatten eine gute Ernte und konnten zusätzlich " + _menge + " Einheiten Korn erntent. \n" ;
 	}
 	
 	public static String getsMaeusePlage(int _menge)
@@ -17,7 +17,7 @@ public class SpielRundenView
 	
 	public static String getPest(int _menge)
 	{
-		return "Beileid! Die Pest hat " + _menge + " Opfer gefordert. \n" ;
+		return "Herzliches Beileid! Die Pest hat " + _menge + " Opfer gefordert. \n" ;
 	}
 	
 	public static String getKeinEreigniss()
