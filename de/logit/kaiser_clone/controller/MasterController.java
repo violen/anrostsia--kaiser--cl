@@ -133,6 +133,7 @@ public class MasterController
 				this.spielController = new SpielController(this);
 				this.spielRundencontroller = new SpielRundenController(this);
 				this.statistikcontroller = new StatistikController(this);
+				this.startmenueController = new StartMenueController(this);
 				
 				this.spiel.anlegenMenues();
 				
