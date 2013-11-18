@@ -69,8 +69,8 @@ public class SpielController
 				else if(parameter == "4")
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue());
-					parameter = EingabeController.getEingabe();
-					masterController.getProduzierenController().auswertenEingabeProduzieren(parameter);
+					int menge = Integer.parseInt(EingabeController.getEingabe());
+					masterController.getProduzierenController().produzieren(menge);
 					
 				}
 				else if(parameter == "5")
