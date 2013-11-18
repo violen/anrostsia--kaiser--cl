@@ -13,7 +13,8 @@ public class Startmenue
 		return spiel;
 	}
 
-	public void beendeSpiel()
+	public static  void beendeSpiel()
 	{
+		System.exit(0);
 	}
 }
