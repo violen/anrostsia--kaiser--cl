@@ -98,9 +98,7 @@ public class Spielrunde
 
 	private String berechneEreignisse() 
 	{
-//		String guteErnte= "1";
-//		int maeusePlage=2;
-//		int pest=2;
+
 		
 		
 		
