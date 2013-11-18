@@ -37,6 +37,7 @@ public class Spieler
 	private String nachricht;
 	
 	private String name;
+	private int ration;
 
 	
 	public Spieler(Spiel _spiel,String _name)
@@ -352,6 +353,17 @@ public class Spieler
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public int getRation() {
+		
+		return ration;
+	}
+
+	public void setRation(int _ration) {
+		ration = _ration;
+	}
+	
+	
 	
 	
 }
