@@ -373,6 +373,19 @@ public class Spieler
 		steuersatz = _steuersatz;
 	}
 	
+	public int getGeduengteFelder()
+	{
+		if(kornfelder <= duenger)
+		{
+			return kornfelder;
+		}
+		else
+		{
+			return duenger;
+		}
+		
+	}
+	
 	
 	
 	

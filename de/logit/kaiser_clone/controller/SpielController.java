@@ -29,6 +29,8 @@ public class SpielController
 	
 	public SpielController(MasterController _masterController) {
 		this.masterController = _masterController;
+		this.ausgabeHandler = _masterController.getAusgabeHandler();
+		this.eingabeController = _masterController.getEingabecontroller();
 	}
 
 	public void gameLoop()
@@ -36,68 +38,66 @@ public class SpielController
 		this.game = masterController.getSpiel();
 		masterController.setAktiverSpieler(game.neueRunde());
 		
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < masterController.getSpiel().getSpieler().size(); i++)
 		{
 			game.getSpielrunde().berechneWerte();
 			masterController.getStatistikcontroller().berechneStatistik();
 			while(true)
 			{
 				
-				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue());
+				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
 				String parameter = EingabeController.getEingabe();
 				
-				if(parameter == "1")
+				if(parameter.equalsIgnoreCase("1"))
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
 					parameter = EingabeController.getEingabe();
 					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
 										
 				}
-				else if(parameter == "2")
+				else if(parameter.equalsIgnoreCase("2"))
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue());
 					parameter = EingabeController.getEingabe();
 					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
 					
 				}
-				else if(parameter == "3")
+				else if(parameter.equalsIgnoreCase("3"))
 				{
 					ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
 					parameter = EingabeController.getEingabe();
 					masterController.getStartmenueController().auswertenEingabeStartmenue(parameter);
 					
 				}
-				else if(parameter == "4")
+				else if(parameter.equalsIgnoreCase("4"))
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue());
 					int menge = Integer.parseInt(EingabeController.getEingabe());
 					masterController.getProduzierenController().produzieren(menge);
 					
 				}
-				else if(parameter == "5")
+				else if(parameter.equalsIgnoreCase("5"))
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue());
 					parameter = EingabeController.getEingabe();
 					masterController.getPolitikController().auswertenEingabePolitik(parameter);
 					
 				}
-				else if(parameter == "6")
+				else if(parameter.equalsIgnoreCase("6"))
 				{
 					masterController.getStatistikcontroller().berechneStatistik();
 					
 				}
-				else if (parameter == "7")
+				else if (parameter.equalsIgnoreCase("7"))
 				{
 					break;
 				}
 			}
 			
-			if( i < 3)
+			if( i < masterController.getSpiel().getSpieler().size()-1)
 			{
 				game.getSpielrunde().setAktiverspieler(game.getSpieler().get(i+1));
 				masterController.setAktiverSpieler(game.getSpieler().get(i+1));
-				
-				
 			}
 			
 		}

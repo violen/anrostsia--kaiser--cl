@@ -3,6 +3,13 @@
  */
 package de.logit.kaiser_clone.model;
 
+
+import de.logit.kaiser_clone.view.AusgabeView;
+import de.logit.kaiser_clone.view.SpielRundenView;
+
+import java.util.Hashtable;
+
+
 /**
  * @author nepo aka. André Hauser
  *
@@ -10,6 +17,12 @@ package de.logit.kaiser_clone.model;
 public class Spielrunde 
 {
 	private Spieler aktiverspieler;
+	
+	/*
+	 * Zustände ob ein Spieler in eine bestimmte Aktion gemacht hat.
+	 */
+	 //boolean[] zustaende = { true };
+	 private Hashtable<String, Boolean> zustaendeTabelle = new Hashtable<>();
 
 	public Spielrunde(Spieler _aktiverSpieler)
 	{
@@ -35,7 +48,7 @@ public class Spielrunde
 	public void berechneWerte()
 	{
 		berechneKornverfall();
-		berechneProduktion();
+		berechneProduktion(aktiverspieler.getMoral(),aktiverspieler.getGeduengteFelder());
 		berechneEreignisse();
 		
 		int wert =berechneHunger();
@@ -102,22 +115,75 @@ public class Spielrunde
 		int steuer = aktiverspieler.getSteuersatz();
 		
 		moral = moral - steuer * (_wert/100);
+	}
+
+	private String berechneEreignisse() 
+	{
+
+		
+		
+		
+		
+		while(true)
+		{
+			int menge=((int) (Math.random()+(1+5)));
+			
+			if (menge == 1 ) //Ereigniss ist gutErnte - erhöht Kornbestand
+				
+			{
+				//Das Ereigniss erhöht die Produktion zusätzlich zur normalen Produktion um den Ertrag einer optimalen Produktion
+				berechneProduktion(100,aktiverspieler.getKornfelder());//100 % Moral und alle Felder gedüngt
+				return SpielRundenView.getGuteErnte(menge);
+			}
+			
+			else if  (menge == 2 ) //Ereigniss ist mauesePlage - verringert Kornbestand
+			{
+				menge = ((int) aktiverspieler.getKorn() /2);//Der Spieler verliert 50% seines Kornbestandes
+				aktiverspieler.setKorn(menge);
+				return SpielRundenView.getsMaeusePlage(menge);
+			}
+			
+			else if (menge == 3 )//Ereigniss ist Pest - verringert Bevölkerung
+			{
+				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 25% seine Bevölkerung
+				aktiverspieler.setKorn(menge);
+				return SpielRundenView.getPest(menge);
+			}
+			else if ( menge > 3) //kein Ereigniss eingetreten.
+			{
+				return SpielRundenView.getKeinEreigniss();
+			}
+		}
+		
+		
+		
+		
+		
+		
 		
 	}
 
-	private void berechneEreignisse() {
+	private void berechneProduktion(int _i, int _i2) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void berechneProduktion() {
+	private void berechneKornverfall() 
+	{
 		// TODO Auto-generated method stub
 		
 	}
-
-	private void berechneKornverfall() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setzeDieGrundwerteDerTabelle(){
+		this.zustaendeTabelle.put("KornHandel", false);
+		this.zustaendeTabelle.put("MehlHandel", false);
+		this.zustaendeTabelle.put("DüngerGekauft", false);
+		this.zustaendeTabelle.put("GebäudeGekauft", false);
+		this.zustaendeTabelle.put("FeldGekauft", false);
+		this.zustaendeTabelle.put("TitelGekauft", false);
+		this.zustaendeTabelle.put("SoldatenGekauft", false);
+		this.zustaendeTabelle.put("hatSabotiert", false);
 	}
 	
 	
