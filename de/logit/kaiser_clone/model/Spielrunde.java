@@ -3,6 +3,9 @@
  */
 package de.logit.kaiser_clone.model;
 
+import de.logit.kaiser_clone.view.AusgabeView;
+import de.logit.kaiser_clone.view.SpielRundenView;
+
 /**
  * @author nepo aka. André Hauser
  *
@@ -35,7 +38,7 @@ public class Spielrunde
 	public void berechneWerte()
 	{
 		berechneKornverfall();
-		berechneProduktion();
+		berechneProduktion(aktiverspieler.getMoral(),aktiverspieler.getGeduengteFelder());
 		berechneEreignisse();
 		berechneMoral();
 		berechneHunger();
@@ -76,22 +79,69 @@ public class Spielrunde
 		
 	}
 
-	private void berechneMoral() {
+	private void berechneMoral() 
+	{
+		
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void berechneEreignisse() {
+	private String berechneEreignisse() 
+	{
+//		String guteErnte= "1";
+//		int maeusePlage=2;
+//		int pest=2;
+		
+		
+		
+		
+		while(true)
+		{
+			int menge=((int) (Math.random()+(1+5)));
+			
+			if (menge == 1 ) //Ereigniss ist gutErnte - erhöht Kornbestand
+				
+			{
+				//Das Ereigniss erhöht die Produktion zusätzlich zur normalen Produktion um den Ertrag einer optimalen Produktion
+				berechneProduktion(100,aktiverspieler.getKornfelder());//100 % Moral und alle Felder gedüngt
+				return SpielRundenView.getGuteErnte(menge);
+			}
+			
+			else if  (menge == 2 ) //Ereigniss ist mauesePlage - verringert Kornbestand
+			{
+				menge = ((int) aktiverspieler.getKorn() /2);//Der Speiler verliert 50% seines Kornbestandes
+				aktiverspieler.setKorn(menge);
+				return SpielRundenView.getsMaeusePlage(menge);
+			}
+			
+			else if (menge == 3 )//Ereigniss ist Pest - verringert Bevölkerung
+			{
+				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 50% seines Kornbestandes
+				aktiverspieler.setKorn(menge);
+				return SpielRundenView.getPest(menge);
+			}
+			else if ( menge > 3) //kein Ereigniss eingetreten.
+			{
+				return SpielRundenView.getKeinEreigniss();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	private void berechneProduktion(int _i, int _i2) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void berechneProduktion() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void berechneKornverfall() {
+	private void berechneKornverfall() 
+	{
 		// TODO Auto-generated method stub
 		
 	}

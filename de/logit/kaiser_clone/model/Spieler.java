@@ -362,6 +362,19 @@ public class Spieler
 	public void setRation(int _ration) {
 		ration = _ration;
 	}
+
+	public int getGeduengteFelder()
+	{
+		if(kornfelder <= duenger)
+		{
+			return kornfelder;
+		}
+		else
+		{
+			return duenger;
+		}
+		
+	}
 	
 	
 	
