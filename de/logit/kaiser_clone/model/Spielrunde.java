@@ -3,6 +3,8 @@
  */
 package de.logit.kaiser_clone.model;
 
+import java.util.Hashtable;
+
 /**
  * @author nepo aka. André Hauser
  *
@@ -10,6 +12,12 @@ package de.logit.kaiser_clone.model;
 public class Spielrunde 
 {
 	private Spieler aktiverspieler;
+	
+	/*
+	 * Zustände ob ein Spieler in eine bestimmte Aktion gemacht hat.
+	 */
+	 //boolean[] zustaende = { true };
+	 private Hashtable<String, Boolean> zustaendeTabelle = new Hashtable<>();
 
 	public Spielrunde(Spieler _aktiverSpieler)
 	{
@@ -94,6 +102,17 @@ public class Spielrunde
 	private void berechneKornverfall() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setzeDieGrundwerteDerTabelle(){
+		this.zustaendeTabelle.put("KornHandel", false);
+		this.zustaendeTabelle.put("MehlHandel", false);
+		this.zustaendeTabelle.put("DüngerGekauft", false);
+		this.zustaendeTabelle.put("GebäudeGekauft", false);
+		this.zustaendeTabelle.put("FeldGekauft", false);
+		this.zustaendeTabelle.put("TitelGekauft", false);
+		this.zustaendeTabelle.put("SoldatenGekauft", false);
+		this.zustaendeTabelle.put("hatSabotiert", false);
 	}
 	
 	
