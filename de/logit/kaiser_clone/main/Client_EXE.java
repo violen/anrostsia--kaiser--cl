@@ -1,9 +1,11 @@
-package de.logit.kaiser_clone.network;
+package de.logit.kaiser_clone.main;
 
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+
+import de.logit.kaiser_clone.network.ChatClient;
 
 public class Client_EXE {
 
