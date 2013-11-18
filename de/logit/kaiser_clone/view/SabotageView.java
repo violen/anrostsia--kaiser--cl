@@ -124,13 +124,23 @@ public class SabotageView {
 
 	public static String getWirHabenEineVergifterCrewGefangenGenommen(
 			String _name) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "Wir haben eine Vergiftercrew von Spieler " + _name + " gefangengenommen. \n ";
 	}
 
 	public static String getVergiftenFehlgeschlagen() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "Vergiften fehlgeschlagen.  \n"  ;
+	}
+
+	public static String getKornVergiftet(int _neuesKorn) {
+	
+		return "Es wurde " + _neuesKorn + " Vetgiftet. \n ";
+	}
+
+	public static String getEsWurdeKornVergiftet(String _name, int _neuesKorn) {
+	
+		return "Es wurde " + _neuesKorn + " von Spieler " + _name + " Vetgiftet. \n ";
 	}
 
 }
