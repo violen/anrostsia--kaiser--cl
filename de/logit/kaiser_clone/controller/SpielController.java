@@ -33,6 +33,7 @@ public class SpielController
 
 	public void gameLoop()
 	{
+		this.game = masterController.getSpiel();
 		masterController.setAktiverSpieler(game.neueRunde());
 		
 		for(int i = 0; i < 4; i++)
