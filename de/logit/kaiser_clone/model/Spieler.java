@@ -38,6 +38,7 @@ public class Spieler
 	
 	private String name;
 	private int ration;
+	private int steuersatz;
 
 	
 	public Spieler(Spiel _spiel,String _name)
@@ -371,6 +372,15 @@ public class Spieler
 		ration = _ration;
 	}
 
+	public int getSteuersatz() {
+	
+		return steuersatz;
+	}
+
+	public void setSteuersatz(int _steuersatz) {
+		steuersatz = _steuersatz;
+	}
+	
 	public int getGeduengteFelder()
 	{
 		if(kornfelder <= duenger)
