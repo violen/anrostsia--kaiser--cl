@@ -122,4 +122,15 @@ public class SabotageView {
 		return "Es wurde " + _menge + " Korn von Spieler " + _name + " gepluendert. \n";
 	}
 
+	public static String getWirHabenEineVergifterCrewGefangenGenommen(
+			String _name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String getVergiftenFehlgeschlagen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
