@@ -110,7 +110,8 @@ public class Spielrunde
 			if (menge == 1 ) //Ereigniss ist gutErnte - erhöht Kornbestand
 				
 			{
-				//Das Ereigniss erhöht die Produktion zusätzlich zur normalen Produktion um den Ertrag einer optimalen Produktion
+				//Das Ereigniss erhöht die Produktion zusätzlich zur normalen Produktion 
+				//um den Ertrag einer optimalen Produktion
 				berechneProduktion(100,aktiverspieler.getKornfelder());//100 % Moral und alle Felder gedüngt
 				return SpielRundenView.getGuteErnte(menge);
 			}
@@ -128,16 +129,11 @@ public class Spielrunde
 				aktiverspieler.setKorn(menge);
 				return SpielRundenView.getPest(menge);
 			}
-			else if ( menge > 3) //kein Ereigniss eingetreten.
+			else if (( menge > 3) || (menge < 1)) //kein Ereigniss eingetreten.
 			{
 				return SpielRundenView.getKeinEreigniss();
 			}
 		}
-		
-		
-		
-		
-		
 		
 		
 	}

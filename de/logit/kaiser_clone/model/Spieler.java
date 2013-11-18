@@ -46,18 +46,21 @@ public class Spieler
 		setName(_name);
 	}
 	
-	public Spieler(Spiel _spiel, String _name, ChatClient _chatClient){
+	public Spieler(Spiel _spiel, String _name, ChatClient _chatClient)
+	{
 		this.spiel = _spiel;
 		this.setName(_name);
 		this.chatClient = _chatClient;
 	}
 	
-	public Spieler(String _name, ChatClient _chatClient){
+	public Spieler(String _name, ChatClient _chatClient)
+	{
 		this.setName(_name);
 		this.chatClient = _chatClient;
 	}
 	
-	public Spieler(){
+	public Spieler()
+	{
 		
 	}
 	
@@ -338,28 +341,33 @@ public class Spieler
 		this.nachricht = _nachricht;
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public int getSchutzFaktor() {
+	public int getSchutzFaktor() 
+	{
 		
 		int s = (int) (felder.size() / soldaten);
 		
 		return s;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 
-	public int getRation() {
+	public int getRation() 
+	{
 		
 		return ration;
 	}
 
-	public void setRation(int _ration) {
+	public void setRation(int _ration) 
+	{
 		ration = _ration;
 	}
 
