@@ -49,4 +49,9 @@ public class FehlerView
 	
 		return "Soldaten reichen nicht aus. \n";
 	}
+
+	public static String getDasWarKeineZahl()
+	{
+		return "Das war keine Zahl \n";
+	}
 }

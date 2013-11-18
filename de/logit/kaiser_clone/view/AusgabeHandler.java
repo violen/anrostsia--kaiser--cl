@@ -25,7 +25,8 @@ public class AusgabeHandler {
 		this.pw = new PrintWriter(_outputStream);
 	}
 	
-	public void gibStringAnKonsole(String _string){
+	public void gibStringAnKonsole(String _string)//lokaler Aufruf - Single Player
+	{
 		if(this.pw != null){
 			pw.print(_string);
 			pw.flush();
@@ -34,7 +35,8 @@ public class AusgabeHandler {
 		}
 	}
 	
-	public void gibStringAnKonsole(String _string, Spieler _spieler){
+	public void gibStringAnKonsole(String _string, Spieler _spieler)// überladen - multi player - > 1 Spieler
+	{
 		if(!spielerAmServer.equals(_spieler)){
 			this.outputStream.get(_spieler).println("out");
 		}

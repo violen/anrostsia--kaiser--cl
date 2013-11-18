@@ -34,7 +34,7 @@ public class StatistikController
 		
 		masterController.getAusgabeHandler().gibStringAnKonsole
 									(StatistikView.getStatistik(titel, korn, mehl, duenger, gold, bevoelkerung, 
-										freieFelder, kornspeicher, muehlen, moral, nachricht)); 
+										freieFelder, kornspeicher, muehlen, moral, nachricht), spieler); 
 		
 	}
 

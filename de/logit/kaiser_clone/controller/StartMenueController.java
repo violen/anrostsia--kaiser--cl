@@ -1,5 +1,6 @@
 package de.logit.kaiser_clone.controller;
 
+import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.StartmenueView;
 
@@ -15,6 +16,7 @@ public class StartMenueController
 
 	public void auswertenEingabeStartmenue(String _parameter)
 	{
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		switch (_parameter) {
 		case "1":
 			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("ein Neues Spiel beginnen"), masterController.getAktiverSpieler());

@@ -1,6 +1,7 @@
 package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Markt;
+import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.model.Titel;
 import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.FehlerView;
@@ -25,16 +26,17 @@ public class MarktController
 
 	public void auswertenEingabeMarkt(String _param)
 	{
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		if(_param =="1")
 		{
-			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktKaufOptionen());
+			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktKaufOptionen(),aktiverSpieler);
 			String param_1 = EingabeController.getEingabe();
 			auswertenKaufoptionen(param_1);
 						
 		}
 		else if (_param == "2")
 		{	
-			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktVerkaufOptionen());
+			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktVerkaufOptionen(),aktiverSpieler);
 			String param_2 = EingabeController.getEingabe();
 			auswertenVerkaufoptionen(param_2);
 		}
@@ -44,6 +46,7 @@ public class MarktController
 
 	private void auswertenVerkaufoptionen(String _param_1)
 	{
+		
 		if (_param_1 == "1")
 		{
 			analysiereVerkauf(markt.verkaufeKorn(masterController.getSpielController().anzahlHolen(), 
@@ -79,16 +82,13 @@ public class MarktController
 
 	private void auswertenKaufoptionen(String _param_1)
 	{
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		if(_param_1 == "1")
 		{
-			ausgabeHandler.gibStringAnKonsole(MarktView.getTitelAuswahl());
-			String param_2 = EingabeController.getEingabe();
-			Titel titel = waehlenTitel(param_2);
+			ausgabeHandler.gibStringAnKonsole(MarktView.getTitelAuswahl(), aktiverSpieler);
 			markt.kaufeTitel(masterController.getAktiverSpieler());
 			//Baustelle
-			//IntegerArray zum Aufnehmen der Fehlercodes
-			int[] fehlercode=new int[2];
-			analysiereFehlerCode(fehlercode);
+			
 		}
 		
 		else if(_param_1 == "2")
@@ -145,6 +145,7 @@ public class MarktController
 
 	private void analysiereKauf(int[] _fehlercode)
 	{
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		//Fehlercodes
 		String nachricht ="";
 		
@@ -218,7 +219,7 @@ public class MarktController
 			nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
 			
 		}
-		 masterController.getAusgabeHandler().gibStringAnKonsole(nachricht);
+		 masterController.getAusgabeHandler().gibStringAnKonsole(nachricht, aktiverSpieler);
 	}
 	
 
@@ -230,12 +231,7 @@ public class MarktController
 		
 	}
 
-	private Titel waehlenTitel(String _param_2)
-	{
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 	

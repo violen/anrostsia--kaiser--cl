@@ -1,9 +1,11 @@
 package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Spiel;
+import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.model.Spielrunde;
 import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.AusgabeView;
+import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.StartmenueView;
 import de.logit.kaiser_clone.view.StatistikView;
@@ -35,6 +37,7 @@ public class SpielController
 
 	public void gameLoop()
 	{
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		this.game = masterController.getSpiel();
 		masterController.setAktiverSpieler(game.neueRunde());
 		
@@ -46,40 +49,40 @@ public class SpielController
 			{
 				
 				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
-				String parameter = EingabeController.getEingabe();
+				String parameter = this.eingabeController.getEingabe(aktiverSpieler);
 				
 				if(parameter.equalsIgnoreCase("1"))
 				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue());
-					parameter = EingabeController.getEingabe();
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue(), aktiverSpieler);
+					parameter = this.eingabeController.getEingabe(aktiverSpieler);
 					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
 										
 				}
 				else if(parameter.equalsIgnoreCase("2"))
 				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue());
-					parameter = EingabeController.getEingabe();
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
+					parameter = this.eingabeController.getEingabe(aktiverSpieler);
 					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
 					
 				}
 				else if(parameter.equalsIgnoreCase("3"))
 				{
-					ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue());
-					parameter = EingabeController.getEingabe();
+					ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue(), aktiverSpieler);
+					parameter = this.eingabeController.getEingabe(aktiverSpieler);
 					masterController.getStartmenueController().auswertenEingabeStartmenue(parameter);
 					
 				}
 				else if(parameter.equalsIgnoreCase("4"))
 				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue());
-					int menge = Integer.parseInt(EingabeController.getEingabe());
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue(), aktiverSpieler);
+					int menge = Integer.parseInt(this.eingabeController.getEingabe(aktiverSpieler));
 					masterController.getProduzierenController().produzieren(menge);
 					
 				}
 				else if(parameter.equalsIgnoreCase("5"))
 				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue());
-					parameter = EingabeController.getEingabe();
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue(), aktiverSpieler);
+					parameter = this.eingabeController.getEingabe(aktiverSpieler);
 					masterController.getPolitikController().auswertenEingabePolitik(parameter);
 					
 				}
@@ -116,26 +119,23 @@ public class SpielController
 //	}
 	
 	public int anzahlHolen()
-	{
+	{ 
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		int anzahl=0;
 		while (true)
 		{
-			ausgabeHandler.gibStringAnKonsole(AusgabeView.getFrageNachAnzahl());
+			ausgabeHandler.gibStringAnKonsole(AusgabeView.getFrageNachAnzahl(), aktiverSpieler);
 			
 			try
 			{
-				anzahl = Integer.parseInt(EingabeController.getEingabe());
-				//return anzahl;
+				anzahl = Integer.parseInt(this.eingabeController.getEingabe(aktiverSpieler));
 				break;
 				
 			} 
 			
 			catch (NumberFormatException e)
 			{
-				// TODO Auto-generated catch block
-				System.out.println("Das war keine Zahl!\n Bitte wiederholen Sie Ihre Eingabe!");
-				//Aufruf FehlerView mit Fehlercode folgt...
-				//fehlerView.getFehlercode......
+				ausgabeHandler.gibStringAnKonsole(FehlerView.getDasWarKeineZahl(), aktiverSpieler);
 			}
 				
 		}
