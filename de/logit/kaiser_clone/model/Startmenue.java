@@ -1,5 +1,7 @@
 package de.logit.kaiser_clone.model;
 
+import de.logit.kaiser_clone.controller.MasterController;
+
 public class Startmenue
 {
 
@@ -13,6 +15,10 @@ public class Startmenue
 		return spiel;
 	}
 
+	public static void neuesSpiel(MasterController _masterController){
+		_masterController.spielStarten();
+	}
+	
 	public static  void beendeSpiel()
 	{
 		System.exit(0);
