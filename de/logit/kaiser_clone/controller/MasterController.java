@@ -83,7 +83,8 @@ public class MasterController
 					} catch (NumberFormatException e) {
 						// Nur für clowns die meinen man müsse quatsch in der Konsole treiben ;)
 					}
-				} while (anzahlSpieler<=0);
+				// mind ein max vier Spieler
+				} while (anzahlSpieler<=0 | anzahlSpieler > 4);
 				/*
 				 * Spiel wird erzeugt um die Spieler bekannt zu machen.
 				 */
