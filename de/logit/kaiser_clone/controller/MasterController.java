@@ -146,7 +146,7 @@ public class MasterController
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.exit(0);
+				Startmenue.beendeSpiel();
 			}
 			//Fehlermeldung
 				ausgabeHandler.gibStringAnKonsole(FehlerView.getKeineGueltigeEingabe());
