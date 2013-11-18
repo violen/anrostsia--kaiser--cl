@@ -32,9 +32,9 @@ public class Spiel
 	
 	public Spieler neueRunde()
 	{
-		Spielrunde spielrunde = new Spielrunde(spieler.getFirst());
+		this.spielrunde = new Spielrunde(spieler.getFirst());
 		
-		return spielrunde.getAktiverspieler();
+		return this.spielrunde.getAktiverspieler();
 	}
 	
 	public void anlegenMenues()
