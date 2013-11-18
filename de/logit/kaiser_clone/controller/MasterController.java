@@ -40,6 +40,7 @@ public class MasterController
 	private StatistikController statistikcontroller;
 	private StartMenueController startmenueController;
 	private AusgabeHandler ausgabeHandler;
+	private ChatServer server;
 	
 	public MasterController()
 	{
@@ -49,7 +50,8 @@ public class MasterController
 		this.ausgabeHandler = new AusgabeHandler();
 		this.eingabecontroller = new EingabeController();
 		eingabecontroller.setAusgabeHandler(ausgabeHandler);
-		
+		// beeinhaltet den ServerSocket um Mitspieler annhemen zu können.
+		this.server = new ChatServer();
 	}
 	/**
 	 * die Methode spielStarten initialisiert den Server 
@@ -59,8 +61,6 @@ public class MasterController
 	{
 		// Socket um mitspieler zu Speichern
 		Socket client;
-		// beeinhaltet den ServerSocket um Mitspieler annhemen zu können.
-		ChatServer server = new ChatServer();
 		String eingabe = "";
 		/*
 		 * Solange die eingabe nich 1 oder 2 ist Wiederhole das "Startmenü"
@@ -265,6 +265,16 @@ public class MasterController
 	public ProduzierenController getProduzierenController()
 	{
 		return this.produzierenController;
+	}
+	
+	public ChatServer getServer() 
+	{
+		return server;
+	}
+	
+	public void setServer(ChatServer _server) 
+	{
+		server = _server;
 	}
 	
 	

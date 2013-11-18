@@ -55,6 +55,7 @@ public class SpielController
 				{
 					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue(), aktiverSpieler);
 					parameter = this.eingabeController.getEingabe(aktiverSpieler);
+					
 					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
 										
 				}
