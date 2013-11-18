@@ -3,8 +3,12 @@
  */
 package de.logit.kaiser_clone.model;
 
+
 import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.SpielRundenView;
+
+import java.util.Hashtable;
+
 
 /**
  * @author nepo aka. André Hauser
@@ -13,6 +17,12 @@ import de.logit.kaiser_clone.view.SpielRundenView;
 public class Spielrunde 
 {
 	private Spieler aktiverspieler;
+	
+	/*
+	 * Zustände ob ein Spieler in eine bestimmte Aktion gemacht hat.
+	 */
+	 //boolean[] zustaende = { true };
+	 private Hashtable<String, Boolean> zustaendeTabelle = new Hashtable<>();
 
 	public Spielrunde(Spieler _aktiverSpieler)
 	{
@@ -144,6 +154,17 @@ public class Spielrunde
 	{
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setzeDieGrundwerteDerTabelle(){
+		this.zustaendeTabelle.put("KornHandel", false);
+		this.zustaendeTabelle.put("MehlHandel", false);
+		this.zustaendeTabelle.put("DüngerGekauft", false);
+		this.zustaendeTabelle.put("GebäudeGekauft", false);
+		this.zustaendeTabelle.put("FeldGekauft", false);
+		this.zustaendeTabelle.put("TitelGekauft", false);
+		this.zustaendeTabelle.put("SoldatenGekauft", false);
+		this.zustaendeTabelle.put("hatSabotiert", false);
 	}
 	
 	
