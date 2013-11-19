@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -34,6 +35,10 @@ public class HelloWorld {
 		} catch (UnsupportedEncodingException e) {
 		}
 		System.out.println("Hauptmenü:: Hi ich bin André");
+		
+		Scanner scanner = new Scanner(System.in);
+		scanner.useDelimiter(":::");
+		System.out.println(scanner.delimiter());
 	}
 
 }
