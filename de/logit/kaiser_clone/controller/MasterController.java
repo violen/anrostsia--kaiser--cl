@@ -118,8 +118,12 @@ public class MasterController
 					/*
 					 * Spieler werden aufgefordert zum Abschluss sich einen Namen zu geben.
 					 */
-					ausgabeHandler.gibStringAnKonsole(AusgabeView.gibEinenNamenEin(),this.spiel.getSpieler().get(i));
-					this.spiel.getSpieler().get(i).setName(eingabecontroller.getEingabe(this.spiel.getSpieler().get(i)));
+					String name = "";
+					do{	
+						ausgabeHandler.gibStringAnKonsole(AusgabeView.gibEinenNamenEin(),this.spiel.getSpieler().get(i));
+						name = eingabecontroller.getEingabe(this.spiel.getSpieler().get(i));
+					}while(name.equals(""));
+					this.spiel.getSpieler().get(i).setName(name);
 				}
 				this.spiel.erzeugeLandkarten();
 				
