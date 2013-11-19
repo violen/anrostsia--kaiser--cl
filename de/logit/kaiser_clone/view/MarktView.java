@@ -7,9 +7,9 @@ public class MarktView
 	{
 		
 		return "Was möchtest du kaufen?" + "\n" +
-				"  " + "1: Titel" + "\t" + "2: Land" + "\t" + "3: Kornspeicher" + "\n" +
-				"  " + "4: Soldaten" + "\t" + "5: Korn" + "\t" + "6: Mehl" +"\n" + 
-				"  " + "7: Kornfeld" + "\t" + "8: Mühle" + "\t" + "9: Dünger" + "\n";
+				"  " + "1: Titel" + "\t" + "2: Land" + "   " + "3: Kornspeicher" + "\n" +
+				"  " + "4: Soldaten" + "\t" + "5: Korn" + "   " + "6: Mehl" +"\n" + 
+				"  " + "7: Kornfeld" + "\t" + "8: Mühle" + "  " + "9: Dünger" + "\n";
 	}
 	
 	public static String getMarktKaufVonKorn()
