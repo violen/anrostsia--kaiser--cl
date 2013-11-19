@@ -37,8 +37,12 @@ public class AusgabeHandler {
 	
 	public void gibStringAnKonsole(String _string, Spieler _spieler)// überladen - multi player - > 1 Spieler
 	{
-		if(!spielerAmServer.equals(_spieler)){
-			this.outputStream.get(_spieler).println("out");
+		if(istSpielerKeinServerSpieler(_spieler)){
+			String[] array = _string.split("\n");
+			for(int i = 0 ; i < array.length ; i++){
+				erfordereRichtung("out", _spieler);
+				this.outputStream.get(_spieler).println(array[i]);
+			}
 		}
 		this.outputStream.get(_spieler).print(_string);
 		this.outputStream.get(_spieler).flush();
@@ -49,9 +53,17 @@ public class AusgabeHandler {
 	}
 	
 	public void erfordereRichtung(String _richtung, Spieler _spieler){
-		if(!spielerAmServer.equals(_spieler)){
+		if(istSpielerKeinServerSpieler(_spieler)){
 			this.outputStream.get(_spieler).println(_richtung);
 		}
+			
+	}
+	
+	private boolean istSpielerKeinServerSpieler(Spieler _spieler){
+		if(!spielerAmServer.equals(_spieler)){
+			return true;
+		}
+		return false;
 	}
 
 	public Spieler getSpielerAmServer() {
