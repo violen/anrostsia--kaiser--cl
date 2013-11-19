@@ -1,6 +1,7 @@
 package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Spieler;
+import de.logit.kaiser_clone.model.Startmenue;
 import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.StartmenueView;
 
@@ -19,15 +20,15 @@ public class StartMenueController
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		switch (_parameter) {
 		case "1":
-			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("ein Neues Spiel beginnen"), masterController.getAktiverSpieler());
+			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("ein Neues Spiel beginnen"), aktiverSpieler);
 			if(EingabeController.getEingabe().equalsIgnoreCase("1")){
-				this.masterController.spielStarten();
+				Startmenue.neuesSpiel(masterController);
 			}
 			
 			break;
 			
 		case "2":
-			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("das laufende Spiel beenden"), masterController.getAktiverSpieler());
+			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("das laufende Spiel beenden"), aktiverSpieler);
 			if(EingabeController.getEingabe().equalsIgnoreCase("1")){
 				masterController.getAusgabeHandler().gibStringAnKonsole(StartmenueView.getSpielBeenden(), masterController.getAktiverSpieler());
 				try {
@@ -35,7 +36,7 @@ public class StartMenueController
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.exit(0);
+				Startmenue.beendeSpiel();
 			}
 			break;
 		default:
