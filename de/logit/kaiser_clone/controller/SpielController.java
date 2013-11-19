@@ -37,9 +37,10 @@ public class SpielController
 
 	public void gameLoop()
 	{
-		Spieler aktiverSpieler = masterController.getAktiverSpieler();
+		
 		this.game = masterController.getSpiel();
 		masterController.setAktiverSpieler(game.neueRunde());
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		for(int i = 0; i < masterController.getSpiel().getSpieler().size(); i++)
 		{
