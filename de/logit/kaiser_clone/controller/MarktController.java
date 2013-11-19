@@ -26,6 +26,7 @@ public class MarktController
 		this.masterController = _masterController;
 		this.eingabeController = _masterController.getEingabecontroller();
 		this.ausgabeHandler = _masterController.getAusgabeHandler();
+		this.markt = Markt.getInstance();
 	}
 
 	public void auswertenEingabeMarkt(String _param)
@@ -93,64 +94,52 @@ public class MarktController
 	private void auswertenKaufoptionen(String _param_1)
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
-		if(_param_1 == "1")
-		{
-			ausgabeHandler.gibStringAnKonsole(MarktView.getTitelAuswahl(), aktiverSpieler);
-			markt.kaufeTitel(masterController.getAktiverSpieler());
-			//Baustelle
-			
-		}
-		
-		else if(_param_1 == "2")
-		{
-			analysiereKauf(markt.kaufeFeld(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "3")
-		{
-			analysiereKauf(markt.kaufeKornspeicher(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "4")
-		{
-			analysiereKauf(markt.kaufeSoldaten(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "5")
-		{
-			analysiereKauf(markt.kaufeKorn(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "6")
-		{
-			analysiereKauf(markt.kaufeMehl(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "7")
-		{
-			analysiereKauf(markt.kaufeKornfeld(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "8")
-		{
-			analysiereKauf(markt.kaufeMuehle(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		else if(_param_1 == "9")
-		{
-			analysiereKauf(markt.kaufeDuenger(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		
-		
-		
+		switch (_param_1) {
+			case "1":
+				if(markt.kaufeTitel(aktiverSpieler)){
+					ausgabeHandler.gibStringAnKonsole(
+							MarktView.getTitelKaufErfolgreich(
+									aktiverSpieler.getTitel().toString()), aktiverSpieler);
+				} else {
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getTitelNichtverfuegbar(), aktiverSpieler);
+				}
+				break;
+			case "2":
+				analysiereKauf(markt.kaufeFeld(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "3":
+				analysiereKauf(markt.kaufeKornspeicher(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "4":
+				analysiereKauf(markt.kaufeSoldaten(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "5":
+				analysiereKauf(markt.kaufeKorn(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "6":
+				analysiereKauf(markt.kaufeMehl(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "7":
+				analysiereKauf(markt.kaufeKornfeld(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "8":
+				analysiereKauf(markt.kaufeMuehle(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "9":
+				analysiereKauf(markt.kaufeDuenger(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+					
+			default:
+				break;
+		}		
 	}
 
 	private void analysiereKauf(int[] _fehlercode)
