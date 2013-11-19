@@ -16,51 +16,61 @@ public class MarktController
 	private EingabeController eingabeController;
 	private AusgabeHandler ausgabeHandler;
 	
-	public MarktController(){
+	public MarktController()
+	{
 		this.markt = Markt.getInstance();
 	}
 	
-	public MarktController(MasterController _masterController) {
+	public MarktController(MasterController _masterController) 
+	{
 		this.masterController = _masterController;
+		this.eingabeController = _masterController.getEingabecontroller();
+		this.ausgabeHandler = _masterController.getAusgabeHandler();
 	}
 
 	public void auswertenEingabeMarkt(String _param)
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
-		if(_param =="1")
+		switch (_param) 
 		{
-			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktKaufOptionen(),aktiverSpieler);
-			String param_1 = EingabeController.getEingabe();
-			auswertenKaufoptionen(param_1);
-						
-		}
-		else if (_param == "2")
-		{	
-			ausgabeHandler.gibStringAnKonsole(MarktView.getMarktVerkaufOptionen(),aktiverSpieler);
-			String param_2 = EingabeController.getEingabe();
-			auswertenVerkaufoptionen(param_2);
-		}
-		
-		
+			case "1":
+				ausgabeHandler.gibStringAnKonsole(MarktView.getMarktKaufOptionen(),aktiverSpieler);
+				String param_1 = eingabeController.getEingabe(aktiverSpieler);
+				auswertenKaufoptionen(param_1);
+				break;
+	
+			case "2":
+				ausgabeHandler.gibStringAnKonsole(MarktView.getMarktVerkaufOptionen(),aktiverSpieler);
+				String param_2 = eingabeController.getEingabe(aktiverSpieler);
+				auswertenVerkaufoptionen(param_2);
+				break;
+				
+			default:
+				break;
+		}		
 	}
 
 	private void auswertenVerkaufoptionen(String _param_1)
 	{
 		
-		if (_param_1 == "1")
+		switch (_param_1) 
 		{
-			analysiereVerkauf(markt.verkaufeKorn(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
-		}
-		else if (_param_1 == "2")
-		{
-			analysiereVerkauf(markt.verkaufeMehl(masterController.getSpielController().anzahlHolen(), 
-					masterController.getAktiverSpieler()));
+			case "1":
+				analysiereVerkauf(markt.verkaufeKorn(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			case "2":
+				analysiereVerkauf(markt.verkaufeMehl(masterController.getSpielController().anzahlHolen(), 
+						masterController.getAktiverSpieler()));
+				break;
+			default:
+				break;
 		}
 		
 	}
 
-	private void analysiereVerkauf(int _fehlercode) {
+	private void analysiereVerkauf(int _fehlercode) 
+	{
 		
 		String nachricht = "";
 
@@ -222,18 +232,10 @@ public class MarktController
 		 masterController.getAusgabeHandler().gibStringAnKonsole(nachricht, aktiverSpieler);
 	}
 	
-
-	
-	
 	private void analysiereFehlerCode(int[] _fehlercode)
 	{
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-	
-	
-	
 
 }
