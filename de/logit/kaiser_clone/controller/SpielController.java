@@ -94,15 +94,17 @@ public class SpielController
 					
 				}
 				else if (parameter.equalsIgnoreCase("7"))
-				{
+				{ 
 					break;
 				}
 			}
 			
 			if( i < masterController.getSpiel().getSpieler().size()-1)
 			{
-				game.getSpielrunde().setAktiverspieler(game.getSpieler().get(i+1));
-				masterController.setAktiverSpieler(game.getSpieler().get(i+1));
+				Spieler spieler = game.getSpieler().get(i+1);
+				game.getSpielrunde().setAktiverspieler(spieler);
+				masterController.setAktiverSpieler(spieler);
+				aktiverSpieler = spieler;
 			}
 			
 		}
