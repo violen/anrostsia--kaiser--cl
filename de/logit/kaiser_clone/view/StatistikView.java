@@ -19,7 +19,7 @@ public class StatistikView
 	{
 		
 		// TODO Auto-generated method stub
-		return null;
+		return "im moment keine statistik da" + "\n";
 	}
 
 }
