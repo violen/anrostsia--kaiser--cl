@@ -26,8 +26,6 @@ public class EingabeController {
 	private HashMap<Spieler, Scanner> inputStream = new HashMap<>();
 	
 	public EingabeController(){
-		this.isr = new InputStreamReader(System.in);
-		this.br = new BufferedReader(isr);
 	}
 	
 	public EingabeController(InputStream _inputStream){
