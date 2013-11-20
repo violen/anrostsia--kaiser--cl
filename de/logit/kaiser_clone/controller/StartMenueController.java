@@ -21,7 +21,7 @@ public class StartMenueController
 		switch (_parameter) {
 		case "1":
 			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("ein Neues Spiel beginnen"), aktiverSpieler);
-			if(EingabeController.getEingabe().equalsIgnoreCase("1")){
+			if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("1")){
 				Startmenue.neuesSpiel(masterController);
 			}
 			
@@ -29,7 +29,7 @@ public class StartMenueController
 			
 		case "2":
 			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("das laufende Spiel beenden"), aktiverSpieler);
-			if(EingabeController.getEingabe().equalsIgnoreCase("1")){
+			if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("1")){
 				masterController.getAusgabeHandler().gibStringAnKonsole(StartmenueView.getSpielBeenden(), masterController.getAktiverSpieler());
 				try {
 					Thread.sleep(1000);
