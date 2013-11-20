@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 
 import de.logit.kaiser_clone.network.ChatClient;
 import de.logit.kaiser_clone.view.AusgabeHandler;
+import de.logit.kaiser_clone.view.AusgabeView;
 
 public class Client_EXE {
 
@@ -29,18 +30,21 @@ public class Client_EXE {
 		
 		//SpielClient in den Speicher laden:
 		ChatClient chatClient = new ChatClient();
-		try {
-			chatClient.startClient();
-		} catch (NoSuchElementException e) {
-			AusgabeHandler ausgabeHandler = new AusgabeHandler();
-			ausgabeHandler.gibStringAnKonsole("Server verbindung verloren.");
+		while (true) {
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			} 
-			
+				chatClient.startClient();
+			} catch (NoSuchElementException e) {
+				AusgabeHandler ausgabeHandler = new AusgabeHandler();
+				ausgabeHandler.gibStringAnKonsole(AusgabeView.verlierenDerServerVerbindungBeimClient());
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				} 
+				
+			}
 		}
+		
 		
 
 	}
