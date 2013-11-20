@@ -13,6 +13,11 @@ public class Hauptmenue
 
 	public Hauptmenue()
 	{
+		this.markt = Markt.getInstance();
+		this.sabotage = new Sabotage();
+		this.politic = new Politik();
+		this.statistik = new Statistik();
+		this.produzieren = new Produzieren();
 	}
 
 	public Markt getMarkt()
@@ -69,10 +74,6 @@ public class Hauptmenue
 	}
 
 	public void chaten()
-	{
-	}
-
-	public void zeigeStartmenue()
 	{
 	}
 
