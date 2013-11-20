@@ -3,7 +3,9 @@
  */
 package de.logit.kaiser_clone.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import de.logit.kaiser_clone.controller.SpielController;
 import de.logit.kaiser_clone.network.ChatClient;
@@ -89,5 +91,17 @@ public class Spiel
 		this.hauptmenue = hauptmenue;
 	}
 	
+	public Spieler getNextSpieler(Spieler _spieler, LinkedList<Spieler> _spielerListe)
+	{
+		Spieler neuerAktiverSpieler = null;
+		try {
+			neuerAktiverSpieler = _spielerListe.get(_spielerListe.indexOf(_spieler)+1);
+		} catch (IndexOutOfBoundsException e) {
+			if(_spieler == _spielerListe.getLast()){
+				neuerAktiverSpieler = _spielerListe.getFirst();
+			}
+		}
+		return neuerAktiverSpieler;
+	}
 
 }
