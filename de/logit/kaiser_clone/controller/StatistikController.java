@@ -1,5 +1,6 @@
 package de.logit.kaiser_clone.controller;
 
+import de.logit.kaiser_clone.model.Gebaeude;
 import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.model.Statistik;
 import de.logit.kaiser_clone.model.Titel;
@@ -43,6 +44,19 @@ public class StatistikController
 		// TODO Auto-generated method stub --> kann warscheinlich weg
 		
 		
+	}
+	
+	private String[] getLandschaft()
+	{
+		String[] karte;
+		for(int i = 0 ; i < masterController.getAktiverSpieler().getFelder().size() ; i++)
+		{
+			
+		}
+		
+		
+		
+		return null;
 	}
 
 }
