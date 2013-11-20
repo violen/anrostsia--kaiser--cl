@@ -37,83 +37,68 @@ public class SpielController
 
 	public void gameLoop()
 	{
-		
 		this.game = masterController.getSpiel();
 		masterController.setAktiverSpieler(game.neueRunde());
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
-		for(int i = 0; i < masterController.getSpiel().getSpieler().size(); i++)
-		{
-			game.getSpielrunde().berechneWerte();
-			masterController.getStatistikcontroller().berechneStatistik();
-			while(true)
-			{
-				
-				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
-				String parameter = this.eingabeController.getEingabe(aktiverSpieler);
-				
-				if(parameter.equalsIgnoreCase("1"))
-				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue(), aktiverSpieler);
-					parameter = this.eingabeController.getEingabe(aktiverSpieler);
-					
-					masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
-										
-				}
-				else if(parameter.equalsIgnoreCase("2"))
-				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
-					parameter = this.eingabeController.getEingabe(aktiverSpieler);
-					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
-					
-				}
-				else if(parameter.equalsIgnoreCase("3"))
-				{
-					ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue(), aktiverSpieler);
-					parameter = this.eingabeController.getEingabe(aktiverSpieler);
-					masterController.getStartmenueController().auswertenEingabeStartmenue(parameter);
-					
-				}
-				else if(parameter.equalsIgnoreCase("4"))
-				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue(), aktiverSpieler);
-					int menge = Integer.parseInt(this.eingabeController.getEingabe(aktiverSpieler));
-					masterController.getProduzierenController().produzieren(menge);
-					
-				}
-				else if(parameter.equalsIgnoreCase("5"))
-				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue(), aktiverSpieler);
-					parameter = this.eingabeController.getEingabe(aktiverSpieler);
-					masterController.getPolitikController().auswertenEingabePolitik(parameter);
-					
-				}
-				else if(parameter.equalsIgnoreCase("6"))
-				{
-					masterController.getStatistikcontroller().berechneStatistik();
-					
-				}
-				else if (parameter.equalsIgnoreCase("7"))
-				{ 
-					break;
-				}
-			}
+		
+		game.getSpielrunde().berechneWerte();
+		masterController.getStatistikcontroller().berechneStatistik();
 			
-			if( i < masterController.getSpiel().getSpieler().size()-1)
+		while(true)
+		{			
+			ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
+			String parameter = this.eingabeController.getEingabe(aktiverSpieler);
+			
+			if(parameter.equalsIgnoreCase("1"))
 			{
-				Spieler spieler = game.getSpieler().get(i+1);
+				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getMarktMenue(), aktiverSpieler);
+				parameter = this.eingabeController.getEingabe(aktiverSpieler);
+				
+				masterController.getMarktcontroller().auswertenEingabeMarkt(parameter);
+									
+			}
+			else if(parameter.equalsIgnoreCase("2"))
+			{
+				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
+				parameter = this.eingabeController.getEingabe(aktiverSpieler);
+				masterController.getSabotageController().auswertenEingabeSabotage(parameter);
+				
+			}
+			else if(parameter.equalsIgnoreCase("3"))
+			{
+				ausgabeHandler.gibStringAnKonsole(StartmenueView.getStartmenue(), aktiverSpieler);
+				parameter = this.eingabeController.getEingabe(aktiverSpieler);
+				masterController.getStartmenueController().auswertenEingabeStartmenue(parameter);
+				
+			}
+			else if(parameter.equalsIgnoreCase("4"))
+			{
+				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue(), aktiverSpieler);
+				int menge = Integer.parseInt(this.eingabeController.getEingabe(aktiverSpieler));
+				masterController.getProduzierenController().produzieren(menge);
+				
+			}
+			else if(parameter.equalsIgnoreCase("5"))
+			{
+				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getPolitikMenue(), aktiverSpieler);
+				parameter = this.eingabeController.getEingabe(aktiverSpieler);
+				masterController.getPolitikController().auswertenEingabePolitik(parameter);
+				
+			}
+			else if(parameter.equalsIgnoreCase("6"))
+			{
+				masterController.getStatistikcontroller().berechneStatistik();
+				
+			}
+			else if (parameter.equalsIgnoreCase("7"))
+			{ 
+				Spieler spieler = game.getNextSpieler(aktiverSpieler, game.getSpieler());
 				game.getSpielrunde().setAktiverspieler(spieler);
 				masterController.setAktiverSpieler(spieler);
 				aktiverSpieler = spieler;
-			}
-			
+			}	
 		}
-		
-		
-		
-		
-		
-		//break;
 	}
 	
 //	public void beendenZug()
