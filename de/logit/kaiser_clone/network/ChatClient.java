@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import de.logit.kaiser_clone.controller.EingabeController;
 import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.AusgabeView;
 
-public class ChatClient
+public class ChatClient 
 {
 	private Socket socket;
 	
@@ -18,7 +19,7 @@ public class ChatClient
 		
 	}
 	
-	public void startClient(){
+	public void startClient() throws NoSuchElementException{
 		Socket server;
 		
 		AusgabeHandler ausgabeHandler = new AusgabeHandler();

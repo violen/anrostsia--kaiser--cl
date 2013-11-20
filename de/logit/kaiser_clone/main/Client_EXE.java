@@ -4,8 +4,10 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.util.NoSuchElementException;
 
 import de.logit.kaiser_clone.network.ChatClient;
+import de.logit.kaiser_clone.view.AusgabeHandler;
 
 public class Client_EXE {
 
@@ -27,7 +29,19 @@ public class Client_EXE {
 		
 		//SpielClient in den Speicher laden:
 		ChatClient chatClient = new ChatClient();
-		chatClient.startClient();
+		try {
+			chatClient.startClient();
+		} catch (NoSuchElementException e) {
+			AusgabeHandler ausgabeHandler = new AusgabeHandler();
+			ausgabeHandler.gibStringAnKonsole("Server verbindung verloren.");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			} 
+			
+		}
+		
 
 	}
 
