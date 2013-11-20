@@ -42,5 +42,9 @@ public class AusgabeView
 	public static String gibEinenNamenEin(){
 		return "Bitte geb einen namen ein." + "\n";
 	}
+	
+	public static String verlierenDerServerVerbindungBeimClient(){
+		return "Server verbindung verloren."+"\n";
+	}
 
 }
