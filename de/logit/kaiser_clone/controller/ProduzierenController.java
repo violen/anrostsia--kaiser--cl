@@ -13,16 +13,18 @@ public class ProduzierenController
 		masterController = _masterController;
 	}
 
-	public void produzieren(int _parameter)
+	public void produzieren()
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
+		int _parameter;
+		_parameter =	masterController.getSpielController().anzahlHolen() ;
+
 		if (masterController.getAktiverSpieler().getKorn() >= _parameter * 2)
 		{
 			masterController.getAktiverSpieler().setKorn(
 			masterController.getAktiverSpieler().getKorn() - _parameter * 2);
 			masterController.getAktiverSpieler().setMehl(masterController.getAktiverSpieler().getMehl()+_parameter);
 			
-			masterController.getSpielController().anzahlHolen();
 			masterController.getAusgabeHandler().gibStringAnKonsole(ProduzierenView.getMehlProduziert(_parameter),aktiverSpieler);
 		}
 
