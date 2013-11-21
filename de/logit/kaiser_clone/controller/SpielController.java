@@ -47,6 +47,7 @@ public class SpielController
 		
 		game.getSpielrunde().berechneWerte();
 		masterController.getStatistikcontroller().berechneStatistik();
+		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 			
 		while(true)
 		{			
@@ -106,7 +107,9 @@ public class SpielController
 					game.getSpielrunde().setAktiverspieler(spieler);
 					masterController.setAktiverSpieler(spieler);
 					aktiverSpieler = spieler;	
-				}			
+				}
+				
+				game.getSpielrunde().berechneWerte();
 			}	
 		}
 	}
