@@ -30,14 +30,14 @@ public class MasterController
 
 	private Spieler aktiverSpieler;
 	private Spiel spiel;
-	private EingabeController eingabecontroller;
-	private MarktController marktcontroller;
+	private EingabeController eingabeController;
+	private MarktController marktController;
 	private SpielController spielController;
-	private SpielRundenController spielRundencontroller;
+	private SpielRundenController spielRundenController;
 	private SabotageController sabotageController;
 	private PolitikController politikController;
 	private ProduzierenController produzierenController;
-	private StatistikController statistikcontroller;
+	private StatistikController statistikController;
 	private StartMenueController startmenueController;
 	private AusgabeHandler ausgabeHandler;
 	private ChatServer server;
@@ -48,8 +48,8 @@ public class MasterController
 		 * Der MasterController Initialisiert die Ein und Ausgabe und stellt sie bereit:
 		 */
 		this.ausgabeHandler = new AusgabeHandler();
-		this.eingabecontroller = new EingabeController();
-		eingabecontroller.setAusgabeHandler(ausgabeHandler);
+		this.eingabeController = new EingabeController();
+		eingabeController.setAusgabeHandler(ausgabeHandler);
 		// beeinhaltet den ServerSocket um Mitspieler annhemen zu können.
 		this.server = new ChatServer();
 	}
@@ -99,7 +99,7 @@ public class MasterController
 					if(i==0){
 						Scanner in = new Scanner(System.in);
 						PrintWriter out = new PrintWriter(System.out,true);
-						this.eingabecontroller.linkSpielerMitInputStream(spieler, in);
+						this.eingabeController.linkSpielerMitInputStream(spieler, in);
 						this.ausgabeHandler.linkSpielerMitOutputStream(spieler, out);
 						this.ausgabeHandler.setSpielerAmServer(spieler);
 					} else {
@@ -108,7 +108,7 @@ public class MasterController
 							client = server.getSvrSocket().accept();
 							Scanner in = new Scanner(client.getInputStream());
 							PrintWriter out = new PrintWriter(client.getOutputStream(),true);
-							this.eingabecontroller.linkSpielerMitInputStream(spieler, in);
+							this.eingabeController.linkSpielerMitInputStream(spieler, in);
 							this.ausgabeHandler.linkSpielerMitOutputStream(spieler, out);
 							ausgabeHandler.gibStringAnKonsole(AusgabeView.verbindeMitServer(), this.spiel.getSpieler().get(i));
 						} catch (IOException e) {
@@ -121,7 +121,7 @@ public class MasterController
 					String name = "";
 					do{	
 						ausgabeHandler.gibStringAnKonsole(AusgabeView.gibEinenNamenEin(),this.spiel.getSpieler().get(i));
-						name = eingabecontroller.getEingabe(this.spiel.getSpieler().get(i));
+						name = eingabeController.getEingabe(this.spiel.getSpieler().get(i));
 					}while(name.equals(""));
 					this.spiel.getSpieler().get(i).setName(name);
 				}
@@ -130,13 +130,13 @@ public class MasterController
 				/*
 				 * Erzeuge Controller
 				 */
-				this.marktcontroller = new MarktController(this);
+				this.marktController = new MarktController(this);
 				this.politikController = new PolitikController(this);
 				this.produzierenController = new ProduzierenController(this);
 				this.sabotageController = new SabotageController(this);
 				this.spielController = new SpielController(this);
-				this.spielRundencontroller = new SpielRundenController(this);
-				this.statistikcontroller = new StatistikController(this);
+				this.spielRundenController = new SpielRundenController(this);
+				this.statistikController = new StatistikController(this);
 				this.startmenueController = new StartMenueController(this);
 				
 				this.spiel.anlegenMenues();
@@ -196,7 +196,7 @@ public class MasterController
 	 */
 	public EingabeController getEingabecontroller()
 	{
-		return this.eingabecontroller;
+		return this.eingabeController;
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class MasterController
 	 */
 	public MarktController getMarktcontroller()
 	{
-		return this.marktcontroller;
+		return this.marktController;
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class MasterController
 	 */
 	public SpielRundenController getSpielRundencontroller()
 	{
-		return this.spielRundencontroller;
+		return this.spielRundenController;
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class MasterController
 	 */
 	public StatistikController getStatistikcontroller()
 	{
-		return this.statistikcontroller;
+		return this.statistikController;
 	}
 
 	/**
