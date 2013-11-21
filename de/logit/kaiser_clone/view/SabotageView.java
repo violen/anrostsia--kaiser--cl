@@ -15,7 +15,7 @@ public class SabotageView {
 
 	public static String getGegnerWaehlen(LinkedList<Spieler> _gegner) {
 		
-		String liste ="";
+		String liste ="Bitte Einen Gegner wählen. \n ";
 		int i=0;
 		for (Spieler s : _gegner)
 		{

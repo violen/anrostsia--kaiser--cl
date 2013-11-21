@@ -54,4 +54,9 @@ public class FehlerView
 	{
 		return "Das war keine Zahl \n";
 	}
+
+	public static String getSpielerNichtInListe() {
+		
+		return "Spieler nicht in Liste. \n";
+	}
 }

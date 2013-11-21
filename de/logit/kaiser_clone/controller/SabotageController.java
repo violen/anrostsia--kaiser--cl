@@ -47,9 +47,25 @@ public class SabotageController {
 		
 		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegner));
 		
-		int _parameter2 = Integer.parseInt(masterController.getEingabecontroller().getEingabe(aktiverSpieler));
+		Spieler derSabotierte;
 		
-		Spieler derSabotierte = gegner.get(_parameter2);
+		while (true)
+		{
+			try {
+				int _parameter2 = Integer.parseInt(masterController.getEingabecontroller().getEingabe(aktiverSpieler));
+				
+				try {
+					derSabotierte = gegner.get(_parameter2);
+					break;
+				} catch (IndexOutOfBoundsException e) {
+					masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getSpielerNichtInListe(), aktiverSpieler);
+					
+				}
+				
+			} catch (NumberFormatException ex) {
+				masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getDasWarKeineZahl(), aktiverSpieler);
+			}
+		}
 		
 		String nachrichtAnGegner ="";
 		

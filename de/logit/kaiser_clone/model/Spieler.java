@@ -20,7 +20,7 @@ public class Spieler
 	private int mehl=1000;
 	private int soldaten=0;
 	private int duenger=0;
-	private int gold=1000;
+	private int gold=100000;
 	private int bevoelkerung=20;
 	private LinkedList<Feld> felder = new LinkedList<Feld>();
 	private int freieFelder = 0;
