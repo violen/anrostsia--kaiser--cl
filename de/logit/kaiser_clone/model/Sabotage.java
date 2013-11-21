@@ -73,7 +73,7 @@ public class Sabotage
 		int erfolg =0;
 		int schutz = _gegner.getSchutzFaktor();
 		
-		int power = ((int) (Math.random()+(1+1000)))-eingesetzteSoldaten;
+		int power = ((int) (Math.random()*1+1000))-eingesetzteSoldaten;
 		
 		if ( schutz < power)
 		{
@@ -97,7 +97,7 @@ public class Sabotage
 		int erfolg = 0;
 		
 		int schutz = _gegner.getSchutzFaktor();
-		int power = (int) (Math.random()+(1+1000));
+		int power = (int) (Math.random()*(1000+1));
 		
 		if ((_gegner.getKornfelder() == 0) && (_gegner.getKornspeicher()==0) && (_gegner.getMuehlen()==0))
 		{
@@ -107,11 +107,10 @@ public class Sabotage
 		if (schutz < power)
 		{
 		
-			while(true)
-			{
-				int gebaeude = (int) Math.random()+(1+3);
+			
+				int gebaeude = (int) (Math.random()*3+1);
 				
-				if (gebaeude == 1)
+				if (gebaeude <= 1)
 				{
 					for (Feld f : _gegner.getFelder())
 					{
@@ -140,7 +139,7 @@ public class Sabotage
 						}
 					}
 				}
-				if (gebaeude == 3)
+				if (gebaeude >= 3)
 				{
 					for (Feld f : _gegner.getFelder())
 					{
@@ -158,7 +157,7 @@ public class Sabotage
 			
 			
 			
-		}
+		
 		erfolg =8;
 		
 		return erfolg;
@@ -170,9 +169,9 @@ public class Sabotage
 		
 		int schutz = _gegner.getSchutzFaktor();
 		
-		int power = ((int) (Math.random()+(1+1000)))-eingesetzteSoldaten;
+		int power = ((int) (Math.random()*1000+1))-eingesetzteSoldaten;
 		
-		int gut = (int) Math.random()+(1+2);
+		int gut = (int) (Math.random()*2+1);
 		
 		if (schutz > power)
 		{
@@ -203,7 +202,7 @@ public class Sabotage
 	{
 		int schutz = _gegner.getSchutzFaktor();
 		
-		int power = ((int) (Math.random()+(1+1000)))-eingesetzteSoldaten;
+		int power = ((int) (Math.random()*1+1000))-eingesetzteSoldaten;
 		
 		
 		if (schutz > power)

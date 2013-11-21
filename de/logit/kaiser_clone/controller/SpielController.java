@@ -47,6 +47,7 @@ public class SpielController
 		
 		game.getSpielrunde().berechneWerte();
 		masterController.getStatistikcontroller().berechneStatistik();
+		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 			
 		while(true)
 		{			
@@ -78,8 +79,8 @@ public class SpielController
 			else if(parameter.equalsIgnoreCase("4"))
 			{
 				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue(), aktiverSpieler);
-				int menge = Integer.parseInt(this.eingabeController.getEingabe(aktiverSpieler));
-				masterController.getProduzierenController().produzieren(menge);
+				
+				masterController.getProduzierenController().produzieren();
 				
 			}
 			else if(parameter.equalsIgnoreCase("5"))
@@ -106,7 +107,9 @@ public class SpielController
 					game.getSpielrunde().setAktiverspieler(spieler);
 					masterController.setAktiverSpieler(spieler);
 					aktiverSpieler = spieler;	
-				}			
+				}
+				
+				game.getSpielrunde().berechneWerte();
 			}	
 		}
 	}
