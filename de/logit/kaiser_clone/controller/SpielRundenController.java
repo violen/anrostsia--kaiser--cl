@@ -2,6 +2,7 @@ package de.logit.kaiser_clone.controller;
 
 import java.util.ArrayList;
 
+import de.logit.kaiser_clone.model.Markt;
 import de.logit.kaiser_clone.model.Spielrunde;
 
 public class SpielRundenController
@@ -35,6 +36,7 @@ public class SpielRundenController
 		this.aktuelleRunde = new Spielrunde(masterController.getSpiel().getNextSpieler(
 				masterController.getAktiverSpieler(), masterController.getSpiel().getSpieler()));
 		masterController.setAktiverSpieler(aktuelleRunde.getAktiverspieler());
+		Markt.getInstance().erhoeheBestaende();
 	}
 
 }
