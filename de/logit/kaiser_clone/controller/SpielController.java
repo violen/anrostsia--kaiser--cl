@@ -93,7 +93,7 @@ public class SpielController
 			else if(parameter.equalsIgnoreCase("6"))
 			{
 				masterController.getStatistikcontroller().berechneStatistik();
-				ausgabeHandler.gibStringAnKonsole(StatistikView.testeKarteDesSpielers(masterController.getStatistikcontroller().getLandschaft()), aktiverSpieler);
+				ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
 				
 			}
 			else if (parameter.equalsIgnoreCase("7"))
@@ -101,6 +101,7 @@ public class SpielController
 				if(aktiverSpieler == game.getSpieler().getLast()){
 					masterController.getSpielRundencontroller().initNeueRunde(game.getSpielrunde());
 					game.setSpielrunde(masterController.getSpielRundencontroller().getAktuelleRunde());
+					game.getSpielrunde().setzeDieGrundwerteDerSpielerZustandsTabelle(game.getSpieler());
 					aktiverSpieler = masterController.getAktiverSpieler();
 					ausgabeHandler.gibStringAnKonsole(":::NEUE RUNDE BEGINNT:::"+"\n", aktiverSpieler);
 				} else {
