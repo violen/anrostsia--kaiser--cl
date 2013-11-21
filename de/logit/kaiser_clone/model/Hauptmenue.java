@@ -7,7 +7,7 @@ public class Hauptmenue
 
 	private Markt markt;
 	private Sabotage sabotage;
-	private Politik politic;
+	private Politik politik;
 	private Statistik statistik;
 	private Produzieren produzieren;
 
@@ -15,7 +15,7 @@ public class Hauptmenue
 	{
 		this.markt = Markt.getInstance();
 		this.sabotage = new Sabotage();
-		this.politic = new Politik();
+		this.politik = new Politik();
 		this.statistik = new Statistik();
 		this.produzieren = new Produzieren();
 	}
@@ -43,14 +43,14 @@ public class Hauptmenue
 		sabotage = _sabotage;
 	}
 
-	public Politik getPolitic()
+	public Politik getPolitik()
 	{
-		return politic;
+		return politik;
 	}
 
 	public void setPolitic(Politik _politic)
 	{
-		politic = _politic;
+		politik = _politic;
 	}
 
 	public Statistik getStatistik()
