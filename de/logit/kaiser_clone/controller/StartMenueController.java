@@ -11,17 +11,20 @@ public class StartMenueController
 	/**
 	 * @param _masterController
 	 */
-	public StartMenueController(MasterController _masterController) {
+	public StartMenueController(MasterController _masterController) 
+	{
 		this.masterController = _masterController;
 	}
 
 	public void auswertenEingabeStartmenue(String _parameter)
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
-		switch (_parameter) {
+		switch (_parameter) 
+		{
 		case "1":
 			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("ein Neues Spiel beginnen"), aktiverSpieler);
-			if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("1")){
+			if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("1"))
+			{
 				Startmenue.neuesSpiel(masterController);
 			}
 			
