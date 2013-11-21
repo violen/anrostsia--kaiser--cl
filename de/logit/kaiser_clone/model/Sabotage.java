@@ -7,56 +7,68 @@ public class Sabotage
 	private int neuesGold;
 	private int neuesKorn;
 
-	public int getUnruheKosten() {
+	public int getUnruheKosten() 
+	{
 		
 		return 300;
 	}
 	
-	public int getZerstoerenKosten(){
+	public int getZerstoerenKosten()
+	{
 		
 		return 250;
 	}
 	
-	public int getVergiftenKosten(){
+	public int getVergiftenKosten()
+	{
 		return 400;
 	}
 	
-	public int getPluendernKosten(){
+	public int getPluendernKosten()
+	{
 		return 500;
 	}
 
-	public int getSoldatenMinimum() {
+	public int getSoldatenMinimum() 
+	{
 		
 		return 1;
 	}
 	
 	
 
-	public int getNeuesGold() {
+	public int getNeuesGold() 
+	{
 		return neuesGold;
 	}
 
-	public void setNeuesGold(int _neuesGold) {
+	public void setNeuesGold(int _neuesGold) 
+	{
 		neuesGold = _neuesGold;
 	}
 
-	public int getNeuesKorn() {
+	public int getNeuesKorn() 
+	{
 		return neuesKorn;
 	}
 
 	public void setNeuesKorn(int _neuesKorn) {
+		
 		neuesKorn = _neuesKorn;
 	}
 
-	public int getEingesetzteSoldaten() {
+	public int getEingesetzteSoldaten() 
+	{
 		return eingesetzteSoldaten;
 	}
 
-	public void setEingesetzteSoldaten(int _eingesetzteSoldaten) {
+	public void setEingesetzteSoldaten(int _eingesetzteSoldaten) 
+	{
 		eingesetzteSoldaten = _eingesetzteSoldaten;
 	}
 
-	public int unruhe(Spieler _gegner) {
+	public int unruhe(Spieler _gegner) 
+	{
 
 		int erfolg =0;
 		int schutz = _gegner.getSchutzFaktor();
