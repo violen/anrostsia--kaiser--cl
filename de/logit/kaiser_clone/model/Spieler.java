@@ -3,6 +3,7 @@
  */
 package de.logit.kaiser_clone.model;
 
+import java.util.Hashtable;
 import java.util.LinkedList;
 
 import de.logit.kaiser_clone.network.ChatClient;
@@ -14,11 +15,6 @@ import de.logit.kaiser_clone.network.ChatClient;
 
 public class Spieler 
 {
-	/*
-	 * Client des Spielers
-	 */
-	private ChatClient chatClient;
-	
 	private Titel titel = Titel.BAUER;
 	private int korn=1000;
 	private int mehl=1000;
@@ -27,39 +23,21 @@ public class Spieler
 	private int gold=1000;
 	private int bevoelkerung=20;
 	private LinkedList<Feld> felder = new LinkedList<Feld>();
-	private Spiel spiel;
-	private int freieFelder;
-	private int kornfelder;
-	private int kornspeicher;
-	private int muehlen;
+	private int freieFelder = 0;
+	private int kornfelder = 0;
+	private int kornspeicher = 0;
+	private int muehlen = 0;
 	//Startwert der Moral ist 70 Prozent --> max 100%
 	private int moral=70;
+	
 	private String nachricht;
 	
 	private String name;
 	private int ration;
 	private int steuersatz;
+	
+	private Hashtable<String, Boolean> zustaendeTabelle;
 
-	
-	public Spieler(Spiel _spiel,String _name)
-	{
-		spiel = _spiel;
-		setName(_name);
-	}
-	
-	public Spieler(Spiel _spiel, String _name, ChatClient _chatClient)
-	{
-		this.spiel = _spiel;
-		this.setName(_name);
-		this.chatClient = _chatClient;
-	}
-	
-	public Spieler(String _name, ChatClient _chatClient)
-	{
-		this.setName(_name);
-		this.chatClient = _chatClient;
-	}
-	
 	public Spieler()
 	{
 		
@@ -70,6 +48,7 @@ public class Spieler
 		for(int i = 0; i<6; i++ )
 		{
 			fuegeFeldHinzu(new Feld());
+			freieFelder++;
 		}
 		
 		fuegeGebaeudeHinzu(new Kornfeld());
@@ -89,18 +68,20 @@ public class Spieler
 			if(f.getGebaeude() == null)
 			{
 				f.setGebaeude(_gebaeude);
-				freieFelder--;
 				if(_gebaeude instanceof Kornspeicher)
 				{
 					kornspeicher ++;
+					freieFelder--;
 				}
 				else if(_gebaeude instanceof Kornfeld)
 				{
 					kornfelder ++;
+					freieFelder--;
 				}
 				else if(_gebaeude instanceof Muehle)
 				{
 					muehlen ++;
+					freieFelder--;
 				}
 				return;
 			}
@@ -319,14 +300,6 @@ public class Spieler
 	}
 
 	/**
-	 * @return the spiel
-	 */
-	public Spiel getSpiel()
-	{
-		return this.spiel;
-	}
-
-	/**
 	 * @return the nachricht
 	 */
 	public String getNachricht()
@@ -344,15 +317,12 @@ public class Spieler
 
 	public String getName() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	public int getSchutzFaktor() 
 	{
-		
-		int s = (int) (felder.size() / soldaten);
-		
+		int s = Math.round((felder.size() / soldaten));	
 		return s;
 	}
 
@@ -392,6 +362,14 @@ public class Spieler
 			return duenger;
 		}
 		
+	}
+
+	public Hashtable<String, Boolean> getZustaendeTabelle() {
+		return zustaendeTabelle;
+	}
+
+	public void setZustaendeTabelle(Hashtable<String, Boolean> zustaendeTabelle) {
+		this.zustaendeTabelle = zustaendeTabelle;
 	}
 	
 	
