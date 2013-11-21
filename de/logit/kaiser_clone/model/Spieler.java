@@ -3,10 +3,8 @@
  */
 package de.logit.kaiser_clone.model;
 
-import java.util.Hashtable;
 import java.util.LinkedList;
-
-import de.logit.kaiser_clone.network.ChatClient;
+import java.util.Map;
 
 /**
  * @author nepo aka. André Hauser
@@ -36,7 +34,7 @@ public class Spieler
 	private int ration;
 	private int steuersatz;
 	
-	private Hashtable<String, Boolean> zustaendeTabelle;
+	private Map<String, Boolean> zustaendeTabelle;
 
 	public Spieler()
 	{
@@ -368,12 +366,12 @@ public class Spieler
 		
 	}
 
-	public Hashtable<String, Boolean> getZustaendeTabelle() {
+	public Map<String, Boolean> getZustaendeTabelle() {
 		return zustaendeTabelle;
 	}
 
-	public void setZustaendeTabelle(Hashtable<String, Boolean> zustaendeTabelle) {
-		this.zustaendeTabelle = zustaendeTabelle;
+	public void setZustaendeTabelle(Map<String, Boolean> _zustaendeTabelle) {
+		this.zustaendeTabelle = _zustaendeTabelle;
 	}
 	
 	

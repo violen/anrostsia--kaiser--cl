@@ -59,4 +59,13 @@ public class FehlerView
 		
 		return "Spieler nicht in Liste. \n";
 	}
+
+	public static String verlierenDerServerVerbindungBeimClient(){
+		return "Server verbindung verloren."+"\n";
+	}
+
+	public static String ausfuehrenDieserAktionInDieserRundeNichtMoeglich(){
+		return "Du hast diese Aktion bereits getätigt!" + "\n" +
+				"Du darfst diesen Bereich erst in der neuen Runde wieder betreten!" + "\n";
+	}
 }

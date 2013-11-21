@@ -3,7 +3,7 @@
  */
 package de.logit.kaiser_clone.view;
 
-import de.logit.kaiser_clone.model.Statistik;
+import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.model.Titel;
 
 /**
@@ -22,12 +22,19 @@ public class StatistikView
 		return "im moment keine statistik da" + "\n";
 	}
 	
-	public static String testeKarteDesSpielers(String[] _karteDesSpielers){
+	public static String getStatistikDesSpielers(String[] _karteDesSpielers, Spieler _aktiverSpieler)
+	{
 		String string = "";
-		for(int i = 0 ; i < _karteDesSpielers.length ; i++){
-			string = string + _karteDesSpielers[i];
+		string = string + "Die Landschaft:" + "\n";
+		for(int i = 0 ; i < _karteDesSpielers.length ; i++)
+		{
+			string = string + "\t" + _karteDesSpielers[i];
 		}
-		
+		string = string + "Deine Spielstatistik:" + "\n"+
+				"  " + "Titel: " + _aktiverSpieler.getTitel() + " || " + "Gold: " + _aktiverSpieler.getGold() +" || " + "Moral: " +_aktiverSpieler.getMoral() + "\n" +
+				"  " + "Bevölkerung: " + _aktiverSpieler.getBevoelkerung() + " || " + "Korn: " + _aktiverSpieler.getKorn() + " || " + "Mehl: " + _aktiverSpieler.getMehl() + "\n" +
+				"  " + "Dünger: " + _aktiverSpieler.getDuenger() + " || " + "Kornspeicher: " + _aktiverSpieler.getKornspeicher() + " || " + "Mühlen: " + _aktiverSpieler.getMuehlen() + "\n" +
+				"  " + "Unbebautes land: " + _aktiverSpieler.getFreieFelder() + " || " + "Deine Nachrichten: " +"\n"+ _aktiverSpieler.getNachricht() + "\n";
 		return string;
 	}
 

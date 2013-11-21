@@ -1,13 +1,10 @@
 package de.logit.kaiser_clone.controller;
 
-import de.logit.kaiser_clone.model.Gebaeude;
 import de.logit.kaiser_clone.model.Kornfeld;
 import de.logit.kaiser_clone.model.Kornspeicher;
 import de.logit.kaiser_clone.model.Muehle;
 import de.logit.kaiser_clone.model.Spieler;
-import de.logit.kaiser_clone.model.Statistik;
 import de.logit.kaiser_clone.model.Titel;
-import de.logit.kaiser_clone.view.StatistikView;
 
 public class StatistikController
 {
@@ -17,7 +14,8 @@ public class StatistikController
 	{
 		this.masterController = _masterController;
 	}
-
+	
+	
 	public void berechneStatistik()
 	{
 		Spieler spieler = masterController.getAktiverSpieler();
@@ -36,9 +34,9 @@ public class StatistikController
 		
 		spieler.setNachricht("");
 		
-		masterController.getAusgabeHandler().gibStringAnKonsole
-									(StatistikView.getStatistik(titel, korn, mehl, duenger, gold, bevoelkerung, 
-										freieFelder, kornspeicher, muehlen, moral, nachricht), spieler); 
+//		masterController.getAusgabeHandler().gibStringAnKonsole
+//									(StatistikView.getStatistik(titel, korn, mehl, duenger, gold, bevoelkerung, 
+//										freieFelder, kornspeicher, muehlen, moral, nachricht), spieler); 
 		
 	}
 

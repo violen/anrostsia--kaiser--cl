@@ -2,7 +2,6 @@ package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Markt;
 import de.logit.kaiser_clone.model.Spieler;
-import de.logit.kaiser_clone.model.Titel;
 import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.MarktView;
@@ -93,15 +92,19 @@ public class MarktController
 
 	private void auswertenKaufoptionen(String _param_1)
 	{
-		Spieler aktiverSpieler = masterController.getAktiverSpieler();
+		Spieler _aktiverSpieler = masterController.getAktiverSpieler();
 		switch (_param_1) {
 			case "1":
-				if(markt.kaufeTitel(aktiverSpieler)){
-					ausgabeHandler.gibStringAnKonsole(
-							MarktView.getTitelKaufErfolgreich(
-									aktiverSpieler.getTitel().toString()), aktiverSpieler);
+				if(!_aktiverSpieler.getZustaendeTabelle().get("TitelGekauft").booleanValue()){	
+					if(markt.kaufeTitel(_aktiverSpieler)){
+						ausgabeHandler.gibStringAnKonsole(
+								MarktView.getTitelKaufErfolgreich(
+										_aktiverSpieler.getTitel().toString()), _aktiverSpieler);
+					} else {
+						ausgabeHandler.gibStringAnKonsole(FehlerView.getTitelNichtverfuegbar(), _aktiverSpieler);
+					}
 				} else {
-					ausgabeHandler.gibStringAnKonsole(FehlerView.getTitelNichtverfuegbar(), aktiverSpieler);
+					ausgabeHandler.gibStringAnKonsole(FehlerView.ausfuehrenDieserAktionInDieserRundeNichtMoeglich(), _aktiverSpieler);
 				}
 				break;
 			case "2":
