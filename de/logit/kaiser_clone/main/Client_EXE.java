@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 import de.logit.kaiser_clone.network.ChatClient;
 import de.logit.kaiser_clone.view.AusgabeHandler;
-import de.logit.kaiser_clone.view.AusgabeView;
+import de.logit.kaiser_clone.view.FehlerView;
 
 public class Client_EXE {
 
@@ -35,7 +35,7 @@ public class Client_EXE {
 				chatClient.startClient();
 			} catch (NoSuchElementException e) {
 				AusgabeHandler ausgabeHandler = new AusgabeHandler();
-				ausgabeHandler.gibStringAnKonsole(AusgabeView.verlierenDerServerVerbindungBeimClient());
+				ausgabeHandler.gibStringAnKonsole(FehlerView.verlierenDerServerVerbindungBeimClient());
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
