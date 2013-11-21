@@ -24,20 +24,24 @@ public class HauptmenueView
 				"  "+"1: Kaufen "+"\t"+"2: Verkaufen"+"\n";
 	}
 	
-	public static String getSabotierenMenue(){
+	public static String getSabotierenMenue()
+	{
 		return "Du befindest dich nun in der Kaserne. " +
 				"Hier kannst du deine Soldaten befehligen!\n" +
 				"  "+"1: Rauben"+"\t"+"2: Zerstören"+"\n"+
 				"  "+"3: Vergiften"+"\t"+"4: Unruhe"+"\n";
 	}
 	
-	public static String getPolitikMenue(){
+	public static String getPolitikMenue()
+	{
 		return "Du befindest dich im Parlament. "+"\n" +
 				"Hier können die belange des Volkes und des Staates reguliert werden." +"\n"+
 				"  "+ "1: Steuern"+"\t"+"2: Nahrungsrationen"+"\n";
 	}
 	
-	public static String getProduzierenMenue(){
+	
+	public static String getProduzierenMenue()
+	{
 		return "Du befindest dich in der Mühle. " +
 				"Hier kannst du Mehl zur Versorgung mahlen." + "\n";
 		
