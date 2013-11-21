@@ -8,11 +8,10 @@ public class PolitikController
 {
 	private MasterController masterController;
 	private Politik politik;
-	
+
 	public PolitikController(MasterController _masterController) 
 	{
 		this.setMasterController(_masterController);
-		this.politik = masterController.getSpiel().getHauptmenue().getPolitik();
 	}
 
 	public void auswertenEingabePolitik(String _parameter)
@@ -72,4 +71,11 @@ public class PolitikController
 		this.masterController = masterController;
 	}
 
+	public Politik getPolitik() {
+		return politik;
+	}
+
+	public void setPolitik(Politik _politik) {
+		politik = _politik;
+	}
 }

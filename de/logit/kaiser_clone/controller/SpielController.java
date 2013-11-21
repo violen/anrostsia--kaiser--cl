@@ -44,11 +44,11 @@ public class SpielController
 				game.getSpieler());
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
-		
 		game.getSpielrunde().berechneWerte();
 		masterController.getStatistikcontroller().berechneStatistik();
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
-			
+		masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
+		
 		while(true)
 		{			
 			ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
