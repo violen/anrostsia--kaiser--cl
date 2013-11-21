@@ -53,7 +53,7 @@ public class SabotageController {
 		
 		String nachrichtAnGegner ="";
 		
-		if (_parameter.equalsIgnoreCase("1"))
+		if (_parameter.equalsIgnoreCase("4"))
 		{
 			
 			int[] _parameters = auswertenUnruheOptionen(derSabotierte);
@@ -68,14 +68,14 @@ public class SabotageController {
 			nachrichtAnGegner = analysiereSabotage(_parameters[0],_parameters[1]);
 		}
 		
-		if (_parameter.equalsIgnoreCase("3"))
+		if (_parameter.equalsIgnoreCase("1"))
 		{
 			int _parameters[] = auswertenPluendernOptionen(derSabotierte);
 			
 			nachrichtAnGegner = analysiereSabotage(_parameters[0],_parameters[1]);
 		}
 		
-		if (_parameter.equalsIgnoreCase("4"))
+		if (_parameter.equalsIgnoreCase("3"))
 		{
 			int _parameters[] = auswertenVergiftenOptionen(derSabotierte);
 			
