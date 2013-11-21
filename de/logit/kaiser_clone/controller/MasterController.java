@@ -127,6 +127,8 @@ public class MasterController
 				}
 				this.spiel.erzeugeLandkarten();
 				
+				this.spiel.anlegenMenues();
+				
 				/*
 				 * Erzeuge Controller
 				 */
@@ -138,8 +140,6 @@ public class MasterController
 				this.spielRundenController = new SpielRundenController(this);
 				this.statistikController = new StatistikController(this);
 				this.startmenueController = new StartMenueController(this);
-				
-				this.spiel.anlegenMenues();
 				
 				this.spielController.gameLoop();
 			}
