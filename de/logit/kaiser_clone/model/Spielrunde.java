@@ -4,11 +4,11 @@
 package de.logit.kaiser_clone.model;
 
 
-import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.SpielRundenView;
 
-import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.TreeMap;
 
 
 /**
@@ -166,10 +166,11 @@ public class Spielrunde
 		
 	}
 	
-	public void setzeDieGrundwerteDerSpielerZustandsTabelle(LinkedList<Spieler> _spielerListe){
-		
-		for(Spieler _spieler : _spielerListe){
-			Hashtable<String, Boolean> zustaendeTabelle = new Hashtable<>();
+	public void setzeDieGrundwerteDerSpielerZustandsTabelle(LinkedList<Spieler> _spielerListe)
+	{	
+		for(Spieler _spieler : _spielerListe)
+		{
+			Map<String, Boolean> zustaendeTabelle = new TreeMap<>();
 			zustaendeTabelle.put("KornHandel", false);
 			zustaendeTabelle.put("MehlHandel", false);
 			zustaendeTabelle.put("DüngerGekauft", false);
