@@ -3,6 +3,8 @@
  */
 package de.logit.kaiser_clone.model;
 
+import java.util.Map;
+
 /**
  * @author nepo aka. André Hauser
  * 
@@ -42,7 +44,7 @@ public class Markt
 		return instance;
 	}
 
-	private void erhoeheBestaende()
+	public void erhoeheBestaende()
 	{
 		this.bestandKorn += ERHOEHUNG;
 		this.bestandMehl += ERHOEHUNG;
@@ -111,6 +113,11 @@ public class Markt
 			break;
 		}
 		if(_aktiverSpieler.getTitel().equals(titel)){
+			for(Map.Entry<String, Boolean> entry: _aktiverSpieler.getZustaendeTabelle().entrySet()){
+				if(entry.getKey().equalsIgnoreCase("TitelGekauft")){
+					entry.setValue(true);
+				}
+			}
 			return true;
 		}
 		return false;
