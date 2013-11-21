@@ -93,6 +93,7 @@ public class SpielController
 			else if(parameter.equalsIgnoreCase("6"))
 			{
 				masterController.getStatistikcontroller().berechneStatistik();
+				ausgabeHandler.gibStringAnKonsole(StatistikView.testeKarteDesSpielers(masterController.getStatistikcontroller().getLandschaft()), aktiverSpieler);
 				
 			}
 			else if (parameter.equalsIgnoreCase("7"))

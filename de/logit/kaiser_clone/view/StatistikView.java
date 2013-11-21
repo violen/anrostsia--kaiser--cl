@@ -21,5 +21,14 @@ public class StatistikView
 		// TODO Auto-generated method stub
 		return "im moment keine statistik da" + "\n";
 	}
+	
+	public static String testeKarteDesSpielers(String[] _karteDesSpielers){
+		String string = "";
+		for(int i = 0 ; i < _karteDesSpielers.length ; i++){
+			string = string + _karteDesSpielers[i];
+		}
+		
+		return string;
+	}
 
 }

@@ -1,6 +1,9 @@
 package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Gebaeude;
+import de.logit.kaiser_clone.model.Kornfeld;
+import de.logit.kaiser_clone.model.Kornspeicher;
+import de.logit.kaiser_clone.model.Muehle;
 import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.model.Statistik;
 import de.logit.kaiser_clone.model.Titel;
@@ -46,15 +49,54 @@ public class StatistikController
 		
 	}
 	
-	private String[] getLandschaft()
+	/*
+	 * Karte des Spieler soll in ein StringArray gespeichert werden.
+	 */
+	public String[] getLandschaft()
 	{
+		// Die Map
 		String[] karte;
+		// anzahl Zeilen
+		int arrayRows = 0;
+		// anzahl zeichen pro Zeile
+		final int zeichenProZeile = 15;
+		// speicher einer Zeile
 		String zeile = "";
-		for(int i = 0 ; i < masterController.getAktiverSpieler().getFelder().size() ; i++)
+		// Zeilenzähler um die Position im Array anzusprechen
+		int lineZaehler = 0;
+		// Gesamtegröße der Ländereien
+		int landGroesse = masterController.getAktiverSpieler().getFelder().size();
+		
+		arrayRows = landGroesse / zeichenProZeile;
+		if(landGroesse%zeichenProZeile!=0){
+			arrayRows++;
+		}
+		karte = new String[arrayRows];
+		for(int i = 0 ; i < landGroesse ; i++)
 		{
-			zeile = 
-			if(i % 15 == 0){
+			if(i % zeichenProZeile == 0 && i != 0){
 				zeile = zeile + "\n";
+				karte[lineZaehler] = zeile;
+				lineZaehler++;
+				zeile = "";
+			}
+			if(masterController.getAktiverSpieler().getFelder().get(i).getGebaeude() != null){
+				if(masterController.getAktiverSpieler().getFelder().get(i).getGebaeude() instanceof Kornfeld){
+					zeile = zeile + "ß";
+				} else if (masterController.getAktiverSpieler().getFelder().get(i).getGebaeude() instanceof Kornspeicher) {
+					zeile = zeile + "O";
+				} else if (masterController.getAktiverSpieler().getFelder().get(i).getGebaeude() instanceof Muehle) {
+					zeile = zeile + "X";
+				}
+			} else {
+				zeile = zeile + "#";
+			}
+			if (zeichenProZeile > landGroesse && landGroesse-1 == i) {
+				zeile = zeile + "\n";
+				karte[lineZaehler] = zeile;
+			} else if ((arrayRows - 1) == lineZaehler && landGroesse-1 == i) {
+				zeile = zeile + "\n";
+				karte[lineZaehler] = zeile;
 			}
 		}
 		
