@@ -78,8 +78,8 @@ public class SpielController
 			else if(parameter.equalsIgnoreCase("4"))
 			{
 				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getProduzierenMenue(), aktiverSpieler);
-				int menge = Integer.parseInt(this.eingabeController.getEingabe(aktiverSpieler));
-				masterController.getProduzierenController().produzieren(menge);
+				
+				masterController.getProduzierenController().produzieren();
 				
 			}
 			else if(parameter.equalsIgnoreCase("5"))
