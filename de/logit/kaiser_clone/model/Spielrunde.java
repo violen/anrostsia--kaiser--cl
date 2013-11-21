@@ -8,6 +8,7 @@ import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.SpielRundenView;
 
 import java.util.Hashtable;
+import java.util.LinkedList;
 
 
 /**
@@ -16,13 +17,7 @@ import java.util.Hashtable;
  */
 public class Spielrunde 
 {
-	private Spieler aktiverspieler;
-	
-	/*
-	 * Zustände ob ein Spieler in eine bestimmte Aktion gemacht hat.
-	 */
-	 //boolean[] zustaende = { true };
-	 private Hashtable<String, Boolean> zustaendeTabelle = new Hashtable<>();
+	private Spieler aktiverspieler;	 
 
 	public Spielrunde(Spieler _aktiverSpieler)
 	{
@@ -171,15 +166,20 @@ public class Spielrunde
 		
 	}
 	
-	public void setzeDieGrundwerteDerTabelle(){
-		this.zustaendeTabelle.put("KornHandel", false);
-		this.zustaendeTabelle.put("MehlHandel", false);
-		this.zustaendeTabelle.put("DüngerGekauft", false);
-		this.zustaendeTabelle.put("GebäudeGekauft", false);
-		this.zustaendeTabelle.put("FeldGekauft", false);
-		this.zustaendeTabelle.put("TitelGekauft", false);
-		this.zustaendeTabelle.put("SoldatenGekauft", false);
-		this.zustaendeTabelle.put("hatSabotiert", false);
+	public void setzeDieGrundwerteDerSpielerZustandsTabelle(LinkedList<Spieler> _spielerListe){
+		
+		for(Spieler _spieler : _spielerListe){
+			Hashtable<String, Boolean> zustaendeTabelle = new Hashtable<>();
+			zustaendeTabelle.put("KornHandel", false);
+			zustaendeTabelle.put("MehlHandel", false);
+			zustaendeTabelle.put("DüngerGekauft", false);
+			zustaendeTabelle.put("GebäudeGekauft", false);
+			zustaendeTabelle.put("FeldGekauft", false);
+			zustaendeTabelle.put("TitelGekauft", false);
+			zustaendeTabelle.put("SoldatenGekauft", false);
+			zustaendeTabelle.put("hatSabotiert", false);
+			_spieler.setZustaendeTabelle(zustaendeTabelle);
+		}
 	}
 	
 	

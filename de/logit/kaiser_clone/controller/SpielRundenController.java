@@ -29,5 +29,12 @@ public class SpielRundenController
 	public void setAktuelleRunde(Spielrunde aktuelleRunde) {
 		this.aktuelleRunde = aktuelleRunde;
 	}
+	
+	public void initNeueRunde(Spielrunde _spielrunde){
+		this.spielrunden.add(_spielrunde);
+		this.aktuelleRunde = new Spielrunde(masterController.getSpiel().getNextSpieler(
+				masterController.getAktiverSpieler(), masterController.getSpiel().getSpieler()));
+		masterController.setAktiverSpieler(aktuelleRunde.getAktiverspieler());
+	}
 
 }

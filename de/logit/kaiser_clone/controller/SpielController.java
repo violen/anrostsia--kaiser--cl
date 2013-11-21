@@ -39,6 +39,9 @@ public class SpielController
 	{
 		this.game = masterController.getSpiel();
 		masterController.setAktiverSpieler(game.neueRunde());
+		masterController.getSpielRundencontroller().setAktuelleRunde(game.getSpielrunde());
+		masterController.getSpielRundencontroller().getAktuelleRunde().setzeDieGrundwerteDerSpielerZustandsTabelle(
+				game.getSpieler());
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		
@@ -93,10 +96,17 @@ public class SpielController
 			}
 			else if (parameter.equalsIgnoreCase("7"))
 			{ 
-				Spieler spieler = game.getNextSpieler(aktiverSpieler, game.getSpieler());
-				game.getSpielrunde().setAktiverspieler(spieler);
-				masterController.setAktiverSpieler(spieler);
-				aktiverSpieler = spieler;
+				if(aktiverSpieler == game.getSpieler().getLast()){
+					masterController.getSpielRundencontroller().initNeueRunde(game.getSpielrunde());
+					game.setSpielrunde(masterController.getSpielRundencontroller().getAktuelleRunde());
+					aktiverSpieler = masterController.getAktiverSpieler();
+					ausgabeHandler.gibStringAnKonsole(":::NEUE RUNDE BEGINNT:::"+"\n", aktiverSpieler);
+				} else {
+					Spieler spieler = game.getNextSpieler(aktiverSpieler, game.getSpieler());
+					game.getSpielrunde().setAktiverspieler(spieler);
+					masterController.setAktiverSpieler(spieler);
+					aktiverSpieler = spieler;	
+				}			
 			}	
 		}
 	}
