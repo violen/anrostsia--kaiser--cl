@@ -6,6 +6,8 @@ public class Sabotage
 	private int eingesetzteSoldaten;
 	private int neuesGold;
 	private int neuesKorn;
+	private int gepluendertesGold;
+	private int gepluendertesKorn;
 
 	public int getUnruheKosten() 
 	{
@@ -65,6 +67,24 @@ public class Sabotage
 	public void setEingesetzteSoldaten(int _eingesetzteSoldaten) 
 	{
 		eingesetzteSoldaten = _eingesetzteSoldaten;
+	}
+	
+	
+
+	public int getGepluendertesGold() {
+		return gepluendertesGold;
+	}
+
+	public void setGepluendertesGold(int _gepluendertesGold) {
+		gepluendertesGold = _gepluendertesGold;
+	}
+
+	public int getGepluendertesKorn() {
+		return gepluendertesKorn;
+	}
+
+	public void setGepluendertesKorn(int _gepluendertesKorn) {
+		gepluendertesKorn = _gepluendertesKorn;
 	}
 
 	public int unruhe(Spieler _gegner) 
@@ -183,13 +203,15 @@ public class Sabotage
 			
 			if (gut == 1)
 			{
-				 neuesGold =(int) _gegner.getGold()-(_gegner.getGold()/100*30);
+				gepluendertesGold =(int) _gegner.getGold()/100*30;
+				 neuesGold = _gegner.getGold()-gepluendertesGold;
 				_gegner.setGold(neuesGold);
 				return 10;
 			}
 			else if (gut == 2)
 			{
-				neuesKorn = (int) _gegner.getKorn()-(_gegner.getKorn()/100*50);
+				gepluendertesKorn = (int )(_gegner.getKorn()/100*50);
+				neuesKorn = (int) _gegner.getKorn()-gepluendertesKorn;
 				_gegner.setKorn(neuesKorn);
 				return 11;
 			}

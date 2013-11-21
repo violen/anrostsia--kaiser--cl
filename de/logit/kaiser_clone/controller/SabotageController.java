@@ -196,17 +196,17 @@ public class SabotageController {
 		else if (_parameter3 == 10)
 		{
 			//Gold gepluendert
-			ausgabeHandler.gibStringAnKonsole(SabotageView.getGoldGepluendert(sabotage.getNeuesGold()),aktiverSpieler);
-			nachrichtAnGegner = SabotageView.getEsWurdeGoldGepluendert(aktiverSpieler.getName(),sabotage.getNeuesGold());
-			aktiverSpieler.setGold(gold+sabotage.getNeuesGold()-_kosten);
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getGoldGepluendert(sabotage.getGepluendertesGold()),aktiverSpieler);
+			nachrichtAnGegner = SabotageView.getEsWurdeGoldGepluendert(aktiverSpieler.getName(),sabotage.getGepluendertesGold());
+			aktiverSpieler.setGold(gold+sabotage.getGepluendertesGold()-_kosten);
 			
 		}
 		else if (_parameter3 == 11)
 		{
 			//Korn gepluendert
-			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornGepluendert(sabotage.getNeuesKorn()),aktiverSpieler);
-			nachrichtAnGegner = SabotageView.getEsWurdeKornGepluendert(aktiverSpieler.getName(),sabotage.getNeuesKorn());
-			aktiverSpieler.setKorn(aktiverSpieler.getKorn()+sabotage.getNeuesKorn());
+			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornGepluendert(sabotage.getGepluendertesKorn()),aktiverSpieler);
+			nachrichtAnGegner = SabotageView.getEsWurdeKornGepluendert(aktiverSpieler.getName(),sabotage.getGepluendertesKorn());
+			aktiverSpieler.setKorn(aktiverSpieler.getKorn()+sabotage.getGepluendertesKorn());
 			aktiverSpieler.setGold(gold-_kosten);
 			
 		}

@@ -19,7 +19,7 @@ public class SabotageView {
 		int i=0;
 		for (Spieler s : _gegner)
 		{
-			liste += s.getName()+ " " + i +  "\n";
+			liste += s.getName()+ " = " + i +  "\n";
 			i++;
 		}
 		return liste;
