@@ -3,8 +3,6 @@
  */
 package de.logit.kaiser_clone.model;
 
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
-
 /**
  * @author nepo aka. André Hauser
  *
