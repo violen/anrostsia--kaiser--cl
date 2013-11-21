@@ -322,8 +322,12 @@ public class Spieler
 
 	public int getSchutzFaktor() 
 	{
-		int s = Math.round((felder.size() / soldaten));	
-		return s;
+		if (soldaten > 0)
+		{
+			int s = Math.round((felder.size() / soldaten));	
+			return s;
+		}
+		else return 0;
 	}
 
 	public void setName(String name) 
