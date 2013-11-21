@@ -49,14 +49,18 @@ public class StatistikController
 	private String[] getLandschaft()
 	{
 		String[] karte;
+		String zeile = "";
 		for(int i = 0 ; i < masterController.getAktiverSpieler().getFelder().size() ; i++)
 		{
-			
+			zeile = 
+			if(i % 15 == 0){
+				zeile = zeile + "\n";
+			}
 		}
 		
 		
 		
-		return null;
+		return karte;
 	}
 
 }
