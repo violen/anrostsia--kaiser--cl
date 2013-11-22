@@ -15,11 +15,6 @@ public class MarktController
 	private EingabeController eingabeController;
 	private AusgabeHandler ausgabeHandler;
 	
-	public MarktController()
-	{
-		this.markt = Markt.getInstance();
-	}
-	
 	public MarktController(MasterController _masterController) 
 	{
 		this.masterController = _masterController;

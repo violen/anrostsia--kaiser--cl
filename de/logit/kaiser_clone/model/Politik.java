@@ -11,10 +11,10 @@ public class Politik
 {
 	
 	private int steuersatz=40; 	// normal= 40%, hoch=80%. niedrig=20%
-	private int nahrungsration=10;	//normal = 10, halb=5, doppelt=20; soldaten erhalten immer 10.
+	private int ration=10;	//normal = 10, halb=5, doppelt=20; soldaten erhalten immer 10.
 	/**
 	 * @param _steuersatz
-	 * @param _nahrungsration
+	 * @param _ration
 	 */
 	public Politik()
 	{
@@ -35,18 +35,18 @@ public class Politik
 		this.steuersatz = _steuersatz;
 	}
 	/**
-	 * @return the nahrungsration
+	 * @return the ration
 	 */
-	public int getNahrungsration()
+	public int getRation()
 	{
-		return this.nahrungsration;
+		return this.ration;
 	}
 	/**
-	 * @param _nahrungsration the nahrungsration to set
+	 * @param _ration the ration to set
 	 */
-	public void setNahrungsration(int _nahrungsration)
+	public void setRation(int _ration)
 	{
-		this.nahrungsration = _nahrungsration;
+		this.ration = _ration;
 	}
 	
 	

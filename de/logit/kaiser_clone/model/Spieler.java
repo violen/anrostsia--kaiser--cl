@@ -31,8 +31,8 @@ public class Spieler
 	private String nachricht = "";
 	
 	private String name;
-	private int ration;
-	private int steuersatz;
+	private int ration=10;//normal = 10, gesenkt =5, erhöht=20.
+	private int steuersatz=40;//normal = 40, gesenkt = 20, erhöht=80.
 	
 	private Map<String, Boolean> zustaendeTabelle;
 

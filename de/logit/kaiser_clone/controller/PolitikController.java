@@ -2,6 +2,8 @@ package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Politik;
 import de.logit.kaiser_clone.model.Spieler;
+import de.logit.kaiser_clone.view.AusgabeHandler;
+import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.PolitikView;
 
 public class PolitikController
@@ -31,35 +33,65 @@ public class PolitikController
 			switch (_parameter)
 			{
 			
-			//Menü Steuern ausgeben
+			//Menü Steuern ausgeben und prüfen, ob die Steuern schon erhöht oder gesenkt wurden.
 			case "1":
-				masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getSteuernMenue(), aktiverSpieler);
-				if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("1"))
-				{
-					PolitikView.getSteuernRunter();
-					politik.setSteuersatz(politik.getSteuersatz()/2);
+				//prüfen ob Steuern (40) bereits gesenkt (20) oder erhöht (80) wurden
+				//wenn gesenkt, dann nur noch auf Normal oder hoch
+				//wenn errhöht, dann nur noch auf Normal oder runter
+				masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getSteuernMenue(aktiverSpieler.getSteuersatz()), aktiverSpieler);
+				String steuern = masterController.getEingabecontroller().getEingabe(aktiverSpieler);
+				if(steuern.equalsIgnoreCase("1") && ((aktiverSpieler.getSteuersatz() == 20) ||(aktiverSpieler.getSteuersatz() == 40)))
+				{	
+					aktiverSpieler.setSteuersatz(aktiverSpieler.getSteuersatz()*2);			
+					masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getSteuernHoch(aktiverSpieler.getSteuersatz()), aktiverSpieler);
+					
+					
 				}
-				else if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("2"))
+				else if(steuern.equalsIgnoreCase("2") && ((aktiverSpieler.getSteuersatz() == 40) ||(aktiverSpieler.getSteuersatz() == 80)))
 				{
-					PolitikView.getSteuernHoch();
-					politik.setSteuersatz(politik.getSteuersatz()*2);
+					aktiverSpieler.setSteuersatz(aktiverSpieler.getSteuersatz()/2);
+					masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getSteuernRunter(aktiverSpieler.getSteuersatz()), aktiverSpieler);
+					
+					
+				}
+				else
+				{	
+					masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getSteuernNormal(aktiverSpieler.getSteuersatz()), aktiverSpieler);									}
+				
+				break;
+				
+			
+			
+			// Menü Nahrungsration ausgeben und prüfen, ob die Nahrung schon erhöht oder gesenkt wurden.
+			case "2":
+
+				//prüfen ob Nahrung (10) bereits gesenkt (5) oder erhöht (20) wurden
+				//wenn gesenkt, dann nur noch auf Normal oder hoch
+				//wenn erhöht, dann nur noch auf Normal oder runter
+				
+				masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getNahrungsrationsMenue(aktiverSpieler.getRation()), aktiverSpieler);
+				String nahrung = masterController.getEingabecontroller().getEingabe(aktiverSpieler);
+				if(nahrung.equalsIgnoreCase("1") && ((aktiverSpieler.getRation() == 5) ||(aktiverSpieler.getRation() == 10)) )
+				{
+					aktiverSpieler.setRation(aktiverSpieler.getRation()*2);
+					masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getNahrungWurdeErhoeht(aktiverSpieler.getRation()), aktiverSpieler);
+					
+				}
+				else if(nahrung.equalsIgnoreCase("2") && ((aktiverSpieler.getRation() == 10) ||(aktiverSpieler.getRation() == 20)))
+				{
+					aktiverSpieler.setRation(aktiverSpieler.getRation()/2);
+					masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getNahrungWurdeGesenkt(aktiverSpieler.getRation()), aktiverSpieler);
+					
 				}
 				else
 				{
-					PolitikView.getSteuernNormal();
+					masterController.getAusgabeHandler().gibStringAnKonsole(PolitikView.getNahrungBleibtGleich(aktiverSpieler.getRation()), aktiverSpieler);		
 				}
-				break;
-				
-			// Menü Nahrungsration ausgeben
-			case "2":
-				PolitikView.getNahrungsrationsMenue();
 				
 				break;
-			
+				}
+		
 			}
-		
-		
-	}
 
 	public MasterController getMasterController() 
 	{
@@ -71,11 +103,13 @@ public class PolitikController
 		this.masterController = masterController;
 	}
 
-	public Politik getPolitik() {
+	public Politik getPolitik() 
+	{
 		return politik;
 	}
 
-	public void setPolitik(Politik _politik) {
+	public void setPolitik(Politik _politik) 
+	{
 		politik = _politik;
 	}
 }

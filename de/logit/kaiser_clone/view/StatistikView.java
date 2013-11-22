@@ -32,6 +32,7 @@ public class StatistikView
 		}
 		string = string + "Deine Spielstatistik:" + "\n"+
 				"  " + "Titel: " + _aktiverSpieler.getTitel() + " || " + "Gold: " + _aktiverSpieler.getGold() +" || " + "Moral: " +_aktiverSpieler.getMoral() + "\n" +
+				"  " + "Steuern: " +_aktiverSpieler.getSteuersatz() +  " || " + " \t" + "Nahrung: " +_aktiverSpieler.getRation() + "\n"+
 				"  " + "Bevölkerung: " + _aktiverSpieler.getBevoelkerung() + " || " + "Korn: " + _aktiverSpieler.getKorn() + " || " + "Mehl: " + _aktiverSpieler.getMehl() + "\n" +
 				"  " + "Dünger: " + _aktiverSpieler.getDuenger() + " || " + "Kornspeicher: " + _aktiverSpieler.getKornspeicher() + " || " + "Mühlen: " + _aktiverSpieler.getMuehlen() + "\n" +
 				"  " + "Unbebautes land: " + _aktiverSpieler.getFreieFelder() + " || " + "Deine Nachrichten: " +"\n"+ _aktiverSpieler.getNachricht() + "\n";
