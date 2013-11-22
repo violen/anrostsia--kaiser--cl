@@ -5,9 +5,9 @@ public class SpielRundenView
 
 {
 
-	public static String getGuteErnte(int _menge)
+	public static String getGuteErnte()
 	{
-		return "Glückwunsch ! Sie hatten eine gute Ernte und konnten zusätzlich " + _menge + " Einheiten Korn erntent. \n" ;
+		return "Glückwunsch ! Sie hatten eine gute Ernte und konnten einmal zusätzlich produzieren. \n" ;
 	}
 	
 	public static String getsMaeusePlage(int _menge)
