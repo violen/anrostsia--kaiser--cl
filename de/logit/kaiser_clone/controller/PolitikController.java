@@ -9,7 +9,7 @@ import de.logit.kaiser_clone.view.PolitikView;
 public class PolitikController
 {
 	private MasterController masterController;
-	private Politik politik;
+	//private Politik politik;
 
 	public PolitikController(MasterController _masterController) 
 	{
@@ -103,13 +103,13 @@ public class PolitikController
 		this.masterController = masterController;
 	}
 
-	public Politik getPolitik() 
-	{
-		return politik;
-	}
-
-	public void setPolitik(Politik _politik) 
-	{
-		politik = _politik;
-	}
+//	public Politik getPolitik() 
+//	{
+//		return politik;
+//	}
+//
+//	public void setPolitik(Politik _politik) 
+//	{
+//		politik = _politik;
+//	}
 }

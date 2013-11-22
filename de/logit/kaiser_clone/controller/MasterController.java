@@ -41,6 +41,7 @@ public class MasterController
 	private StartMenueController startmenueController;
 	private AusgabeHandler ausgabeHandler;
 	private ChatServer server;
+	private ChattenController chattenController;
 	
 	public MasterController()
 	{
@@ -138,6 +139,7 @@ public class MasterController
 				this.spielRundenController = new SpielRundenController(this);
 				this.statistikController = new StatistikController(this);
 				this.startmenueController = new StartMenueController(this);
+				this.chattenController = new ChattenController(this);
 				
 				this.spiel.anlegenMenues();
 				
@@ -280,6 +282,15 @@ public class MasterController
 	{
 		server = _server;
 	}
+	/**
+	 * @return the chattenController
+	 */
+	public ChattenController getChattenController()
+	{
+		return this.chattenController;
+	}
+	
+	
 	
 	
 

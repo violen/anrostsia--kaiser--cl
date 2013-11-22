@@ -15,7 +15,7 @@ public class HauptmenueView
 		return "Du befindest dich im Hauptmenü. Du kannst nun Folgendes tun... "+"\n" +
 				"  "+"1: Zum Marktplatz"+"\t"+"2: Sabotiere jemanden"+"\t"+"3: Das Spielmenü zeigen"+"\n"+
 				"  "+"4: Zur Mühle"+"\t\t"+"5: Politik"+"\t\t"+"6: Spielstatistik anzeigen"+"\n"+
-				"  "+"7: Spielzug beenden" + "\n";
+				"  "+"7: Spielzug beenden" + "\t"+ "8: chatten";
 	}
 	
 	public static String getMarktMenue(){
@@ -45,6 +45,11 @@ public class HauptmenueView
 		return "Du befindest dich in der Mühle. " +
 				"Hier kannst du Mehl zur Versorgung mahlen." + "\n";
 		
+	}
+	
+	public static String getChattenMenue()
+	{ 
+		return "\n" + "Du befindest dich im Chatraum. Wem möchtest du eine Nachricht schicken? " + "\n" +" Bitte gib die Nummer des Spielers ein: " +  "\n";
 	}
 	
 

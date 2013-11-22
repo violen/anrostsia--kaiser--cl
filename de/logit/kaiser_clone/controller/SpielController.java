@@ -5,6 +5,7 @@ import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.model.Spielrunde;
 import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.AusgabeView;
+import de.logit.kaiser_clone.view.ChattenView;
 import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.HauptmenueView;
 import de.logit.kaiser_clone.view.StartmenueView;
@@ -29,7 +30,8 @@ public class SpielController
 		
 	}
 	
-	public SpielController(MasterController _masterController) {
+	public SpielController(MasterController _masterController) 
+	{
 		this.masterController = _masterController;
 		this.ausgabeHandler = _masterController.getAusgabeHandler();
 		this.eingabeController = _masterController.getEingabecontroller();
@@ -47,7 +49,7 @@ public class SpielController
 		game.getSpielrunde().berechneWerte();
 //		masterController.getStatistikcontroller().berechneStatistik();
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
-		masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
+		//masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
 		
 		while(true)
 		{			
@@ -104,23 +106,35 @@ public class SpielController
 			}
 			else if (parameter.equalsIgnoreCase("7"))
 			{ 
-				if(aktiverSpieler == game.getSpieler().getLast()){
+				if(aktiverSpieler == game.getSpieler().getLast())
+				{
 					masterController.getSpielRundencontroller().initNeueRunde(game.getSpielrunde());
 					game.setSpielrunde(masterController.getSpielRundencontroller().getAktuelleRunde());
 					game.getSpielrunde().setzeDieGrundwerteDerSpielerZustandsTabelle(game.getSpieler());
 					aktiverSpieler = masterController.getAktiverSpieler();
 					ausgabeHandler.gibStringAnKonsole(":::NEUE RUNDE BEGINNT:::"+"\n", aktiverSpieler);
-				} else {
+				} 
+				else 
+				{
 					Spieler spieler = game.getNextSpieler(aktiverSpieler, game.getSpieler());
 					game.getSpielrunde().setAktiverspieler(spieler);
 					masterController.setAktiverSpieler(spieler);
 					aktiverSpieler = spieler;	
 				}
+			}
+			else if(parameter.equalsIgnoreCase("8"))
+			{
+						ausgabeHandler.gibStringAnKonsole(HauptmenueView.getChattenMenue(), aktiverSpieler);
+						parameter = this.eingabeController.getEingabe(aktiverSpieler);
+						masterController.getChattenController().auswertenChattenMenue(parameter);
+						ausgabeHandler.gibStringAnKonsole(ChattenView.getEmpfaenger(parameter), aktiverSpieler);
+						//parameter = this.eingabeController.getEingabe(aktiverSpieler);
+			}
 				
 				game.getSpielrunde().berechneWerte();
-			}	
-		}
+		}	
 	}
+	
 	
 //	public void beendenZug()
 //	{
