@@ -51,6 +51,11 @@ public class SpielController
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 		//masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
 		
+		/*
+		 * Statistik für den ServerSpieler bei SPielstart
+		 */
+		ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
+		
 		while(true)
 		{			
 			ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
@@ -113,6 +118,7 @@ public class SpielController
 					game.getSpielrunde().setzeDieGrundwerteDerSpielerZustandsTabelle(game.getSpieler());
 					aktiverSpieler = masterController.getAktiverSpieler();
 					ausgabeHandler.gibStringAnKonsole(":::NEUE RUNDE BEGINNT:::"+"\n", aktiverSpieler);
+					ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
 				} 
 				else 
 				{
@@ -120,6 +126,7 @@ public class SpielController
 					game.getSpielrunde().setAktiverspieler(spieler);
 					masterController.setAktiverSpieler(spieler);
 					aktiverSpieler = spieler;	
+					ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
 				}
 			}
 			else if(parameter.equalsIgnoreCase("8"))
