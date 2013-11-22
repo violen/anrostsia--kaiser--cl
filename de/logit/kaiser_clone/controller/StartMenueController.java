@@ -22,6 +22,9 @@ public class StartMenueController
 		switch (_parameter) 
 		{
 		case "1":
+			/*
+			 * Ein Clientspieler kann zur zeit nicht das Spiel neu starten VORSICHT BUG ;(
+			 */
 			masterController.getAusgabeHandler().gibStringAnKonsole(AusgabeView.getBestaetigeAbbrechen("ein Neues Spiel beginnen"), aktiverSpieler);
 			if(masterController.getEingabecontroller().getEingabe(aktiverSpieler).equalsIgnoreCase("1"))
 			{

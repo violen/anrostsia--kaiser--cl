@@ -51,6 +51,11 @@ public class SpielController
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 		//masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
 		
+		/*
+		 * Statistik für den ServerSpieler bei SPielstart
+		 */
+		ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
+		
 		while(true)
 		{			
 			ausgabeHandler.gibStringAnKonsole(HauptmenueView.getHauptmenue(),masterController.getAktiverSpieler());
