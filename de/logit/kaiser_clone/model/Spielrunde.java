@@ -18,6 +18,7 @@ import java.util.TreeMap;
 public class Spielrunde 
 {
 	private Spieler aktiverspieler;	 
+	private String nachrichtAnSpieler="";
 
 	public Spielrunde(Spieler _aktiverSpieler)
 	{
@@ -51,9 +52,11 @@ public class Spielrunde
 		berechneMoral(wert);
 	}
 
-	private int berechneSteuern() {
-		return 0;
-		// TODO Auto-generated method stub
+	private void berechneSteuern() {
+		
+		int einnahmen = aktiverspieler.getBevoelkerung()*5 *(aktiverspieler.getSteuersatz()/100);
+		aktiverspieler.setGold(aktiverspieler.getGold()+einnahmen);
+		
 		
 	}
 
@@ -121,7 +124,7 @@ public class Spielrunde
 		
 		while(true)
 		{
-			int menge=((int) (Math.random()+(1+5)));
+			int menge=((int) (Math.random()*5+1));
 			
 			if (menge == 1 ) //Ereigniss ist gutErnte - erhöht Kornbestand
 				
@@ -154,15 +157,32 @@ public class Spielrunde
 		
 	}
 
-	private void berechneProduktion(int _i, int _i2) 
+	private void berechneProduktion(int _moral, int _geduengteFelder) 
 	{
-		// TODO Auto-generated method stub
+		if (_moral == 0)
+		{
+			_moral =1;
+		}
+		
+		int korn = aktiverspieler.getKornfelder()*_moral*_geduengteFelder;
+		aktiverspieler.setKorn(aktiverspieler.getKorn()+korn);
 		
 	}
 
 	private void berechneKornverfall() 
 	{
-		// TODO Auto-generated method stub
+		int[] bestaende = aktiverspieler.getKornBestaende();
+		
+		int z1 =(int) (Math.random()*90+99);
+		int z2 =(int) (Math.random()*50+80);
+		
+		int neuerBestand = (int)(bestaende[0]*(z1/100)+bestaende[1]*(z2/100));
+		
+		nachrichtAnSpieler += SpielRundenView.getKornVerfault(bestaende[0]+bestaende[1]-neuerBestand);
+		
+		aktiverspieler.setKorn(neuerBestand);
+		
+		
 		
 	}
 	

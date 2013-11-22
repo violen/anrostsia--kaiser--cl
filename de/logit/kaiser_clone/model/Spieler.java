@@ -374,7 +374,23 @@ public class Spieler
 		this.zustaendeTabelle = _zustaendeTabelle;
 	}
 	
-	
+	public int[] getKornBestaende()
+	{
+		int[] parameters = new int[2];
+		
+		if (korn > kornspeicher * 5000)
+		{
+			parameters[0]=kornspeicher*5000;
+			parameters[1]=korn-(kornspeicher*5000);
+		}
+		else if(korn <= kornspeicher *5000)
+		{
+			parameters[0]=korn;
+			parameters[1]=0;
+		}
+		
+		return parameters;
+	}
 	
 	
 }

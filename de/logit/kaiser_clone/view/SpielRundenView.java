@@ -24,4 +24,11 @@ public class SpielRundenView
 	{
 		return "Dieses war ein ruhiges Jahr! Keine besonderen Vorkommnisse. \n";
 	}
+
+	public static String getKornVerfault(int _menge) {
+		
+		return "Es ist " + _menge + " Korn verfault. \n";
+	}
+	
+	
 }
