@@ -66,15 +66,21 @@ public class SpielController
 			}
 			else if(parameter.equalsIgnoreCase("2"))
 			{
-				if (game.getSpieler().size() > 1)
+				if(!aktiverSpieler.getZustaendeTabelle().get("hatSabotiert").booleanValue()){
+					if (game.getSpieler().size() > 1)
+					{
+						ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
+						parameter = this.eingabeController.getEingabe(aktiverSpieler);
+						masterController.getSabotageController().auswertenEingabeSabotage(parameter);
+					}
+					else
+					{
+						masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getSabotageNurImMehrspielerModusVerfuegbar());
+					}
+				} 
+				else 
 				{
-					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
-					parameter = this.eingabeController.getEingabe(aktiverSpieler);
-					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
-				}
-				else
-				{
-					masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getSabotageNurImMehrspielerModusVerfuegbar());
+					ausgabeHandler.gibStringAnKonsole(FehlerView.ausfuehrenDieserAktionInDieserRundeNichtMoeglich(), aktiverSpieler);
 				}
 			}
 			else if(parameter.equalsIgnoreCase("3"))
@@ -102,7 +108,7 @@ public class SpielController
 			{
 //				masterController.getStatistikcontroller().berechneStatistik();
 				ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
-				masterController.getAktiverSpieler().setNachricht("");
+				masterController.getAktiverSpieler().setNachricht("");// Ereignisse loeschen nachdem sie ausgegeben wurden.
 			}
 			else if (parameter.equalsIgnoreCase("7"))
 			{ 
@@ -121,6 +127,8 @@ public class SpielController
 					masterController.setAktiverSpieler(spieler);
 					aktiverSpieler = spieler;	
 				}
+			
+			game.getSpielrunde().berechneWerte();
 			}
 			else if(parameter.equalsIgnoreCase("8"))
 			{
@@ -131,7 +139,7 @@ public class SpielController
 						//parameter = this.eingabeController.getEingabe(aktiverSpieler);
 			}
 				
-				game.getSpielrunde().berechneWerte();
+				
 		}	
 	}
 	

@@ -59,6 +59,11 @@ public class SpielRundenView
 		
 		return "Sir wir haben " + _einnahmen + " Gold an Steuern kassiert. \n";
 	}
+
+	public static String getWachstum(int _wachsen) {
+	
+		return "Sir es sind " + _wachsen + " Menschen zugewandert. \n";
+	}
 	
 	
 }

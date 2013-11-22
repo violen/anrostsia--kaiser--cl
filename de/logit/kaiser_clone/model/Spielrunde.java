@@ -51,12 +51,14 @@ public class Spielrunde
 		int wert =berechneHunger();
 		berechneSteuern();
 		berechneMoral(wert);
+		wachsen();
 		aktiverspieler.setNachricht(aktiverspieler.getNachricht()+nachrichtAnSpieler);
+		aktiverspieler.setMehl(0);
 	}
 
 	private void berechneSteuern() {
 		
-		int einnahmen = aktiverspieler.getBevoelkerung()*5 *(aktiverspieler.getSteuersatz()/100);
+		int einnahmen = aktiverspieler.getBevoelkerung()*(aktiverspieler.getSteuersatz());
 		aktiverspieler.setGold(aktiverspieler.getGold()+einnahmen);
 		nachrichtAnSpieler += SpielRundenView.getSteuereinnahmen(einnahmen);
 		
@@ -114,23 +116,29 @@ public class Spielrunde
 
 	private void berechneMoral(int _wert) {
 
+		// _wert ist der Rückgabewert der HungerMethode entweder 0,50 oder 100
+		// Wenn es nix zu essen gab soll auch die moral runter gehen!
 		int moral = aktiverspieler.getMoral();
 		int steuer = aktiverspieler.getSteuersatz();
 		
-		moral = moral - steuer * (_wert/100);
+		moral = 100 - steuer * (_wert/100);
+		
+		if (moral < 0)
+		{
+			moral=0;
+		}
+		else if (moral > 100)
+		{
+			moral = 100;
+		}
+		aktiverspieler.setMoral(moral);
 		
 		nachrichtAnSpieler += SpielRundenView.getNeueMoral(moral);
 	}
 
 	private void berechneEreignisse() 
-	{
-
+	{			
 		
-		
-		
-		
-		while(true)
-		{
 			int param=((int) (Math.random()*5+1));
 			int menge=0;
 			
@@ -138,10 +146,10 @@ public class Spielrunde
 				
 			{
 				//Das Ereigniss erhöht die Produktion zusätzlich zur normalen Produktion 
-				//um den Ertrag einer optimalen Produktion
+				//um den Ertrag einer optimalen Produktion(in diesem Fall wir die berechneProduktion Methode ein 2. mal aufgerufen)
 				berechneProduktion(100,aktiverspieler.getKornfelder());//100 % Moral und alle Felder gedüngt
 				nachrichtAnSpieler += SpielRundenView.getGuteErnte();
-				break;
+				
 			}
 			
 			else if  (param == 2 ) //Ereigniss ist mauesePlage - verringert Kornbestand
@@ -149,7 +157,7 @@ public class Spielrunde
 				menge = ((int) aktiverspieler.getKorn() /2);//Der Spieler verliert 50% seines Kornbestandes
 				aktiverspieler.setKorn(menge);
 				nachrichtAnSpieler += SpielRundenView.getsMaeusePlage(menge);
-				break;
+				
 			}
 			
 			else if (param == 3 )//Ereigniss ist Pest - verringert Bevölkerung
@@ -157,17 +165,18 @@ public class Spielrunde
 				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 25% seine Bevölkerung
 				aktiverspieler.setKorn(menge);
 				nachrichtAnSpieler += SpielRundenView.getPest(menge);
-				break;
+				
 			}
-			else if (( param > 3) || (menge < 1)) //kein Ereigniss eingetreten.
+			else 
+			//kein Ereigniss eingetreten.
 			{
 				nachrichtAnSpieler += SpielRundenView.getKeinEreigniss();
-				break;
+			
 			}
-		}
-		
-		
 	}
+		
+		
+	
 
 	private int berechneProduktion(int _moral, int _geduengteFelder) 
 	{
@@ -176,7 +185,7 @@ public class Spielrunde
 			_moral =1;
 		}
 		
-		int korn = aktiverspieler.getKornfelder()*_moral*_geduengteFelder;
+		int korn = (aktiverspieler.getKornfelder()*_moral*_geduengteFelder)+(aktiverspieler.getKornfelder()*50);
 		aktiverspieler.setKorn(aktiverspieler.getKorn()+korn);
 		
 		nachrichtAnSpieler += SpielRundenView.getKornProduktion(korn);
@@ -198,6 +207,16 @@ public class Spielrunde
 		
 		
 		
+	}
+	
+	private void wachsen()
+	{
+		int wachstum = (int) (aktiverspieler.getMoral()/100);
+		int wachsen = aktiverspieler.getBevoelkerung()*wachstum;
+		
+		nachrichtAnSpieler += SpielRundenView.getWachstum(wachsen);
+		
+		aktiverspieler.setBevoelkerung(aktiverspieler.getBevoelkerung()+wachsen);
 	}
 	
 	public void setzeDieGrundwerteDerSpielerZustandsTabelle(LinkedList<Spieler> _spielerListe)

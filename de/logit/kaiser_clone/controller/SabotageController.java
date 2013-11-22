@@ -4,6 +4,7 @@
 package de.logit.kaiser_clone.controller;
 
 import java.util.LinkedList;
+import java.util.Map;
 
 import de.logit.kaiser_clone.model.Sabotage;
 import de.logit.kaiser_clone.model.Spieler;
@@ -246,13 +247,18 @@ public class SabotageController {
 		
 		int[] parameters = new int[2];
 		parameters[1]=sabotage.getUnruheKosten();
-
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 
 		if (masterController.getAktiverSpieler().getGold() >= 2*parameters[1])
 		{
 			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
 			{
+				for(Map.Entry<String, Boolean> entry: aktiverSpieler.getZustaendeTabelle().entrySet()){
+					if(entry.getKey().equalsIgnoreCase("hatsabotiert")){
+						entry.setValue(true);
+					}
+				}
 				parameters[0] =sabotage.unruhe(_gegner);
 				
 				return parameters;// 1 bei erfolg 2 bei misserfolg
@@ -271,12 +277,19 @@ public class SabotageController {
 		int[] parameters = new int[2];
 		
 		parameters[1]=sabotage.getZerstoerenKosten();
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		if (masterController.getAktiverSpieler().getGold() >= 2*parameters[1])
 		{
 			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
 			{
+				for(Map.Entry<String, Boolean> entry: aktiverSpieler.getZustaendeTabelle().entrySet()){
+					if(entry.getKey().equalsIgnoreCase("hatSabotiert")){
+						entry.setValue(true);
+					}
+				}
+				
 				parameters[0] =sabotage.zerstoeren(_gegner);
 				
 				return parameters;// 5,6,7 bei erfolg 8 bei misserfolg
@@ -294,12 +307,19 @@ public class SabotageController {
 		int[] parameters = new int[2];
 		
 		parameters[1]=sabotage.getPluendernKosten();
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		if (masterController.getAktiverSpieler().getGold() >= 2*parameters[1])
 		{
 			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
 			{
+				for(Map.Entry<String, Boolean> entry: aktiverSpieler.getZustaendeTabelle().entrySet()){
+					if(entry.getKey().equalsIgnoreCase("hatSabotiert")){
+						entry.setValue(true);
+					}
+				}
+				
 				parameters[0] =sabotage.pluendern(_gegner);
 				
 				return parameters;// 10,11 bei erfolg 12 bei misserfolg
@@ -317,12 +337,19 @@ public class SabotageController {
 		int[] parameters = new int[2];
 		
 		parameters[1]=sabotage.getVergiftenKosten();
+		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		if (masterController.getAktiverSpieler().getGold() >= 2*sabotage.getVergiftenKosten())
 		{
 			
 			if(masterController.getAktiverSpieler().getSoldaten() >= sabotage.getSoldatenMinimum())
 			{
+				for(Map.Entry<String, Boolean> entry: aktiverSpieler.getZustaendeTabelle().entrySet()){
+					if(entry.getKey().equalsIgnoreCase("hatSabotiert")){
+						entry.setValue(true);
+					}
+				}
+				
 				parameters[0] =sabotage.vergiften(_gegner);
 				
 				return parameters;// 14 bei erfolg 13 bei misserfolg

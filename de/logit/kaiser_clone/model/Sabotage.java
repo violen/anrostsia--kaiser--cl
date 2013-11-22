@@ -1,5 +1,7 @@
 package de.logit.kaiser_clone.model;
 
+import java.util.Map;
+
 public class Sabotage
 
 {
@@ -123,6 +125,8 @@ public class Sabotage
 		{
 			return 9;
 		}
+		
+		
 		
 		if (schutz < power)
 		{
