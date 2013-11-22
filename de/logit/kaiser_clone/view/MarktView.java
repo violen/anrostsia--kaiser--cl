@@ -54,7 +54,7 @@ public class MarktView
 	
 	public static String getMarktKaufVonGebaeude(int _anzahl)
 	{
-		return "Wieviele sollen errichtet werden?" + "\n";
+		return "Es werden " + _anzahl + " errichtet." + "\n";
 	}
 	
 	public static String getTitelKaufErfolgreich(String _string)
@@ -83,7 +83,7 @@ public class MarktView
 
 	public static String getKaufErfolgreich()
 	{
-		return "Kauf erfolgreich";
+		return "Kauf erfolgreich" + "\n";
 	}
 
 
