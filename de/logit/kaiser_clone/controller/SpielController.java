@@ -45,7 +45,7 @@ public class SpielController
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		game.getSpielrunde().berechneWerte();
-		masterController.getStatistikcontroller().berechneStatistik();
+//		masterController.getStatistikcontroller().berechneStatistik();
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 		masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
 		
@@ -98,9 +98,9 @@ public class SpielController
 			}
 			else if(parameter.equalsIgnoreCase("6"))
 			{
-				masterController.getStatistikcontroller().berechneStatistik();
+//				masterController.getStatistikcontroller().berechneStatistik();
 				ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
-				
+				masterController.getAktiverSpieler().setNachricht("");
 			}
 			else if (parameter.equalsIgnoreCase("7"))
 			{ 

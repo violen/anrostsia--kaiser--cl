@@ -28,7 +28,7 @@ public class Spieler
 	//Startwert der Moral ist 70 Prozent --> max 100%
 	private int moral=70;
 	
-	private String nachricht;
+	private String nachricht = "";
 	
 	private String name;
 	private int ration;
