@@ -52,6 +52,7 @@ public class MarktView
 		return "Wieviel Korn soll verkauft werden?" + "\n";
 	}
 	
+	//Todo: Was macht diese Methode?
 	public static String getMarktKaufVonGebaeude(int _anzahl)
 	{
 		return "Wieviele sollen errichtet werden?" + "\n";
