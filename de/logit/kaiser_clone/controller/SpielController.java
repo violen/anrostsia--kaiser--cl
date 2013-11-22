@@ -44,7 +44,7 @@ public class SpielController
 				game.getSpieler());
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
-		game.getSpielrunde().berechneWerte();
+//		game.getSpielrunde().berechneWerte();
 //		masterController.getStatistikcontroller().berechneStatistik();
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 		masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());

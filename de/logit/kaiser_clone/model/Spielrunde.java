@@ -77,12 +77,12 @@ public class Spielrunde
 		
 		int wert = 0;
 		
-		String nachricht = "";
+		
 		
 		if ( verbrauch1 > mehl )
 		{
 			soldaten = (int) (soldaten * (mehl / (soldaten * 2)));
-			//Ausgabe Hungersnot
+			// Hungerkatastrophe
 			aktiverspieler.setSoldaten(soldaten);
 			aktiverspieler.setMehl(0);
 			nachrichtAnSpieler += SpielRundenView.getHungerKatastrophe();
@@ -131,40 +131,45 @@ public class Spielrunde
 		
 		while(true)
 		{
-			int menge=((int) (Math.random()*5+1));
+			int param=((int) (Math.random()*5+1));
+			int menge=0;
 			
-			if (menge == 1 ) //Ereigniss ist gutErnte - erhöht Kornbestand
+			if (param == 1 ) //Ereigniss ist gutErnte - erhöht Kornbestand
 				
 			{
 				//Das Ereigniss erhöht die Produktion zusätzlich zur normalen Produktion 
 				//um den Ertrag einer optimalen Produktion
 				berechneProduktion(100,aktiverspieler.getKornfelder());//100 % Moral und alle Felder gedüngt
-				nachrichtAnSpieler += SpielRundenView.getGuteErnte(menge);
+				nachrichtAnSpieler += SpielRundenView.getGuteErnte();
+				break;
 			}
 			
-			else if  (menge == 2 ) //Ereigniss ist mauesePlage - verringert Kornbestand
+			else if  (param == 2 ) //Ereigniss ist mauesePlage - verringert Kornbestand
 			{
 				menge = ((int) aktiverspieler.getKorn() /2);//Der Spieler verliert 50% seines Kornbestandes
 				aktiverspieler.setKorn(menge);
 				nachrichtAnSpieler += SpielRundenView.getsMaeusePlage(menge);
+				break;
 			}
 			
-			else if (menge == 3 )//Ereigniss ist Pest - verringert Bevölkerung
+			else if (param == 3 )//Ereigniss ist Pest - verringert Bevölkerung
 			{
 				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 25% seine Bevölkerung
 				aktiverspieler.setKorn(menge);
 				nachrichtAnSpieler += SpielRundenView.getPest(menge);
+				break;
 			}
-			else if (( menge > 3) || (menge < 1)) //kein Ereigniss eingetreten.
+			else if (( param > 3) || (menge < 1)) //kein Ereigniss eingetreten.
 			{
 				nachrichtAnSpieler += SpielRundenView.getKeinEreigniss();
+				break;
 			}
 		}
 		
 		
 	}
 
-	private void berechneProduktion(int _moral, int _geduengteFelder) 
+	private int berechneProduktion(int _moral, int _geduengteFelder) 
 	{
 		if (_moral == 0)
 		{
@@ -175,15 +180,15 @@ public class Spielrunde
 		aktiverspieler.setKorn(aktiverspieler.getKorn()+korn);
 		
 		nachrichtAnSpieler += SpielRundenView.getKornProduktion(korn);
-		
+		return korn;
 	}
 
 	private void berechneKornverfall() 
 	{
 		int[] bestaende = aktiverspieler.getKornBestaende();
 		
-		int z1 =(int) (Math.random()*90+99);// korn im kornspeicher
-		int z2 =(int) (Math.random()*50+80);// korn ausserhalb gelagert
+		int z1 =(int) (Math.random()*99+90);// korn im kornspeicher
+		int z2 =(int) (Math.random()*80+50);// korn ausserhalb gelagert
 		
 		int neuerBestand = (int)(bestaende[0]*(z1/100)+bestaende[1]*(z2/100));
 		
