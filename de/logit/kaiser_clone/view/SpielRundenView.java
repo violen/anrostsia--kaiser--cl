@@ -29,6 +29,36 @@ public class SpielRundenView
 		
 		return "Es ist " + _menge + " Korn verfault. \n";
 	}
+
+	public static String getKornProduktion(int _menge) {
+		
+		return "Es wurde " + _menge + " Korn produziert. \n";
+	}
+
+	public static String getNeueMoral(int _moral) {
+		
+		return "Die neue Moral beträgt " + _moral + " . \n";
+	}
+
+	public static String getHungersnot() {
+		
+		return "Es gab eine Hungersnot die hälfte Deiner Einwohner sind verhungert. \n";
+	}
+
+	public static String getHungerKatastrophe() {
+		
+		return "Hungerkatastrophe die keine Rationen hatten Soldaten und 50% der Einwohner sind verhungert. \n";
+	}
+
+	public static String getGenugNahrung() {
+		
+		return "Gute Arbeit es sind keine Einwohner verhungert. \n";
+	}
+
+	public static String getSteuereinnahmen(int _einnahmen) {
+		
+		return "Sir wir haben " + _einnahmen + " Gold an Steuern kassiert. \n";
+	}
 	
 	
 }
