@@ -45,7 +45,7 @@ public class SabotageController {
 		// hier wird die liste der spieler außer dema ktiven spieler ausgegeben.
 		LinkedList<Spieler> gegner = gegnerWaehlen(masterController.getAktiverSpieler());
 		
-		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegner));
+		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegner),aktiverSpieler);
 		
 		Spieler derSabotierte;
 		

@@ -45,7 +45,7 @@ public class SpielController
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		
 		game.getSpielrunde().berechneWerte();
-		masterController.getStatistikcontroller().berechneStatistik();
+//		masterController.getStatistikcontroller().berechneStatistik();
 		masterController.getSabotageController().setSabotage(masterController.getSpiel().getHauptmenue().getSabotage());
 		masterController.getPolitikController().setPolitik(masterController.getSpiel().getHauptmenue().getPolitik());
 		
@@ -64,10 +64,16 @@ public class SpielController
 			}
 			else if(parameter.equalsIgnoreCase("2"))
 			{
-				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
-				parameter = this.eingabeController.getEingabe(aktiverSpieler);
-				masterController.getSabotageController().auswertenEingabeSabotage(parameter);
-				
+				if (game.getSpieler().size() > 1)
+				{
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
+					parameter = this.eingabeController.getEingabe(aktiverSpieler);
+					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
+				}
+				else
+				{
+					masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getSabotageNurImMehrspielerModusVerfuegbar());
+				}
 			}
 			else if(parameter.equalsIgnoreCase("3"))
 			{
@@ -92,9 +98,9 @@ public class SpielController
 			}
 			else if(parameter.equalsIgnoreCase("6"))
 			{
-				masterController.getStatistikcontroller().berechneStatistik();
+//				masterController.getStatistikcontroller().berechneStatistik();
 				ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
-				
+				masterController.getAktiverSpieler().setNachricht("");
 			}
 			else if (parameter.equalsIgnoreCase("7"))
 			{ 

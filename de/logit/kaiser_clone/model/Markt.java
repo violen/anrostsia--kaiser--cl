@@ -196,7 +196,7 @@ public class Markt
 		if (_aktiverSpieler.getGold() >= _anzahlHolen*soldatEK)
 		{
 			_aktiverSpieler.setSoldaten(_aktiverSpieler.getSoldaten()+_anzahlHolen);
-			_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*soldatEK));
+			_aktiverSpieler.setGold(_aktiverSpieler.getGold()-(_anzahlHolen*soldatEK));
 			parameters[0]=1;
 			
 		}
@@ -216,7 +216,7 @@ public class Markt
 			if (_aktiverSpieler.getGold() >= _anzahlHolen*kornEK)
 			{
 				_aktiverSpieler.setKorn(_aktiverSpieler.getKorn()+_anzahlHolen);
-				_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*kornEK));
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold()-(_anzahlHolen*kornEK));
 				parameters[0]=1;// Transaktion durchgefuehrt
 				
 			}
@@ -243,7 +243,7 @@ public class Markt
 			if (_aktiverSpieler.getGold() >= _anzahlHolen*mehlEK)
 			{
 				_aktiverSpieler.setMehl(_aktiverSpieler.getMehl()+_anzahlHolen);
-				_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*mehlEK));
+				_aktiverSpieler.setGold(_aktiverSpieler.getGold()-(_anzahlHolen*mehlEK));
 				parameters[0]=1;
 				
 			}
@@ -334,7 +334,7 @@ public class Markt
 		if (_aktiverSpieler.getGold() >= _anzahlHolen*duengerEK)
 		{
 			_aktiverSpieler.setDuenger(_aktiverSpieler.getDuenger()+_anzahlHolen);
-			_aktiverSpieler.setGold(_aktiverSpieler.getGold()+(_anzahlHolen*duengerEK));
+			_aktiverSpieler.setGold(_aktiverSpieler.getGold()-(_anzahlHolen*duengerEK));
 			parameters[0]=1;
 			
 		}
