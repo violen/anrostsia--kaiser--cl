@@ -11,6 +11,11 @@ public class Feld
 {
 	private Gebaeude gebaeude;
 
+	public Feld() {
+
+	}
+	
+	
 	/**
 	 * @return the gebaeude
 	 */
@@ -26,6 +31,8 @@ public class Feld
 	{
 		this.gebaeude = _gebaeude;
 	}
+
+	
 	
 	
 
