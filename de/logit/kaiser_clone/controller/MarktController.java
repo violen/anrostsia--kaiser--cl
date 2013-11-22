@@ -15,11 +15,6 @@ public class MarktController
 	private EingabeController eingabeController;
 	private AusgabeHandler ausgabeHandler;
 	
-	public MarktController()
-	{
-		this.markt = Markt.getInstance();
-	}
-	
 	public MarktController(MasterController _masterController) 
 	{
 		this.masterController = _masterController;
@@ -27,7 +22,9 @@ public class MarktController
 		this.ausgabeHandler = _masterController.getAusgabeHandler();
 		this.markt = Markt.getInstance();
 	}
-
+	/*
+	 * Wertet aus ob etwas gekauft oder verkauft wird
+	 */
 	public void auswertenEingabeMarkt(String _param)
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
@@ -155,7 +152,7 @@ public class MarktController
 		{
 			nachricht = FehlerView.getTransaktionErfolgreich();
 			
-			nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
+			//nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
 			
 		}
 		

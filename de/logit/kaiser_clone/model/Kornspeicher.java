@@ -11,5 +11,9 @@ public class Kornspeicher extends Gebaeude
 {
 	private final int lagerKapazitaet=5000; 
 	private int bestand;
+	
+	
+	
+	
 
 }
