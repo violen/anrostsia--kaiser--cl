@@ -22,7 +22,9 @@ public class MarktController
 		this.ausgabeHandler = _masterController.getAusgabeHandler();
 		this.markt = Markt.getInstance();
 	}
-
+	/*
+	 * Wertet aus ob etwas gekauft oder verkauft wird
+	 */
 	public void auswertenEingabeMarkt(String _param)
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();

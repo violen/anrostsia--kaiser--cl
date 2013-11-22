@@ -12,7 +12,9 @@ public class ProduzierenController
 	{
 		masterController = _masterController;
 	}
-
+	/**
+	 * Produziert aus Korn Mehl 2:1
+	 */
 	public void produzieren()
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
