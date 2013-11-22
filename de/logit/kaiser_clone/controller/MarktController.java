@@ -152,7 +152,7 @@ public class MarktController
 		{
 			nachricht = FehlerView.getTransaktionErfolgreich();
 			
-			nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
+			//nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
 			
 		}
 		
