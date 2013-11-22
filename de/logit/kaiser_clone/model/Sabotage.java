@@ -123,7 +123,7 @@ public class Sabotage
 		
 		if ((_gegner.getKornfelder() == 0) && (_gegner.getKornspeicher()==0) && (_gegner.getMuehlen()==0))
 		{
-			return 9;
+			return 9;//Gegner hat keine Gebaeude
 		}
 		
 		
