@@ -12,10 +12,10 @@ public class HauptmenueView
 	
 	public static String getHauptmenue()
 	{
-		return "Du befindest dich im Hauptmenü. Du kannst nun Folgendes tun... "+"\n" +
+		return "\n" + "Du befindest dich im Hauptmenü. Du kannst nun Folgendes tun... "+"\n" +
 				"  "+"1: Zum Marktplatz"+"\t"+"2: Sabotiere jemanden"+"\t"+"3: Das Spielmenü zeigen"+"\n"+
 				"  "+"4: Zur Mühle"+"\t\t"+"5: Politik"+"\t\t"+"6: Spielstatistik anzeigen"+"\n"+
-				"  "+"7: Spielzug beenden" + "\t"+ "8: chatten";
+				"  "+"7: Spielzug beenden" + "\t"+ "8: chatten" +"\n";
 	}
 	
 	public static String getMarktMenue(){

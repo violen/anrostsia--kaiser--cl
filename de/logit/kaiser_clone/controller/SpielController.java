@@ -133,9 +133,17 @@ public class SpielController
 			{
 						ausgabeHandler.gibStringAnKonsole(HauptmenueView.getChattenMenue(), aktiverSpieler);
 						parameter = this.eingabeController.getEingabe(aktiverSpieler);
-						masterController.getChattenController().auswertenChattenMenue(parameter);
-						ausgabeHandler.gibStringAnKonsole(ChattenView.getEmpfaenger(parameter), aktiverSpieler);
-						//parameter = this.eingabeController.getEingabe(aktiverSpieler);
+						ausgabeHandler.gibStringAnKonsole(ChattenView.getGebeGewaehltenEmpfaengerAus(parameter), aktiverSpieler);
+						
+						
+						//ausgabeHandler.gibStringAnKonsole(ChattenView.getNachrichtAnEmpfaengerEingeben(parameter), aktiverSpieler);//jetzt im ChattenController
+						masterController.getChattenController().getAuswertenEmpfaenger(parameter);
+						
+						
+						
+						//ausgabeHandler.gibStringAnKonsole(ChattenView.getGesendeteNachricht(parameter), aktiverSpieler);
+			
+						
 			}
 				
 				game.getSpielrunde().berechneWerte();
