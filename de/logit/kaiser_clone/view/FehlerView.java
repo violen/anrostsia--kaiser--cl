@@ -68,4 +68,9 @@ public class FehlerView
 		return "Du hast diese Aktion bereits getätigt!" + "\n" +
 				"Du darfst diesen Bereich erst in der neuen Runde wieder betreten!" + "\n";
 	}
+
+	public static String getSabotageNurImMehrspielerModusVerfuegbar() {
+	
+		return "Sabotage ist nur im Mehrspielermodus verfügbar. \n";
+	}
 }

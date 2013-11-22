@@ -64,10 +64,16 @@ public class SpielController
 			}
 			else if(parameter.equalsIgnoreCase("2"))
 			{
-				ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
-				parameter = this.eingabeController.getEingabe(aktiverSpieler);
-				masterController.getSabotageController().auswertenEingabeSabotage(parameter);
-				
+				if (game.getSpieler().size() > 1)
+				{
+					ausgabeHandler.gibStringAnKonsole(HauptmenueView.getSabotierenMenue(), aktiverSpieler);
+					parameter = this.eingabeController.getEingabe(aktiverSpieler);
+					masterController.getSabotageController().auswertenEingabeSabotage(parameter);
+				}
+				else
+				{
+					masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getSabotageNurImMehrspielerModusVerfuegbar());
+				}
 			}
 			else if(parameter.equalsIgnoreCase("3"))
 			{
