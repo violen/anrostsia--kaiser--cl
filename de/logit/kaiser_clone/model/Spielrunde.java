@@ -163,7 +163,7 @@ public class Spielrunde
 			else if (param == 3 )//Ereigniss ist Pest - verringert Bevölkerung
 			{
 				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 25% seine Bevölkerung
-				aktiverspieler.setKorn(menge);
+				aktiverspieler.setBevoelkerung(menge);
 				nachrichtAnSpieler += SpielRundenView.getPest(menge);
 				
 			}
