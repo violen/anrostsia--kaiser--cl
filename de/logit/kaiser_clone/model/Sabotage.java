@@ -95,7 +95,7 @@ public class Sabotage
 		int erfolg =0;
 		int schutz = _gegner.getSchutzFaktor();
 		
-		int power = ((int) (Math.random()*1+1000))-eingesetzteSoldaten;
+		int power = ((int) (Math.random()*1000+1))-eingesetzteSoldaten;
 		
 		if ( schutz < power)
 		{
@@ -119,7 +119,7 @@ public class Sabotage
 		int erfolg = 0;
 		
 		int schutz = _gegner.getSchutzFaktor();
-		int power = (int) (Math.random()*(1000+1));
+		int power = (int) (Math.random()*1+1000);
 		
 		if ((_gegner.getKornfelder() == 0) && (_gegner.getKornspeicher()==0) && (_gegner.getMuehlen()==0))
 		{
