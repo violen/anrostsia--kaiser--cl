@@ -1,9 +1,6 @@
 package de.logit.kaiser_clone.controller;
 
-import de.logit.kaiser_clone.model.Politik;
 import de.logit.kaiser_clone.model.Spieler;
-import de.logit.kaiser_clone.view.AusgabeHandler;
-import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.PolitikView;
 
 public class PolitikController
@@ -13,7 +10,7 @@ public class PolitikController
 
 	public PolitikController(MasterController _masterController) 
 	{
-		this.setMasterController(_masterController);
+		this.masterController = _masterController;
 	}
 
 	public void auswertenEingabePolitik(String _parameter)
@@ -92,16 +89,6 @@ public class PolitikController
 				}
 		
 			}
-
-	public MasterController getMasterController() 
-	{
-		return masterController;
-	}
-
-	public void setMasterController(MasterController masterController) 
-	{
-		this.masterController = masterController;
-	}
 
 //	public Politik getPolitik() 
 //	{
