@@ -25,7 +25,7 @@ public class AusgabeHandler {
 		this.pw = new PrintWriter(_outputStream);
 	}
 	
-	public void gibStringAnKonsole(String _string)//lokaler Aufruf - Single Player
+	public void gibStringAnKonsole(String _string)//lokaler Aufruf - Solange Spieler keinem Stream zugeordnet sind
 	{
 		if(this.pw != null){
 			pw.print(_string);
@@ -35,7 +35,7 @@ public class AusgabeHandler {
 		}
 	}
 	
-	public void gibStringAnKonsole(String _string, Spieler _spieler)// überladen - multi player - > 1 Spieler
+	public void gibStringAnKonsole(String _string, Spieler _spieler)// überladen - Wird genutzt sobald Spieler einem Stream zugeordnet sind
 	{
 		if(istSpielerKeinServerSpieler(_spieler)){
 			String[] array = _string.split("\n");
