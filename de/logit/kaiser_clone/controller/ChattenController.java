@@ -1,7 +1,12 @@
 package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.view.ChattenView;
-
+/**
+ * 
+ * @author Nepu
+ *	Chatten ist noch nicht konsistent implementiert
+ * d.h. Es kann sich nicht ingame Unterhalten werden ;(
+ */
 public class ChattenController
 {
 	private MasterController masterController;
