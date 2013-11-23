@@ -47,4 +47,9 @@ public class AusgabeView
 		
 		return "Transaktion erfolgreich.\n";
 	}
+	
+	public static String getGewonnenHatSpieler(String _spielerName){
+		return _spielerName + " hat die aktuelle Partie gewonnen!" + "\n" +
+				"Vielen dank fürs Spielen der Server schaltet sich in 15 sekunden ab!" + "\n";
+	}
 }
