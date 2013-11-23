@@ -69,9 +69,9 @@ public class MarktView
 				"  " + "1: Korn" + "\t" + "2: Mehl" + "\n";
 	}
 
-	public static String getMarktKaufVonFeld(int _i)
+	public static String getMarktKaufVonFeld(int _anzahl)
 	{
-		return "Es wurden " + _i + " Felder eingenommen." + "\n";
+		return "Es wurden " + _anzahl + " Felder eingenommen." + "\n";
 		
 	}
 
