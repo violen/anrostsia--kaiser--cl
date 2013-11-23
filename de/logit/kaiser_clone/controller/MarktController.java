@@ -6,7 +6,13 @@ import de.logit.kaiser_clone.view.AusgabeHandler;
 import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.MarktView;
-
+/**
+ * Der Spieler darf nur einmal Pro zug im Titel aufsteigen,
+ * Sabotieren
+ * und Mehl kaufen oder verkaufen
+ * und Korn kaufen oder verkaufen
+ * 
+ */
 public class MarktController
 {
 	//Der "Eine" Markt der für alle gilt.
@@ -54,12 +60,20 @@ public class MarktController
 		switch (_param_1) 
 		{
 			case "1":
-				analysiereVerkauf(markt.verkaufeKorn(masterController.getSpielController().anzahlHolen(), 
-						masterController.getAktiverSpieler()));
+				if(!masterController.getAktiverSpieler().getZustaendeTabelle().get("KornHandel").booleanValue()){
+					analysiereVerkauf(markt.verkaufeKorn(masterController.getSpielController().anzahlHolen(), 
+							masterController.getAktiverSpieler()));
+				} else {
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(), masterController.getAktiverSpieler());
+				}
 				break;
 			case "2":
-				analysiereVerkauf(markt.verkaufeMehl(masterController.getSpielController().anzahlHolen(), 
-						masterController.getAktiverSpieler()));
+				if(!masterController.getAktiverSpieler().getZustaendeTabelle().get("MehlHandel").booleanValue()){	
+					analysiereVerkauf(markt.verkaufeMehl(masterController.getSpielController().anzahlHolen(), 
+							masterController.getAktiverSpieler()));
+				} else {
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(), masterController.getAktiverSpieler());
+				}
 				break;
 			default:
 				break;
@@ -118,12 +132,20 @@ public class MarktController
 						masterController.getAktiverSpieler()));
 				break;
 			case "5":
-				analysiereKauf(markt.kaufeKorn(masterController.getSpielController().anzahlHolen(), 
-						masterController.getAktiverSpieler()));
+				if(!_aktiverSpieler.getZustaendeTabelle().get("KornHandel").booleanValue()){
+					analysiereKauf(markt.kaufeKorn(masterController.getSpielController().anzahlHolen(), 
+							masterController.getAktiverSpieler()));
+				} else {
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(), _aktiverSpieler);
+				}
 				break;
 			case "6":
-				analysiereKauf(markt.kaufeMehl(masterController.getSpielController().anzahlHolen(), 
-						masterController.getAktiverSpieler()));
+				if(!_aktiverSpieler.getZustaendeTabelle().get("MehlHandel").booleanValue()){
+					analysiereKauf(markt.kaufeMehl(masterController.getSpielController().anzahlHolen(), 
+							masterController.getAktiverSpieler()));
+				} else {
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(), _aktiverSpieler);
+				}
 				break;
 			case "7":
 				analysiereKauf(markt.kaufeKornfeld(masterController.getSpielController().anzahlHolen(), 
