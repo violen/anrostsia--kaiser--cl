@@ -52,7 +52,6 @@ public class MarktView
 		return "Wieviel Korn soll verkauft werden?" + "\n";
 	}
 	
-	//Todo: Was macht diese Methode?
 	public static String getMarktKaufVonGebaeude(int _anzahl)
 	{
 		return "Es werden " + _anzahl + " errichtet." + "\n";
@@ -68,12 +67,6 @@ public class MarktView
 		
 		return "Was möchtest du verkaufen?" + "\n" +
 				"  " + "1: Korn" + "\t" + "2: Mehl" + "\n";
-	}
-
-	public static String getTitelAuswahl()
-	{
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public static String getMarktKaufVonFeld(int _i)
