@@ -3,6 +3,7 @@ package de.logit.kaiser_clone.controller;
 import de.logit.kaiser_clone.model.Markt;
 import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.view.AusgabeHandler;
+import de.logit.kaiser_clone.view.AusgabeView;
 import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.MarktView;
 
@@ -73,7 +74,7 @@ public class MarktController
 
 		if (_fehlercode == 1)
 		{
-			nachricht = FehlerView.getTransaktionErfolgreich();
+			nachricht = AusgabeView.getTransaktionErfolgreich();
 		}
 		else if (_fehlercode == 2)
 		{
@@ -101,7 +102,7 @@ public class MarktController
 						ausgabeHandler.gibStringAnKonsole(FehlerView.getTitelNichtverfuegbar(), _aktiverSpieler);
 					}
 				} else {
-					ausgabeHandler.gibStringAnKonsole(FehlerView.ausfuehrenDieserAktionInDieserRundeNichtMoeglich(), _aktiverSpieler);
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(), _aktiverSpieler);
 				}
 				break;
 			case "2":
@@ -150,7 +151,7 @@ public class MarktController
 		
 		if(_fehlercode[0] == 1)
 		{
-			nachricht = FehlerView.getTransaktionErfolgreich();
+			nachricht = AusgabeView.getTransaktionErfolgreich();
 			
 			//nachricht +=  MarktView.getMarktKaufVonFeld(_fehlercode[1]);
 			
@@ -188,7 +189,7 @@ public class MarktController
 		
 		else if(_fehlercode[0] == 7)
 		{
-			nachricht = FehlerView.getTransaktionErfolgreich();
+			nachricht = AusgabeView.getTransaktionErfolgreich();
 			nachricht += MarktView.getMarktKaufVonGebaeude(_fehlercode[1]);
 			
 		}

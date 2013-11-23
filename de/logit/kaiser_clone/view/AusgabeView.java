@@ -42,4 +42,9 @@ public class AusgabeView
 	public static String gibEinenNamenEin(){
 		return "Bitte geb einen namen ein." + "\n";
 	}
+
+	public static String getTransaktionErfolgreich() {
+		
+		return "Transaktion erfolgreich.\n";
+	}
 }

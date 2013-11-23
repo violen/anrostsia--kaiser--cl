@@ -85,7 +85,7 @@ public class SpielController
 				} 
 				else 
 				{
-					ausgabeHandler.gibStringAnKonsole(FehlerView.ausfuehrenDieserAktionInDieserRundeNichtMoeglich(), aktiverSpieler);
+					ausgabeHandler.gibStringAnKonsole(FehlerView.getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(), aktiverSpieler);
 				}
 			}
 			else if(parameter.equalsIgnoreCase("3"))

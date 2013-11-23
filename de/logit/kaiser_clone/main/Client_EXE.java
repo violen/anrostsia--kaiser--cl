@@ -35,7 +35,7 @@ public class Client_EXE {
 				chatClient.startClient();
 			} catch (NoSuchElementException e) {
 				AusgabeHandler ausgabeHandler = new AusgabeHandler();
-				ausgabeHandler.gibStringAnKonsole(FehlerView.verlierenDerServerVerbindungBeimClient());
+				ausgabeHandler.gibStringAnKonsole(FehlerView.getVerlierenDerServerVerbindungBeimClient());
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {

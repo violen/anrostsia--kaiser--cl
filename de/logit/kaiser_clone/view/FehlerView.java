@@ -15,16 +15,11 @@ public class FehlerView
 		
 	}
 
-	public static String getTransaktionErfolgreich() {
-		
-		return "Transaktion erfolgreich.\n";
-	}
-
 	public static String getMengeNichtVerfügbar() {
 		
 		return "Menge nicht verfügbar.\n";
 	}
-
+	// Doppelt siehe getKeineGueltigeEingabe() wird beibehalten um den Code nicht noch anzupassen.
 	public static String getUnkorrekteEingabe() {
 		
 		return "Das war keine korrekte Eingabe.\n";
@@ -39,7 +34,7 @@ public class FehlerView
 		
 		return "Kein freies Feld vorhanden.\n";
 	}
-
+	// Doppelt siehe getUnkorrekteEingabe() wird beibehalten um den Code nicht noch anzupassen.
 	public static String getKeineGueltigeEingabe() {
 		
 		return "Das war keine gültige Eingabe. \n";
@@ -60,11 +55,11 @@ public class FehlerView
 		return "Spieler nicht in Liste. \n";
 	}
 
-	public static String verlierenDerServerVerbindungBeimClient(){
+	public static String getVerlierenDerServerVerbindungBeimClient(){
 		return "Server verbindung verloren."+"\n";
 	}
 
-	public static String ausfuehrenDieserAktionInDieserRundeNichtMoeglich(){
+	public static String getAusfuehrenDieserAktionInDieserRundeNichtMoeglich(){
 		return "Du hast diese Aktion bereits getätigt!" + "\n" +
 				"Du darfst diesen Bereich erst in der neuen Runde wieder betreten!" + "\n";
 	}
