@@ -24,8 +24,7 @@ public class ProduzierenController
 
 		if (aktiverSpieler.getKorn() >= _parameter * 2)
 		{
-			aktiverSpieler.setKorn(
-			aktiverSpieler.getKorn() - _parameter * 2);
+			aktiverSpieler.setKorn(aktiverSpieler.getKorn() - _parameter * 2);
 			aktiverSpieler.setMehl(aktiverSpieler.getMehl()+_parameter);
 			
 			masterController.getAusgabeHandler().gibStringAnKonsole(ProduzierenView.getMehlProduziert(_parameter),aktiverSpieler);

@@ -45,9 +45,9 @@ public class SpielRundenView
 		return "Es gab eine Hungersnot die hälfte Deiner Einwohner sind verhungert. \n";
 	}
 
-	public static String getHungerKatastrophe() {
+	public static String getHungerKatastrophe(int _verluste, int _verhungerte) {
 		
-		return "Hungerkatastrophe die keine Rationen hatten Soldaten und 50% der Einwohner sind verhungert. \n";
+		return "Hungerkatastrophe: Es sind " + _verluste +" Soldaten und " + _verhungerte +" Einwohner verhungert. \n";
 	}
 
 	public static String getGenugNahrung() {
