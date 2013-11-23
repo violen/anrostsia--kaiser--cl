@@ -273,15 +273,6 @@ public class MasterController
 		return this.produzierenController;
 	}
 	
-	public ChatServer getServer() 
-	{
-		return server;
-	}
-	
-	public void setServer(ChatServer _server) 
-	{
-		server = _server;
-	}
 	/**
 	 * @return the chattenController
 	 */
