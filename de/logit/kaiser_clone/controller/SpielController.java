@@ -18,17 +18,6 @@ public class SpielController
 	private AusgabeHandler ausgabeHandler;
 	private EingabeController eingabeController;
 	private MasterController masterController;
-		
-	
-	
-	public SpielController(MasterController _masterController, Spiel _game, AusgabeHandler _ausgabeHandler, EingabeController _eingabeController)
-	{
-		masterController =_masterController;
-		game = _game;
-		ausgabeHandler = _ausgabeHandler;
-		eingabeController =_eingabeController;
-		
-	}
 	
 	public SpielController(MasterController _masterController) 
 	{
@@ -123,7 +112,7 @@ public class SpielController
 					game.setSpielrunde(masterController.getSpielRundencontroller().getAktuelleRunde());
 					game.getSpielrunde().setzeDieGrundwerteDerSpielerZustandsTabelle(game.getSpieler());
 					aktiverSpieler = masterController.getAktiverSpieler();
-					ausgabeHandler.gibStringAnKonsole(":::NEUE RUNDE BEGINNT:::"+"\n", aktiverSpieler);
+					ausgabeHandler.gibStringAnKonsole(":::NEUE RUNDE BEGINNT:::"+"\n", aktiverSpieler); // DEBUGGING Ausgabe !
 					ausgabeHandler.gibStringAnKonsole(StatistikView.getStatistikDesSpielers(masterController.getStatistikcontroller().getLandschaft(), aktiverSpieler), aktiverSpieler);
 				} 
 				else 
