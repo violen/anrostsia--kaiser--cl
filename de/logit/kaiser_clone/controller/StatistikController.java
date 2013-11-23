@@ -64,20 +64,23 @@ public class StatistikController
 		int lineZaehler = 0;
 		// Gesamtegröße der Ländereien
 		int landGroesse = masterController.getAktiverSpieler().getFelder().size();
-		
+		// Größe der ausgabe reihen
 		arrayRows = landGroesse / zeichenProZeile;
 		if(landGroesse%zeichenProZeile!=0){
 			arrayRows++;
 		}
+		// Die Karte 
 		karte = new String[arrayRows];
 		for(int i = 0 ; i < landGroesse ; i++)
 		{
+			// Wenn das letzte Zeichen angehangen ist soll eine neue Zeile geschaffen werden
 			if(i % zeichenProZeile == 0 && i != 0){
 				zeile = zeile + "\n";
 				karte[lineZaehler] = zeile;
 				lineZaehler++;
 				zeile = "";
 			}
+			// Hänge das entsprechende Zeichen an die Zeile
 			if(masterController.getAktiverSpieler().getFelder().get(i).getGebaeude() != null){
 				if(masterController.getAktiverSpieler().getFelder().get(i).getGebaeude() instanceof Kornfeld){
 					zeile = zeile + "ß";
@@ -89,6 +92,7 @@ public class StatistikController
 			} else {
 				zeile = zeile + "#";
 			}
+			// Wenn Die land karte nicht genug felder in einer Zeile hat wie sie durch "zeichenProZeile" definiert wird schliesse die zeile ab
 			if (zeichenProZeile > landGroesse && landGroesse-1 == i) {
 				zeile = zeile + "\n";
 				karte[lineZaehler] = zeile;
