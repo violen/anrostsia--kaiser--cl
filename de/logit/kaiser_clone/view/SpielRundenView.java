@@ -40,9 +40,9 @@ public class SpielRundenView
 		return "Die neue Moral beträgt " + _moral + " . \n";
 	}
 
-	public static String getHungersnot() {
+	public static String getHungersnot(int _verhungerte) {
 		
-		return "Es gab eine Hungersnot die hälfte Deiner Einwohner sind verhungert. \n";
+		return "Es gab eine Hungersnot " + _verhungerte  + " Deiner Einwohner sind verhungert. \n";
 	}
 
 	public static String getHungerKatastrophe(int _verluste, int _verhungerte) {

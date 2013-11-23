@@ -90,7 +90,7 @@ public class Spielrunde
 			aktiverspieler.setSoldaten(soldaten);
 			aktiverspieler.setMehl(0);//Kein mehl mehr da
 			int verhungerte = (int) (bevoelkerung/2);
-			aktiverspieler.setBevoelkerung(bevoelkerung-verhungerte);
+			aktiverspieler.setBevoelkerung(bevoelkerung-verhungerte);//Die bevoelkerung wir ebenfalls dezimiert
 			nachrichtAnSpieler += SpielRundenView.getHungerKatastrophe(verluste,verhungerte);
 			wert = 0;
 		}
@@ -102,10 +102,11 @@ public class Spielrunde
 			if ( verbrauch2 >  mehl2)//Das mehl reicht nicht fuer die einwohner
 			{
 				//Hungersnot
-				aktiverspieler.setBevoelkerung((int)(bevoelkerung/2));
+				int verhungerte = (int)(bevoelkerung/2);
+				aktiverspieler.setBevoelkerung(bevoelkerung-verhungerte);
 				aktiverspieler.setMehl(0);
 				wert =  50;
-				nachrichtAnSpieler += SpielRundenView.getHungersnot();
+				nachrichtAnSpieler += SpielRundenView.getHungersnot(verhungerte);
 			}
 			else if ( verbrauch2 <= mehl2)//Das mehl reicht fuer die einwohner
 			{
