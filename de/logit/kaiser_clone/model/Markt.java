@@ -219,6 +219,11 @@ public class Markt
 				_aktiverSpieler.setGold(_aktiverSpieler.getGold()-(_anzahlHolen*kornEK));
 				parameters[0]=1;// Transaktion durchgefuehrt
 				kornEK+= (kornEK/2)+_anzahlHolen;
+				for(Map.Entry<String, Boolean> entry: _aktiverSpieler.getZustaendeTabelle().entrySet()){
+					if(entry.getKey().equalsIgnoreCase("KornHandel")){
+						entry.setValue(true);
+					}
+				}
 			}
 			else if(_aktiverSpieler.getGold() < _anzahlHolen*kornEK)
 			{
@@ -246,7 +251,11 @@ public class Markt
 				_aktiverSpieler.setGold(_aktiverSpieler.getGold()-(_anzahlHolen*mehlEK));
 				parameters[0]=1;
 				mehlEK+= (mehlEK/2)+_anzahlHolen;
-				
+				for(Map.Entry<String, Boolean> entry: _aktiverSpieler.getZustaendeTabelle().entrySet()){
+					if(entry.getKey().equalsIgnoreCase("MehlHandel")){
+						entry.setValue(true);
+					}
+				}
 			}
 			else if(_aktiverSpieler.getGold() < _anzahlHolen*mehlEK)
 			{
@@ -353,6 +362,11 @@ public class Markt
 			_aktiverSpieler.setKorn(_aktiverSpieler.getKorn()- _anzahlHolen);
 			bestandKorn += _anzahlHolen;
 			kornEK-= (kornEK/2)+_anzahlHolen;
+			for(Map.Entry<String, Boolean> entry: _aktiverSpieler.getZustaendeTabelle().entrySet()){
+				if(entry.getKey().equalsIgnoreCase("KornHandel")){
+					entry.setValue(true);
+				}
+			}
 			return 1;
 		}
 		else if(_aktiverSpieler.getKorn() < _anzahlHolen)
@@ -369,6 +383,11 @@ public class Markt
 			_aktiverSpieler.setMehl(_aktiverSpieler.getMehl()- _anzahlHolen);
 			bestandMehl += _anzahlHolen;
 			mehlEK-= (mehlEK/2)+_anzahlHolen;
+			for(Map.Entry<String, Boolean> entry: _aktiverSpieler.getZustaendeTabelle().entrySet()){
+				if(entry.getKey().equalsIgnoreCase("MehlHandel")){
+					entry.setValue(true);
+				}
+			}
 			return 1;
 		}
 		else if(_aktiverSpieler.getMehl() < _anzahlHolen)
