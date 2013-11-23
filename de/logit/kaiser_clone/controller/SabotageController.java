@@ -30,7 +30,7 @@ public class SabotageController {
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
 		// hier wird die liste der spieler außer dema ktiven spieler ausgegeben.
-		LinkedList<Spieler> gegner = gegnerWaehlen(masterController.getAktiverSpieler());
+		LinkedList<Spieler> gegner = gegnerWaehlen(aktiverSpieler);
 		
 		masterController.getAusgabeHandler().gibStringAnKonsole(SabotageView.getGegnerWaehlen(gegner),aktiverSpieler);
 		
@@ -219,7 +219,7 @@ public class SabotageController {
 			//Vergiften erfolgreich
 			ausgabeHandler.gibStringAnKonsole(SabotageView.getKornVergiftet(sabotage.getNeuesKorn()),aktiverSpieler);
 			nachrichtAnGegner = SabotageView.getEsWurdeKornVergiftet(aktiverSpieler.getName(),sabotage.getNeuesKorn());
-			aktiverSpieler.setKorn(aktiverSpieler.getKorn()+sabotage.getNeuesKorn());
+			
 			aktiverSpieler.setGold(gold-_kosten);
 		}
 		

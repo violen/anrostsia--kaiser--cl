@@ -54,6 +54,7 @@ public class Spielrunde
 		wachsen();
 		aktiverspieler.setNachricht(aktiverspieler.getNachricht()+nachrichtAnSpieler);
 		aktiverspieler.setMehl(0);
+		// Der duengerverbrauch ist noch nicht implementiert
 	}
 
 	private void berechneSteuern() {
@@ -189,8 +190,8 @@ public class Spielrunde
 		{
 			_moral =1;
 		}
-		
-		int korn = (aktiverspieler.getKornfelder()*_moral*_geduengteFelder)+(aktiverspieler.getKornfelder()*50);
+		int kornfelder = aktiverspieler.getKornfelder();
+		int korn = (kornfelder*_moral*_geduengteFelder)+(kornfelder*50);
 		aktiverspieler.setKorn(aktiverspieler.getKorn()+korn);
 		
 		nachrichtAnSpieler += SpielRundenView.getKornProduktion(korn);
