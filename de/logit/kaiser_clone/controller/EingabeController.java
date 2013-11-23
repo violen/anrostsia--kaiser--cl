@@ -15,7 +15,7 @@ import de.logit.kaiser_clone.view.AusgabeHandler;
 
 /**
  * @author nepo aka. André Hauser
- *
+ * Nimmt die Nutzereingaben Entgegen und Sendet sie an Die SystemConsole oder den Jeweiligen SpielerStream
  */
 public class EingabeController {
 	
