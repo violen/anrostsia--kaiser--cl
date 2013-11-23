@@ -2,6 +2,7 @@ package de.logit.kaiser_clone.controller;
 
 import de.logit.kaiser_clone.model.Spieler;
 import de.logit.kaiser_clone.view.AusgabeView;
+import de.logit.kaiser_clone.view.FehlerView;
 import de.logit.kaiser_clone.view.ProduzierenView;
 
 public class ProduzierenController
@@ -18,16 +19,21 @@ public class ProduzierenController
 	public void produzieren()
 	{
 		Spieler aktiverSpieler = masterController.getAktiverSpieler();
-		int _parameter;
-		_parameter =	masterController.getSpielController().anzahlHolen() ;
+		
+		int _parameter =	masterController.getSpielController().anzahlHolen() ;
 
-		if (masterController.getAktiverSpieler().getKorn() >= _parameter * 2)
+		if (aktiverSpieler.getKorn() >= _parameter * 2)
 		{
-			masterController.getAktiverSpieler().setKorn(
-			masterController.getAktiverSpieler().getKorn() - _parameter * 2);
-			masterController.getAktiverSpieler().setMehl(masterController.getAktiverSpieler().getMehl()+_parameter);
+			aktiverSpieler.setKorn(
+			aktiverSpieler.getKorn() - _parameter * 2);
+			aktiverSpieler.setMehl(aktiverSpieler.getMehl()+_parameter);
 			
 			masterController.getAusgabeHandler().gibStringAnKonsole(ProduzierenView.getMehlProduziert(_parameter),aktiverSpieler);
+		}
+		
+		else
+		{
+			masterController.getAusgabeHandler().gibStringAnKonsole(FehlerView.getKornReichtNichtAus());
 		}
 
 	}

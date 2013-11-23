@@ -68,4 +68,9 @@ public class FehlerView
 	
 		return "Sabotage ist nur im Mehrspielermodus verfügbar. \n";
 	}
+
+	public static String getKornReichtNichtAus() {
+		
+		return "Korn reicht nicht aus. \n";
+	}
 }
