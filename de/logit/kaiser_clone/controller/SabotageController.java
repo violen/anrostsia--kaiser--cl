@@ -21,24 +21,10 @@ public class SabotageController {
 	
 	private MasterController masterController;
 	private Sabotage sabotage;
-	
-	
-
-	/**
-	 * @param _masterController
-	 */
-	public SabotageController(MasterController _masterController,Sabotage _sabotage) {
-		masterController = _masterController;
-		sabotage = _sabotage;
-	}
-
-
 
 	public SabotageController(MasterController _masterController) {
 		this.masterController = _masterController;
 	}
-
-
 
 	public void auswertenEingabeSabotage(String _parameter)
 	{
