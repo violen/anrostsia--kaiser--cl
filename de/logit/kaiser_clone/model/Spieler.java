@@ -358,9 +358,11 @@ public class Spieler
 		if(kornfelder <= duenger)
 		{
 			return kornfelder;
+// Wenn mehr duenger als felder vorhanden ist, sind alle felder geduengt
 		}
 		else
 		{
+// Jedes kornfeld benoetigt 1 duenger, dann ist es geduengt			
 			return duenger;
 		}
 		
