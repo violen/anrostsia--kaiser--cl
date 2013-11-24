@@ -168,7 +168,7 @@ public class Spielrunde
 			
 			else if (param == 3 )//Ereigniss ist Pest - verringert Bevölkerung
 			{
-				menge = ((int) aktiverspieler.getBevoelkerung()/100*75);//Der Spieler verliert 25% seine Bevölkerung
+				menge = ((int) (aktiverspieler.getBevoelkerung()*75/100));//Der Spieler verliert 25% seine Bevölkerung
 				aktiverspieler.setBevoelkerung(menge);
 				nachrichtAnSpieler += SpielRundenView.getPest(menge);
 				
@@ -221,7 +221,7 @@ public class Spielrunde
 		int wachsen = aktiverspieler.getBevoelkerung()*wachstum;
 		
 		nachrichtAnSpieler += SpielRundenView.getWachstum(wachsen);
-		
+// Wenn bevölkerung 0 ist kann sie nicht mehr wachsen .. muss noch ausbalanciert werden		
 		aktiverspieler.setBevoelkerung(aktiverspieler.getBevoelkerung()+wachsen);
 	}
 	
